@@ -34,4 +34,13 @@ public class commentaire {
     public void setCommentaire(String commentaire) {
         this.commentaire = commentaire;
     }
+
+    @Override
+    public String toString() {
+        return "commentaire{" +
+                "idcommentaire=" + idcommentaire +
+                ", offre_id=" + offre_id +
+                ", commentaire='" + commentaire + '\'' +
+                '}';
+    }
 }

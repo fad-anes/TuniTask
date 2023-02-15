@@ -40,4 +40,13 @@ public class rate {
     public void setRate(float rate) {
         this.rate = rate;
     }
+
+    @Override
+    public String toString() {
+        return "rate{" +
+                "idrate=" + idrate +
+                ", offre_id=" + offre_id +
+                ", rate=" + rate +
+                '}';
+    }
 }

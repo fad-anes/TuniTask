@@ -62,4 +62,15 @@ public class offre {
     public void setSalaireH(float salaireH) {
         this.salaireH = salaireH;
     }
+
+    @Override
+    public String toString() {
+        return "offre{" +
+                "idoffre=" + idoffre +
+                ", freelancer_id=" + freelancer_id +
+                ", description='" + description + '\'' +
+                ", titre='" + titre + '\'' +
+                ", salaireH=" + salaireH +
+                '}';
+    }
 }
