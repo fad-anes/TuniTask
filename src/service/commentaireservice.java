@@ -2,6 +2,8 @@ package service;
 
 import entite.commentaire;
 import java.util.List;
+
+import entite.offre;
 import utils.Datasource;
 import java.sql.Connection;
 import java.sql.*;
@@ -91,11 +93,39 @@ public class commentaireservice implements commentaireinterface<commentaire>{
 
     @Override
     public List<commentaire> readall() {
-        return null;
+        List<commentaire> list=new ArrayList<>();
+        String requete="select * from commentaire";
+        try {
+            Statement st=conn.createStatement();
+            ResultSet rs=st.executeQuery(requete);
+            while(rs.next()){
+                commentaire p=new commentaire(rs.getInt(1), rs.getInt(2),
+                        rs.getString(3));
+                list.add(p);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(commentaireservice.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
     }
 
     @Override
     public commentaire ReadById(int id) {
-        return null;
+        commentaire p0=new commentaire();
+        String requete0="select * from commentaire WHERE idcommentaire="+id;
+        try {
+
+            Statement st=conn.createStatement();
+            ResultSet rs=st.executeQuery(requete0);
+            while(rs.next()){
+                commentaire p=new commentaire(rs.getInt(1), rs.getInt(2),
+                        rs.getString(3));
+                p0=p;}
+        } catch (SQLException ex) {
+            Logger.getLogger(commentaireservice.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return p0;
     }
 }

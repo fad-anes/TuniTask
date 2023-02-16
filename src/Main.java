@@ -16,8 +16,10 @@ public class Main {
         //s.update(o);
         //cs.insert(c);
         //cs.delete(2);
-        cs.update(3,c);
+       // cs.update(3,c);
         //System.out.println(s.readall());
         //System.out.println(s.ReadById(3));
+       // System.out.println(cs.readall());
+       // System.out.println(cs.ReadById(3));
     }
 }
