@@ -1,87 +1,56 @@
 package Entity;
 
-public class Quizs {
-    private int id_quiz;
-    private String quiz_title;
-    private String quiz_description;
-    private int score;
+public class Questions {
+    private int id_question;
+    private String question_text;
+    private Quizs quiz;
 
-
-    public Quizs() {
+    public Questions() {
+    }
+    public Questions(int id_question) {
+        this.id_question = id_question;
+    }
+    public Questions(String question_text, Quizs quiz) {
+        this.question_text = question_text;
+        this.quiz = quiz;
     }
 
-    public Quizs(String quiz_title, String quiz_description, int score) {
-        this.quiz_title = quiz_title;
-        this.quiz_description = quiz_description;
-        this.score = score;
+    public Questions(int id_question, String question_text, Quizs quiz) {
+        this.id_question = id_question;
+        this.question_text = question_text;
+        this.quiz = quiz;
     }
 
-    public Quizs(int id_quiz, String quiz_title, String quiz_description) {
-        this.id_quiz = id_quiz;
-        this.quiz_title = quiz_title;
-        this.quiz_description = quiz_description;
+    public int getId_question() {
+        return id_question;
     }
 
-    public Quizs(String quiz_title, String quiz_description) {
-        this.quiz_title = quiz_title;
-        this.quiz_description = quiz_description;
+    public void setId_question(int id_question) {
+        this.id_question = id_question;
     }
 
-    public Quizs(int id_quiz, String quiz_title, String quiz_description, int score) {
-        this.id_quiz = id_quiz;
-        this.quiz_title = quiz_title;
-        this.quiz_description = quiz_description;
-        this.score = score;
-
+    public String getQuestion_text() {
+        return question_text;
     }
 
-    public Quizs(int id_quiz) {
-        this.id_quiz = id_quiz;
+    public void setQuestion_text(String question_text) {
+        this.question_text = question_text;
     }
 
-
-    public int getId_quiz() {
-        return id_quiz;
+    public Quizs quiz() {
+        return quiz;
     }
 
-    public void setId_quiz(int id_quiz) {
-        this.id_quiz = id_quiz;
+    public void setQuiz_id(Quizs quiz) {
+        this.quiz = quiz;
     }
-
-    public String getQuiz_title() {
-        return quiz_title;
-    }
-
-    public void setQuiz_title(String quiz_title) {
-        this.quiz_title = quiz_title;
-    }
-
-    public String getQuiz_description() {
-        return quiz_description;
-    }
-
-    public void setQuiz_description(String quiz_description) {
-        this.quiz_description = quiz_description;
-    }
-
-    public int getScore() {
-        return score;
-    }
-
-    public void setScore(int score) {
-        this.score = score;
-    }
-
-
 
     @Override
     public String toString() {
-        return "Quizs{" +
-                "id_quiz=" + id_quiz +
-                ", quiz_title='" + quiz_title + '\'' +
-                ", quiz_description='" + quiz_description + '\'' +
-                ", score=" + score +
+        return "Questions{" +
+                "id_question=" + id_question +
+                ", question_text='" + question_text + '\'' +
+                ", quiz_id=" + quiz.getId_quiz() +
                 '}';
     }
 }
-
