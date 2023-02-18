@@ -1,4 +1,4 @@
-package Entity;
+package entity;
 
 public class Questions {
     private int id_question;
