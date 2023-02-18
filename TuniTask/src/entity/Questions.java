@@ -1,68 +1,87 @@
-package entity;
+package Entity;
 
-public class Questions {
-    private int question_id;
-    private Quizs quiz_id;
-    private String question_text;
-    private String answer_options;
-    private String correct_answer;
+public class Quizs {
+    private int id_quiz;
+    private String quiz_title;
+    private String quiz_description;
+    private int score;
 
-    public Questions(int question_id, Quizs quiz_id, String question_text, String answer_options, String correct_answer) {
-        this.question_id = question_id;
-        this.quiz_id = quiz_id;
-        this.question_text = question_text;
-        this.answer_options = answer_options;
-        this.correct_answer = correct_answer;
+
+    public Quizs() {
     }
 
-    public int getQuestion_id() {
-        return question_id;
+    public Quizs(String quiz_title, String quiz_description, int score) {
+        this.quiz_title = quiz_title;
+        this.quiz_description = quiz_description;
+        this.score = score;
     }
 
-    public void setQuestion_id(int question_id) {
-        this.question_id = question_id;
+    public Quizs(int id_quiz, String quiz_title, String quiz_description) {
+        this.id_quiz = id_quiz;
+        this.quiz_title = quiz_title;
+        this.quiz_description = quiz_description;
     }
 
-    public Quizs getQuiz_id() {
-        return quiz_id;
+    public Quizs(String quiz_title, String quiz_description) {
+        this.quiz_title = quiz_title;
+        this.quiz_description = quiz_description;
     }
 
-    public void setQuiz_id(Quizs quiz_id) {
-        this.quiz_id = quiz_id;
+    public Quizs(int id_quiz, String quiz_title, String quiz_description, int score) {
+        this.id_quiz = id_quiz;
+        this.quiz_title = quiz_title;
+        this.quiz_description = quiz_description;
+        this.score = score;
+
     }
 
-    public String getQuestion_text() {
-        return question_text;
+    public Quizs(int id_quiz) {
+        this.id_quiz = id_quiz;
     }
 
-    public void setQuestion_text(String question_text) {
-        this.question_text = question_text;
+
+    public int getId_quiz() {
+        return id_quiz;
     }
 
-    public String getAnswer_options() {
-        return answer_options;
+    public void setId_quiz(int id_quiz) {
+        this.id_quiz = id_quiz;
     }
 
-    public void setAnswer_options(String answer_options) {
-        this.answer_options = answer_options;
+    public String getQuiz_title() {
+        return quiz_title;
     }
 
-    public String getCorrect_answer() {
-        return correct_answer;
+    public void setQuiz_title(String quiz_title) {
+        this.quiz_title = quiz_title;
     }
 
-    public void setCorrect_answer(String correct_answer) {
-        this.correct_answer = correct_answer;
+    public String getQuiz_description() {
+        return quiz_description;
     }
+
+    public void setQuiz_description(String quiz_description) {
+        this.quiz_description = quiz_description;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+
 
     @Override
     public String toString() {
-        return "Questions{" +
-                "question_id=" + question_id +
-                ", quiz_id=" + quiz_id +
-                ", question_text='" + question_text + '\'' +
-                ", answer_options='" + answer_options + '\'' +
-                ", correct_answer='" + correct_answer + '\'' +
+        return "Quizs{" +
+                "id_quiz=" + id_quiz +
+                ", quiz_title='" + quiz_title + '\'' +
+                ", quiz_description='" + quiz_description + '\'' +
+                ", score=" + score +
                 '}';
     }
 }
+
