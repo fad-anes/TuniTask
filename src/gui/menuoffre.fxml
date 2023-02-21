@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="705.0" prefWidth="1005.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Menuoffre">
+   <children>
+      <Text fill="#bd0ec9" layoutX="249.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Explorez plus d'opportunités, soyez votre propre patron" textAlignment="CENTER" wrappingWidth="507.5986328125" />
+      <Button fx:id="ajm" layoutX="506.0" layoutY="243.0" mnemonicParsing="false" onAction="#versinaj" prefHeight="31.0" prefWidth="101.0" text="Ajouter" />
+      <Button fx:id="affichm" layoutX="503.0" layoutY="337.0" mnemonicParsing="false" onAction="#versaff" prefHeight="31.0" prefWidth="101.0" text="afficher" />
+      <Label layoutX="88.0" layoutY="248.0" text="Attirer de nouveaux clients" />
+      <Label layoutX="88.0" layoutY="342.0" text="voir vos offre" />
+      <Label layoutX="88.0" layoutY="444.0" text="Modifier vos offre" />
+      <Label layoutX="88.0" layoutY="543.0" text="Supprimer vos offre" />
+      <Button fx:id="modifm" layoutX="503.0" layoutY="439.0" mnemonicParsing="false" onAction="#vermodif" prefHeight="31.0" prefWidth="101.0" text="modifier" />
+      <Button fx:id="suppm" layoutX="503.0" layoutY="538.0" mnemonicParsing="false" onAction="#verssup" prefHeight="31.0" prefWidth="101.0" text="Supprimer" />
+   </children>
+</AnchorPane>

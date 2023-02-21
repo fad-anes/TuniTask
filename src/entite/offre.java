@@ -6,6 +6,13 @@ public class offre {
     private String description;
     private String titre;
     private float salaireH;
+    private String skills;
+    private String country;
+    private String role;
+    private String language;
+    private String nom;
+    private String prenom;
+    private int years;
 
     public offre() {
     }
@@ -15,12 +22,27 @@ public class offre {
         this.titre = titre;
         this.salaireH = salaireH;
     }
+
     public offre(int idoffre,int freelancer_id,String description,String titre,float salaireH) {
         this.idoffre = idoffre;
         this.freelancer_id = freelancer_id;
         this.description = description;
         this.titre = titre;
         this.salaireH = salaireH;
+    }
+    public offre(int idoffre,int freelancer_id,String description,String titre,float salaireH,String skills,String country,String role,String language,int years,String nom,String prenom) {
+        this.idoffre = idoffre;
+        this.freelancer_id = freelancer_id;
+        this.description = description;
+        this.titre = titre;
+        this.salaireH = salaireH;
+        this.skills = skills;
+        this.country = country;
+        this.role = role;
+        this.language = language;
+        this.years = years;
+        this.nom = nom;
+        this.prenom = prenom;
     }
 
     public int getIdoffre() {
@@ -63,6 +85,34 @@ public class offre {
         this.salaireH = salaireH;
     }
 
+    public String getSkills() {
+        return skills;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public int getYears() {
+        return years;
+    }
+
     @Override
     public String toString() {
         return "offre{" +
@@ -71,6 +121,13 @@ public class offre {
                 ", description='" + description + '\'' +
                 ", titre='" + titre + '\'' +
                 ", salaireH=" + salaireH +
+                ", skills='" + skills + '\'' +
+                ", country='" + country + '\'' +
+                ", role='" + role + '\'' +
+                ", language='" + language + '\'' +
+                ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", years=" + years +
                 '}';
     }
 }

@@ -61,14 +61,17 @@ public class offreservice implements offreinterface<offre> {
     @Override
     public List<offre> readall() {
         List<offre> list=new ArrayList<>();
-        String requete="select * from offre";
+        String requete="select o.idoffre,o.freelancer_id,o.description,o.titre,o.salaireH,f.skills,f.country,f.role,f.languages,f.experience_years,u.nom,u.prenom from offre AS o" +
+              " JOIN freelancers AS f ON o.freelancer_id =f.id "+ " JOIN utilisateur AS u ON f.user_id=u.ID";
         try {
             Statement st=conn.createStatement();
             ResultSet rs=st.executeQuery(requete);
             while(rs.next()){
-                offre p=new offre(rs.getInt(1), rs.getInt(2),
-                        rs.getString(3),rs.getString(4),
-                        rs.getFloat(5));
+                offre p=new offre(rs.getInt("idoffre"), rs.getInt("freelancer_id"),
+                        rs.getString("description"),rs.getString("titre"),
+                        rs.getFloat("salaireH"),rs.getString("skills"),rs.getString("country"),
+                        rs.getString("role"),rs.getString("languages"),rs.getInt("experience_years"),rs.getString("nom"),
+                        rs.getString("prenom"));
                 list.add(p);
             }
 
@@ -81,20 +84,69 @@ public class offreservice implements offreinterface<offre> {
     @Override
     public offre ReadById(int id) {
         offre p0=new offre();
-        String requete0="select * from offre WHERE idoffre="+id;
+        String requete0="select o.idoffre,o.freelancer_id,o.description,o.titre,o.salaireH,f.skills,f.country,f.role,f.languages,f.experience_years,u.nom,u.prenom from offre AS o" +
+                " JOIN freelancers AS f ON o.freelancer_id =f.id "+ " JOIN utilisateur AS u ON f.user_id=u.ID WHERE o.freelancer_id="+id;
         try {
 
             Statement st=conn.createStatement();
             ResultSet rs=st.executeQuery(requete0);
             while(rs.next()){
-            offre p=new offre(rs.getInt(1), rs.getInt(2),
-                    rs.getString(3),rs.getString(4),
-                    rs.getFloat(5));
+                offre p=new offre(rs.getInt("idoffre"), rs.getInt("freelancer_id"),
+                        rs.getString("description"),rs.getString("titre"),
+                        rs.getFloat("salaireH"),rs.getString("skills"),rs.getString("country"),
+                        rs.getString("role"),rs.getString("languages"),rs.getInt("experience_years"),rs.getString("nom"),
+                        rs.getString("prenom"));
             p0=p;}
         } catch (SQLException ex) {
             Logger.getLogger(offreservice.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return p0;
+    }
+
+    @Override
+    public Boolean Findid(int id) {
+        int test;
+        int t=0;
+        String requete="select id from freelancers";
+        try {
+
+            Statement st=conn.createStatement();
+            ResultSet rs=st.executeQuery(requete);
+            while(rs.next()){
+               test= rs.getInt("id");
+               if(test==id)
+                   t=1;
+                }
+        } catch (SQLException ex) {
+            Logger.getLogger(offreservice.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if(t==1)
+            return true;
+        else
+            return false;
+    }
+
+    @Override
+    public Boolean Findidof(int id) {
+        int test;
+        int t=0;
+        String requete="select freelancer_id from offre";
+        try {
+
+            Statement st=conn.createStatement();
+            ResultSet rs=st.executeQuery(requete);
+            while(rs.next()){
+                test= rs.getInt("freelancer_id");
+                if(test==id)
+                    t=1;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(offreservice.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if(t==1)
+            return true;
+        else
+            return false;
     }
 }

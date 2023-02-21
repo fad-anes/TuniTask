@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="705.0" prefWidth="1005.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Afficheroffre">
+   <children>
+      <Button fx:id="retourm" layoutX="706.0" layoutY="609.0" mnemonicParsing="false" onAction="#retourm" text="Retour" />
+      <TableView fx:id="table" layoutX="3.0" layoutY="105.0" prefHeight="381.0" prefWidth="999.0">
+        <columns>
+          <TableColumn fx:id="ido" prefWidth="61.0" text="idoffre" />
+          <TableColumn fx:id="fid" prefWidth="99.0" text="freelancer_id" />
+            <TableColumn fx:id="d" prefWidth="108.0" text="description" />
+            <TableColumn fx:id="t" prefWidth="42.0" text="titre" />
+            <TableColumn fx:id="sa" prefWidth="75.0" text="salaireH" />
+            <TableColumn fx:id="skil" prefWidth="75.0" text="skills" />
+            <TableColumn fx:id="co" prefWidth="75.0" text="country" />
+            <TableColumn fx:id="role" prefWidth="75.0" text="role" />
+            <TableColumn fx:id="lang" prefWidth="75.0" text="language" />
+            <TableColumn fx:id="nom" prefWidth="75.0" text="nom" />
+            <TableColumn fx:id="prenom" prefWidth="75.0" text="prenom" />
+            <TableColumn fx:id="year" prefWidth="75.0" text="years" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
