@@ -94,13 +94,14 @@ public class commentaireservice implements commentaireinterface<commentaire>{
     @Override
     public List<commentaire> readall() {
         List<commentaire> list=new ArrayList<>();
-        String requete="select * from commentaire";
+        String requete="select c.idcommentaire,c.offre_id,c.commentaire,o.titre from commentaire AS c"+
+                " JOIN offre AS o ON c.offre_id =o.idoffre ";
         try {
             Statement st=conn.createStatement();
             ResultSet rs=st.executeQuery(requete);
             while(rs.next()){
-                commentaire p=new commentaire(rs.getInt(1), rs.getInt(2),
-                        rs.getString(3));
+                commentaire p=new commentaire(rs.getInt("idcommentaire"), rs.getInt("offre_id"),
+                        rs.getString("commentaire"),rs.getString("titre"));
                 list.add(p);
             }
 
@@ -113,14 +114,16 @@ public class commentaireservice implements commentaireinterface<commentaire>{
     @Override
     public commentaire ReadById(int id) {
         commentaire p0=new commentaire();
-        String requete0="select * from commentaire WHERE idcommentaire="+id;
+        String requete0="select c.idcommentaire,c.offre_id,c.commentaire,o.titre from commentaire AS c"+
+                " JOIN offre AS o ON c.offre_id =o.idoffre WHERE c.idcommentaire="+id;
+
         try {
 
             Statement st=conn.createStatement();
             ResultSet rs=st.executeQuery(requete0);
             while(rs.next()){
-                commentaire p=new commentaire(rs.getInt(1), rs.getInt(2),
-                        rs.getString(3));
+                commentaire p=new commentaire(rs.getInt("idcommentaire"), rs.getInt("offre_id"),
+                        rs.getString("commentaire"),rs.getString("titre"));
                 p0=p;}
         } catch (SQLException ex) {
             Logger.getLogger(commentaireservice.class.getName()).log(Level.SEVERE, null, ex);
@@ -128,4 +131,51 @@ public class commentaireservice implements commentaireinterface<commentaire>{
 
         return p0;
     }
+
+    @Override
+    public Boolean Findid(int id) {
+        int test;
+        int t=0;
+        String requete="select idoffre from offre";
+        try {
+
+            Statement st=conn.createStatement();
+            ResultSet rs=st.executeQuery(requete);
+            while(rs.next()){
+                test= rs.getInt("idoffre");
+                if(test==id)
+                    t=1;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(offreservice.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if(t==1)
+            return true;
+        else
+            return false;
+    }
+
+    @Override
+    public Boolean Findidcm(int id) {
+        int test;
+        int t=0;
+        String requete="select idcommentaire from commentaire";
+        try {
+
+            Statement st=conn.createStatement();
+            ResultSet rs=st.executeQuery(requete);
+            while(rs.next()){
+                test= rs.getInt("idcommentaire");
+                if(test==id)
+                    t=1;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(offreservice.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if(t==1)
+            return true;
+        else
+            return false;
+    }
+
 }

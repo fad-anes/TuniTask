@@ -6,4 +6,6 @@ public interface commentaireinterface<T> {
     void update(int t,T c);
     List<T> readall();
     T ReadById(int id);
+    Boolean Findid(int id);
+    Boolean Findidcm(int id);
 }

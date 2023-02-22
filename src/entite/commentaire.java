@@ -4,18 +4,34 @@ public class commentaire {
     private int idcommentaire	;
     private int offre_id	;
     private String commentaire;
+    private String titre;
+
 
     public commentaire() {
     }
-    public commentaire(int offre_id,String commentaire) {
+    public commentaire(int offre_id,String commentaire,String titre) {
         this.offre_id = offre_id;
         this.commentaire = commentaire;
+        this.titre = titre;
     }
     public commentaire(int idcommentaire,int offre_id,String commentaire) {
         this.idcommentaire = idcommentaire;
         this.offre_id = offre_id;
         this.commentaire = commentaire;
     }
+    public commentaire(int idcommentaire,int offre_id,String commentaire,String titre) {
+        this.idcommentaire = idcommentaire;
+        this.offre_id = offre_id;
+        this.commentaire = commentaire;
+        this.titre = titre;
+    }
+    public commentaire(int offre_id,String commentaire) {
+
+        this.offre_id = offre_id;
+        this.commentaire = commentaire;
+
+    }
+
     public int getIdcommentaire() {
         return idcommentaire;
     }
@@ -35,12 +51,21 @@ public class commentaire {
         this.commentaire = commentaire;
     }
 
+    public String getTitre() {
+        return titre;
+    }
+
+    public void setTitre(String titre) {
+        this.titre = titre;
+    }
+
     @Override
     public String toString() {
         return "commentaire{" +
                 "idcommentaire=" + idcommentaire +
                 ", offre_id=" + offre_id +
                 ", commentaire='" + commentaire + '\'' +
+                ", titre='" + titre + '\'' +
                 '}';
     }
 }

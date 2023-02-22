@@ -24,6 +24,8 @@ public class Afficheroffre implements Initializable{
     @FXML
     private Button retourm;
     @FXML
+    private Button vcm;
+    @FXML
     private TableColumn ido;
     @FXML
     private TableColumn fid;
@@ -79,4 +81,12 @@ public class Afficheroffre implements Initializable{
 
         Menuoffre dc=loader.getController();
         table.getScene().setRoot(root);}
+    @FXML
+    private void vcm(ActionEvent event) throws IOException {
+        FXMLLoader loader=new FXMLLoader(getClass().getResource("voir commentaire.fxml"));
+        Parent root=loader.load();
+
+        VoirCommentaire dc=loader.getController();
+        table.getScene().setRoot(root);
+    }
 }

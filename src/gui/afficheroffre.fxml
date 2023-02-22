@@ -7,7 +7,7 @@
 
 <AnchorPane prefHeight="705.0" prefWidth="1005.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Afficheroffre">
    <children>
-      <Button fx:id="retourm" layoutX="706.0" layoutY="609.0" mnemonicParsing="false" onAction="#retourm" text="Retour" />
+      <Button fx:id="retourm" layoutX="881.0" layoutY="617.0" mnemonicParsing="false" onAction="#retourm" text="Retour" />
       <TableView fx:id="table" layoutX="3.0" layoutY="105.0" prefHeight="381.0" prefWidth="999.0">
         <columns>
           <TableColumn fx:id="ido" prefWidth="61.0" text="idoffre" />
@@ -22,7 +22,9 @@
             <TableColumn fx:id="nom" prefWidth="75.0" text="nom" />
             <TableColumn fx:id="prenom" prefWidth="75.0" text="prenom" />
             <TableColumn fx:id="year" prefWidth="75.0" text="years" />
+
         </columns>
       </TableView>
+      <Button fx:id="vcm" layoutX="380.0" layoutY="617.0" mnemonicParsing="false" onAction="#vcm" text="LIste des commentaires" />
    </children>
 </AnchorPane>
