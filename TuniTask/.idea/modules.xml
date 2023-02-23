@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/TuniTask.iml" filepath="$PROJECT_DIR$/TuniTask.iml" />
+      <module fileurl="file://$USER_HOME$/Downloads/openjfx-19.0.2.1_windows-x64_bin-sdk/javafx-sdk-19.0.2.1/lib/lib.iml" filepath="$USER_HOME$/Downloads/openjfx-19.0.2.1_windows-x64_bin-sdk/javafx-sdk-19.0.2.1/lib/lib.iml" />
     </modules>
   </component>
 </project>

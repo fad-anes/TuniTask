@@ -1,8 +1,8 @@
-package Service;
+package service;
 
-import Entity.Questions;
-import Entity.Quizs;
-import UTILS.DataSource;
+import entity.Questions;
+import entity.Quizs;
+import utils.DataSource;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ public class ServiceQuestions implements IServiceQuestions<Questions>{
         try {
             PreparedStatement ps = con.prepareStatement(req);
             ps.setString(1, questions.getQuestion_text());
-            ps.setInt(2, questions.quiz().getId_quiz());
+            ps.setInt(2, questions.getQuiz_id().getId_quiz());
 
             ps.executeUpdate();
         } catch (SQLException ex) {
@@ -57,7 +57,7 @@ public class ServiceQuestions implements IServiceQuestions<Questions>{
             PreparedStatement ps = con.prepareStatement(req);
             ps.setInt(1, Q.getId_question());
             ps.setString(2, Q.getQuestion_text());
-            ps.setInt(3, Q.quiz().getId_quiz());
+            ps.setInt(3, Q.getQuiz_id().getId_quiz());
             ps.setInt(4, id);
             ps.executeUpdate();
         } catch (SQLException ex) {
@@ -67,7 +67,7 @@ public class ServiceQuestions implements IServiceQuestions<Questions>{
 
     @Override
     public List<Questions> readAll() {
-        String req = "SELECT * FROM questions";
+        String req = "SELECT * FROM questions ";
         List<Questions> list = new ArrayList<>();
         try {
             ste = con.createStatement();
@@ -85,16 +85,17 @@ public class ServiceQuestions implements IServiceQuestions<Questions>{
         return list;
     }
 
+
     @Override
     public Questions readById(int id) {
-        String req = "SELECT * FROM questions WHERE id_question = ?";
+        String req = "SELECT * from questions where id_question=?";
         Questions q = null;
         try {
             PreparedStatement ps = con.prepareStatement(req);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-             int   id_question = rs.getInt("id_question");
+                int id_question = rs.getInt("id_question");
                 String question_text = rs.getString("question_text");
                 int id_quiz = rs.getInt("id_quiz");
                 q = new Questions(id_question, question_text, new Quizs(id_quiz));
@@ -104,4 +105,5 @@ public class ServiceQuestions implements IServiceQuestions<Questions>{
         }
         return q;
     }
+
 }

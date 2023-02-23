@@ -57,7 +57,8 @@ public class Quizs {
     }
 
     public String getQuiz_description() {
-        return quiz_description;
+        return
+                quiz_description;
     }
 
     public void setQuiz_description(String quiz_description) {

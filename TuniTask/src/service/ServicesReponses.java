@@ -1,9 +1,9 @@
-package Service;
+package service;
 
-import Entity.Questions;
-import Entity.Quizs;
-import Entity.Reponses;
-import UTILS.DataSource;
+import entity.Questions;
+import entity.Quizs;
+import entity.Reponses;
+import utils.DataSource;
 
 import java.sql.*;
 import java.util.ArrayList;

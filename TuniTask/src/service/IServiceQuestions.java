@@ -1,4 +1,4 @@
-package Service;
+package service;
 
 public interface IServiceQuestions<T> {
     void insert(T t);

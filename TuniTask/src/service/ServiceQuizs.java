@@ -1,7 +1,7 @@
-package Service;
+package service;
 
-import Entity.Quizs;
-import UTILS.DataSource;
+import entity.Quizs;
+import utils.DataSource;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -74,7 +74,7 @@ public class ServiceQuizs implements IServiceQuizs<Quizs> {
 
     @Override
     public List<Quizs> readAll() {
-        String req = "SELECT * FROM quizs";
+        String req = "SELECT DISTINCT * FROM quizs";
         List<Quizs> list = new ArrayList<>();
         try {
             ste = con.createStatement();

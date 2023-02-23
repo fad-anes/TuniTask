@@ -1,9 +1,9 @@
 import entity.Questions;
 import entity.Quizs;
 import entity.Reponses;
-import Service.ServiceQuestions;
-import Service.ServiceQuizs;
-import Service.ServicesReponses;
+import service.ServiceQuestions;
+import service.ServiceQuizs;
+import service.ServicesReponses;
 
 public class Main {
     public static void main(String[] args) {
@@ -49,7 +49,7 @@ public class Main {
         // test the create method
     //    serviceReponses.insert(response);
 
-        //System.out.println(serviceReponses.readById(9));
+        System.out.println(serviceReponses.readById(1));
 //response.setId_reponse(6);
 //        response.setReponse_text("An object-oriented programming language");
 //        serviceReponses.update(response, response.getId_reponse());
