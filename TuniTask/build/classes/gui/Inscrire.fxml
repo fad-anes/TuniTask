@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.InscrireController">
+    <children>
+      <Pane prefHeight="516.0" prefWidth="747.0" style="-fx-background-color: #EBCBF6; -fx-border-radius: 5px;">
+         <children>
+            <Pane layoutX="-3.0" prefHeight="59.0" prefWidth="753.0" style="-fx-background-color: #77119B; -fx-border-color: #000000;">
+               <children>
+                  <ImageView fx:id="image" fitHeight="47.0" fitWidth="82.0" layoutX="21.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/logo.png" />
+                     </image>
+                  </ImageView>
+                  <Button layoutX="617.0" layoutY="20.0" mnemonicParsing="false" onMouseClicked="#signin" style="-fx-background-color: #EBCBF6;" text="sign in" />
+                  <Button fx:id="signupI" disable="true" layoutX="684.0" layoutY="20.0" mnemonicParsing="false" text="sign up" />
+                  <Label fx:id="IDacceuil" layoutX="99.0" layoutY="21.0" onMousePressed="#AllerAccueil" text="Accueil" textFill="#ffa2ff" />
+                  
+               </children>
+            </Pane>
+            <ImageView fx:id="IMAGE" fitHeight="107.0" fitWidth="217.0" layoutX="320.0" layoutY="205.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/logo.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="14.0" layoutY="85.0" text="Nom" />
+            <TextArea fx:id="nom" layoutX="14.0" layoutY="118.0" onKeyReleased="#VNom" onMouseExited="#CorrgerBackground" prefHeight="37.0" prefWidth="226.0" />
+            <TextArea fx:id="pwd" layoutX="14.0" layoutY="265.0" onKeyReleased="#dblevpwd" prefHeight="29.0" prefWidth="226.0" />
+            <TextArea fx:id="email" layoutX="14.0" layoutY="401.0" onKeyReleased="#VEmail" prefHeight="37.0" prefWidth="226.0" promptText="nom@mail.com" />
+            <Label layoutX="15.0" layoutY="235.0" text="Password" />
+            <PasswordField fx:id="cpwd" layoutX="14.0" layoutY="338.0" onKeyReleased="#verifierpassword" prefHeight="29.0" prefWidth="226.0" />
+            <Label layoutX="14.0" layoutY="312.0" text="Confirmer Password" />
+            <Label layoutX="13.0" layoutY="375.0" text="Email" />
+            <TextArea fx:id="prenom" layoutX="14.0" layoutY="186.0" onKeyReleased="#VPrenom" onMouseExited="#CorrgerBackgroundP" prefHeight="37.0" prefWidth="226.0" />
+            <Label layoutX="19.0" layoutY="162.0" text="Prenom" />
+            <ComboBox fx:id="role" layoutX="514.0" layoutY="110.0" onAction="#initialize" prefHeight="37.0" prefWidth="209.0" promptText="qui êtes-vous ?" style="-fx-background-color: #FFFFFF;" />
+            <Label fx:id="lentreprise" layoutX="514.0" layoutY="171.0" text="Entreprise" />
+            <TextArea fx:id="entreprise" layoutX="514.0" layoutY="205.0" prefHeight="37.0" prefWidth="226.0" />
+            <Label fx:id="lexperience" layoutX="513.0" layoutY="171.0" text="années d'expérience" />
+            <TextArea fx:id="experience" layoutX="514.0" layoutY="205.0" onKeyReleased="#Vexperience" onMouseExited="#CorrgerBackgroundE" prefHeight="37.0" prefWidth="226.0" />
+            <ComboBox fx:id="skills" layoutX="514.0" layoutY="283.0" prefHeight="40.0" prefWidth="226.0" promptText="compétences" style="-fx-background-color: #FFFFFF;" />
+            <Label fx:id="lcode" layoutX="513.0" layoutY="171.0" text="code" />
+            <TextArea fx:id="code" layoutX="514.0" layoutY="205.0" prefHeight="37.0" prefWidth="226.0" />
+            <DatePicker fx:id="date" layoutX="15.0" layoutY="477.0" prefHeight="25.0" prefWidth="226.0" />
+            <Label layoutX="13.0" layoutY="447.0" text="Date de naissance" />
+            <Button cancelButton="true" layoutX="635.0" layoutY="457.0" mnemonicParsing="false" onMouseClicked="#AnnulerBtn" prefHeight="40.0" prefWidth="75.0" style="-fx-background-color: #77119B;" text="Annuler" textFill="WHITE" />
+            <Button cancelButton="true" defaultButton="true" layoutX="546.0" layoutY="457.0" mnemonicParsing="false" onMouseClicked="#ValiderBTN" prefHeight="40.0" prefWidth="75.0" style="-fx-background-color: #77119B;" text="Valider" textFill="WHITE" />
+            <Pane fx:id="warrning" layoutX="265.0" layoutY="84.0" prefHeight="53.0" prefWidth="200.0" style="-fx-background-color: #FFFA9C;">
+               <children>
+                  <Label layoutX="26.0" layoutY="18.0" text="Êtes-vous sûr ?" />
+                  <Button fx:id="ouiBTN" layoutX="113.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#ouiClicked" style="-fx-background-color: #29FF84;" text="oui" />
+                  <Button fx:id="non" layoutX="157.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#nonClicked" style="-fx-background-color: #FFC275;" text="non" />
+               </children>
+            </Pane>
+            <Pane fx:id="reussi" layoutX="265.0" layoutY="326.0" prefHeight="53.0" prefWidth="226.0" style="-fx-background-color: #29FF84;">
+               <children>
+                  <Label layoutX="16.0" layoutY="20.0" text="Félicitations, Vous êtes un membre." />
+               </children>
+            </Pane>
+            <Pane fx:id="erreur" layoutX="278.0" layoutY="393.0" prefHeight="53.0" prefWidth="200.0" style="-fx-background-color: #FFC275;">
+               <children>
+                  <Label layoutX="16.0" layoutY="20.0" text="vérifiez vos données!" />
+               </children>
+            </Pane>
+            <Pane fx:id="erreur2" layoutX="265.0" layoutY="145.0" prefHeight="53.0" prefWidth="200.0" style="-fx-background-color: #FFC275;">
+               <children>
+                  <Label layoutX="16.0" layoutY="20.0" text="vous êtes déjà un membre" />
+               </children>
+            </Pane>
+            <ImageView fx:id="Ajouterimg" fitHeight="47.0" fitWidth="63.0" layoutX="587.0" layoutY="357.0" onMousePressed="#AjouterImage" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/plus.jpg" />
+               </image>
+            </ImageView>
+            <Label layoutX="568.0" layoutY="411.0" text="Ajouter votre image" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
