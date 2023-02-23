@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="347.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.RechercheDemandeIdController">
+   <children>
+      <Label layoutX="113.0" layoutY="50.0" text="Recherche d'une demande par ID" textAlignment="CENTER" textFill="#007bff">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="202.0" layoutY="128.0" text="Entrez l'ID de la demande :" textFill="#007bff">
+         <font>
+            <Font name="System Regular" size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="id_demande" layoutX="210.0" layoutY="169.0" prefHeight="25.0" prefWidth="180.0" promptText="ID demande" />
+      <Button fx:id="btn_rechercher" layoutX="259.0" layoutY="220.0" mnemonicParsing="false" onAction="#rechercherDemande" text="Rechercher" textFill="#007bff" />
+   </children>
+</AnchorPane>

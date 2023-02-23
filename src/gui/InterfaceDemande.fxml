@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="515.0" prefWidth="842.0" style="-fx-background-color: #CFECEC;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.InterfaceDemandeController">
+   <children>
+      <TableView fx:id="tableDemande" layoutX="17.0" layoutY="79.0" prefHeight="372.0" prefWidth="808.0">
+         <columns>
+            <TableColumn fx:id="idColumn" prefWidth="65.0" text="ID" />
+            <TableColumn fx:id="clientIdColumn" prefWidth="85.0" text="Client ID" />
+            <TableColumn fx:id="titreColumn" prefWidth="100.0" text="Titre" />
+            <TableColumn fx:id="descriptionColumn" prefWidth="180.0" text="Description" />
+            <TableColumn fx:id="salaireColumn" prefWidth="73.0" text="Salaire" />
+            <TableColumn fx:id="delaiColumn" prefWidth="82.0" text="Délai" />
+            <TableColumn fx:id="langageColumn" prefWidth="97.0" text="Langage" />
+            <TableColumn fx:id="createdAtColumn" prefWidth="125.0" text="Créé le" />
+         </columns>
+      </TableView>
+      <HBox layoutX="291.0" layoutY="463.0" spacing="10.0">
+         <Button fx:id="ajouterButton" mnemonicParsing="false" onAction="#ajouterDemande" style="-fx-background-color: #CCCCFF;" text="Ajouter" />
+         <Button fx:id="modifierButton" mnemonicParsing="false" onAction="#modifierDemande" style="-fx-background-color: #CCCCFF;" text="Modifier" />
+         <Button fx:id="supprimerButton" mnemonicParsing="false" onAction="#supprimerDemande" style="-fx-background-color: #CCCCFF;" text="Supprimer" />
+         <Button fx:id="afficherButton" mnemonicParsing="false" onAction="#afficherDemandes" style="-fx-background-color: #CCCCFF;" text="Afficher" />
+      </HBox>
+      <Label layoutX="338.0" layoutY="32.0" prefHeight="27.0" prefWidth="149.0" text="Menu demandes" textFill="#1bb4e3d4" underline="true">
+         <font>
+            <Font name="Segoe UI Black" size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
