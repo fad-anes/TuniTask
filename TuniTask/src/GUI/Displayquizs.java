@@ -2,7 +2,6 @@ package GUI;
 
 import entity.Questions;
 import entity.Quizs;
-import entity.Reponses;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,15 +11,14 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import service.ServiceQuestions;
 import service.ServiceQuizs;
 
 import java.io.IOException;
-import java.sql.*;
-import java.util.*;
+import java.util.Map;
+import java.util.Optional;
 
 public class Displayquizs {
    @FXML
@@ -94,15 +92,27 @@ public class Displayquizs {
         dialog.setHeaderText("Enter the ID of the quiz you want to delete:");
         Optional<String> result = dialog.showAndWait();
         result.ifPresent(quizId -> {
-            int id = Integer.parseInt(quizId);
-            ServiceQuizs serviceQuizs = new ServiceQuizs();
-            Quizs quiz = serviceQuizs.readById(id);
-            serviceQuizs.delete(quiz);
-            // Remove the quiz from the list of quizzes displayed in the table
-            quizList.removeIf(q -> q.getId_quiz() == id);
+            try {
+                int id = Integer.parseInt(quizId);
 
-            // refresh the table view
-            quiztable.refresh();
+                Quizs quiz = service.readById(id);
+                if (quiz == null) {
+                    // Quiz not found
+                    Alert alert = new Alert(Alert.AlertType.ERROR, "Quiz not found!", ButtonType.OK);
+                    alert.showAndWait();
+                } else {
+                    service.delete(quiz);
+                    // Remove the quiz from the list of quizzes displayed in the table
+                    quizList.removeIf(q -> q.getId_quiz() == id);
+
+                    // refresh the table view
+                    quiztable.refresh();
+                }
+            } catch (NumberFormatException e) {
+                // Invalid ID
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Please enter a valid quiz ID!", ButtonType.OK);
+                alert.showAndWait();
+            }
         });
     }
 
@@ -118,8 +128,22 @@ public class Displayquizs {
 
         Optional<String> result = dialog.showAndWait();
         result.ifPresent(quizId -> {
-            // open the Updatequiz view with the selected quiz data
-            openUpdateQuiz(quizId);
+            try {
+                int id = Integer.parseInt(quizId);
+                Quizs quiz = service.readById(id);
+                if (quiz == null) {
+                    // Quiz not found
+                    Alert alert = new Alert(Alert.AlertType.ERROR, "Quiz not found!", ButtonType.OK);
+                    alert.showAndWait();
+                } else {
+                    // open the Updatequiz view with the selected quiz data
+                    openUpdateQuiz(quizId);
+                }
+            } catch (NumberFormatException e) {
+                // Invalid ID
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Please enter a valid quiz ID!", ButtonType.OK);
+                alert.showAndWait();
+            }
         });
     }
     public void openUpdateQuiz(String quizId) {
@@ -137,56 +161,55 @@ public class Displayquizs {
             e.printStackTrace();
         }
     }
-    @FXML
-    private void open(ActionEvent event) throws IOException {
+
+
+
+    public void displayquestions(ActionEvent event) {
+        // show an input dialog to get the quiz ID from the user
         TextInputDialog dialog = new TextInputDialog();
-        dialog.setTitle("Open Quiz");
-        dialog.setHeaderText("Enter the ID of the quiz you want to open:");
+        dialog.setTitle("Display Questions");
+        dialog.setHeaderText("Enter the ID of the quiz to display its questions:");
         dialog.setContentText("Quiz ID:");
-        dialog.initOwner(((Node) event.getSource()).getScene().getWindow());
+
         Optional<String> result = dialog.showAndWait();
-        if (result.isPresent()) {
-            int quizId = Integer.parseInt(result.get());
-            ServiceQuestions serviceQuestions = new ServiceQuestions();
-            ServiceQuizs serviceQuizs = new ServiceQuizs();
-            List<Questions> questions = serviceQuestions.readAll();
-            if (!questions.isEmpty()) {
-                Quizs selectedQuiz = serviceQuizs.readById(quizId);
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("questionsinterface.fxml"));
-                Parent root = loader.load();
-                Questionsinterface controller = loader.getController();
-                controller.setQuizAndQuestions(selectedQuiz, 1);
+        result.ifPresent(quizId -> {
+            try {
+                int id = Integer.parseInt(quizId);
+                Quizs quiz = service.readById(id);
+                if (quiz == null) {
+                    // Quiz not found
+                    Alert alert = new Alert(Alert.AlertType.ERROR, "Quiz not found!", ButtonType.OK);
+                    alert.showAndWait();
+                } else {
+                    // Load the FXML file for displaying questions
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("displayquestions.fxml"));
+                    Parent root = loader.load();
 
-                Stage stage = new Stage();
-                stage.setTitle(selectedQuiz.getQuiz_title());
-                stage.setScene(new Scene(root));
-                stage.show();
-            } else {
-                // No questions found for the specified quiz id, show an error message
-                Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-                errorAlert.setTitle("Error");
-                errorAlert.setHeaderText("No questions found for the specified quiz id");
-                errorAlert.setContentText("Please make sure the quiz id is correct.");
-                errorAlert.showAndWait();
+                    // Get the controller for the FXML file
+                    Displayquestions controller = loader.getController();
+
+                    // Pass the quiz ID to the controller
+                    controller.setQuizId(Integer.parseInt(quizId));
+
+                    // Create the new scene
+                    Scene scene = new Scene(root);
+
+                    // Create a new stage and set the scene
+                    Stage stage = new Stage();
+                    stage.setScene(scene);
+                    stage.setTitle("Quiz " + id + " Questions");
+
+                    // Show the new stage
+                    stage.show();
+                }
+            } catch (NumberFormatException e) {
+                // Invalid ID
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Please enter a valid quiz ID!", ButtonType.OK);
+                alert.showAndWait();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        }
-    }
-
-
-    public void displayquestions(ActionEvent event) throws IOException {
-        // Load the FXML file
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("displayquestions.fxml"));
-        Parent root = loader.load();
-
-        // Create the new scene
-        Scene scene = new Scene(root);
-
-        // Get the current stage
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-        // Set the new scene on the stage
-        stage.setScene(scene);
-        stage.show();
+        });
     }
 
 }

@@ -1,5 +1,9 @@
 package service;
 
+import entity.Questions;
+
+import java.util.List;
+
 public interface IServiceQuestions<T> {
     void insert(T t);
 
@@ -7,7 +11,7 @@ public interface IServiceQuestions<T> {
 
     void update(T t, int id);
 
-    java.util.List<T> readAll();
+     List<T> readAll();
 
-    T readById(int id);
+    List<T> readByQuizId(int quizId);
 }

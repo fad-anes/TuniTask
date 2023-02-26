@@ -25,7 +25,7 @@ public class Questionsinterface implements Initializable {
         this.quiz = quiz;
         ServiceQuestions sq=new ServiceQuestions();
         List<Questions> questions = sq.readAll();// fetch questions from the database based on quiz
-        if (questions != null && !questions.isEmpty()) {
+        if (/* questions != null &&*/ !questions.isEmpty()) {
             this.questions = questions;
         } else {
             // Display an appropriate message to the user
@@ -55,4 +55,5 @@ public class Questionsinterface implements Initializable {
             questionTable.setPlaceholder(new Label("No questions found"));
         }
     }
+
 }

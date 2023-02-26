@@ -1,9 +1,4 @@
-import entity.Questions;
 import entity.Quizs;
-import entity.Reponses;
-import service.ServiceQuestions;
-import service.ServiceQuizs;
-import service.ServicesReponses;
 
 public class Main {
     public static void main(String[] args) {
@@ -27,8 +22,7 @@ public class Main {
 //        quiz2.setId_quiz(9);
 //        serviceQuizs.delete(quiz2);
 //        System.out.println(serviceQuizs.readAll());
-//quiz.setId_quiz(1);
-//        Questions q1 = new Questions("What is the capital of France?", quiz);
+
 //        ServiceQuestions serviceQuestions = new ServiceQuestions();
        // serviceQuestions.insert(q1);
 //        q1.setId_question(1);
@@ -38,18 +32,18 @@ public class Main {
 //
 //        q1.setQuiz_id(quiz);
 //        serviceQuestions.update(q1, q1.getId_question());
-        ServicesReponses serviceReponses = new ServicesReponses();
+
 
         // create a new question to use for testing
 
-        Questions question = new Questions(10, "What is Java?", quiz);
+      //  Questions question = new Questions(10, "What is Java?", quiz);
 
-        Reponses response = new Reponses( "A programming language",true, question);
+       // Reponses response = new Reponses( "A programming language",true, question);
 
         // test the create method
     //    serviceReponses.insert(response);
 
-        System.out.println(serviceReponses.readById(1));
+
 //response.setId_reponse(6);
 //        response.setReponse_text("An object-oriented programming language");
 //        serviceReponses.update(response, response.getId_reponse());

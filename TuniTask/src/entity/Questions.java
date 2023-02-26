@@ -1,56 +1,49 @@
 package entity;
 
+
 public class Questions {
-    private int id_question;
-    private String question_text;
-    private Quizs quiz_id;
 
-    public Questions() {
-    }
-    public Questions(int id_question) {
-        this.id_question = id_question;
-    }
-    public Questions(String question_text, Quizs quiz_id) {
-        this.question_text = question_text;
-        this.quiz_id = quiz_id;
-    }
+    private int id;
+    private String question;
+    private Quizs quiz;
 
-    public Questions(int id_question, String question_text, Quizs quiz_id) {
-        this.id_question = id_question;
-        this.question_text = question_text;
-        this.quiz_id = quiz_id;
+    public Questions(int id, String question, Quizs quiz) {
+        this.id = id;
+        this.question = question;
+        this.quiz = quiz;
+    }
+    public Questions(int id) {
+        this.id = id;
     }
 
-    public int getId_question() {
-        return id_question;
+    public int getId() {
+
+        return id;
     }
 
-    public void setId_question(int id_question) {
-        this.id_question = id_question;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getQuestion_text() {
-        return question_text;
+    public String getQuestion() {
+        return question;
     }
 
-    public void setQuestion_text(String question_text) {
-        this.question_text = question_text;
+    public void setQuestion(String question) {
+        this.question = question;
     }
 
-    public Quizs getQuiz_id() {
-        return quiz_id;
+    public Quizs getQuiz() {
+        return quiz;
     }
 
-    public void setQuiz_id(Quizs quiz_id) {
-        this.quiz_id = quiz_id;
+    public void setQuiz(Quizs quiz) {
+        this.quiz = quiz;
     }
 
     @Override
     public String toString() {
-        return "Questions{" +
-                "id_question=" + id_question +
-                ", question_text='" + question_text + '\'' +
-                ", quiz_id=" + quiz_id.getId_quiz() +
-                '}';
+        return "Question [id=" + id + ", question=" + question + ", quiz=" + quiz + "]";
     }
+
 }

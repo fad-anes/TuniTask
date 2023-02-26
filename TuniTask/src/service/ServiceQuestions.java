@@ -10,9 +10,10 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class ServiceQuestions implements IServiceQuestions<Questions>{
+public class ServiceQuestions implements IServiceQuestions<Questions> {
     private Connection con;
-    private Statement ste;
+    private PreparedStatement ps;
+    private ResultSet rs;
 
     public ServiceQuestions() {
         con = DataSource.getInstance().getCnx();
@@ -20,12 +21,11 @@ public class ServiceQuestions implements IServiceQuestions<Questions>{
 
     @Override
     public void insert(Questions questions) {
-        String req = "INSERT INTO questions (question_text,id_quiz) VALUES ( ?, ?)";
+        String req = "INSERT INTO questions (question_text, id_quiz) VALUES (?, ?)";
         try {
-            PreparedStatement ps = con.prepareStatement(req);
-            ps.setString(1, questions.getQuestion_text());
-            ps.setInt(2, questions.getQuiz_id().getId_quiz());
-
+            ps = con.prepareStatement(req);
+            ps.setString(1, questions.getQuestion());
+            ps.setInt(2, questions.getQuiz().getId_quiz());
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(ServiceQuizs.class.getName()).log(Level.SEVERE, null, ex);
@@ -34,11 +34,11 @@ public class ServiceQuestions implements IServiceQuestions<Questions>{
 
     @Override
     public void delete(Questions questions) {
-        String req = "DELETE  FROM questions WHERE id_question = ?";
+        String req = "DELETE FROM questions WHERE question_text = ?";
         try {
-            PreparedStatement ps = con.prepareStatement(req);
-            ps.setInt(1, questions.getId_question());
-            int rowsDeleted=ps.executeUpdate();
+            ps = con.prepareStatement(req);
+            ps.setString(1, questions.getQuestion());
+            int rowsDeleted = ps.executeUpdate();
             if (rowsDeleted > 0) {
                 System.out.println("Row deleted successfully!");
             } else {
@@ -51,13 +51,12 @@ public class ServiceQuestions implements IServiceQuestions<Questions>{
 
     @Override
     public void update(Questions Q, int id) {
-        String req = "UPDATE questions SET id_question=? ,question_text = ?, id_quiz= ?  WHERE id_question = ?";
+        String req = "UPDATE questions SET id_question=?, question_text=?, id_quiz=? WHERE id_question=?";
         try {
-
-            PreparedStatement ps = con.prepareStatement(req);
-            ps.setInt(1, Q.getId_question());
-            ps.setString(2, Q.getQuestion_text());
-            ps.setInt(3, Q.getQuiz_id().getId_quiz());
+            ps = con.prepareStatement(req);
+            ps.setInt(1, Q.getId());
+            ps.setString(2, Q.getQuestion());
+            ps.setInt(3, Q.getQuiz().getId_quiz());
             ps.setInt(4, id);
             ps.executeUpdate();
         } catch (SQLException ex) {
@@ -67,43 +66,59 @@ public class ServiceQuestions implements IServiceQuestions<Questions>{
 
     @Override
     public List<Questions> readAll() {
-        String req = "SELECT * FROM questions ";
-        List<Questions> list = new ArrayList<>();
+        List<Questions> questions = new ArrayList<>();
+        String query = "SELECT * FROM questions JOIN quizs ON questions.id_quiz = quizs.id_quiz";
         try {
-            ste = con.createStatement();
-            ResultSet rs = ste.executeQuery(req);
+            ps = con.prepareStatement(query);
+            rs = ps.executeQuery();
             while (rs.next()) {
-                int id_question = rs.getInt("id_question");
-                String question_text = rs.getString("question_text");
-                int id_quiz = rs.getInt("id_quiz");
-
-                list.add(new Questions(id_question, question_text, new Quizs(id_quiz)));
+                int id = rs.getInt("id_question");
+                String questionText = rs.getString("question_text");
+                int quizId = rs.getInt("id_quiz");
+                String quizTitle = rs.getString("quiz_title");
+                String quizDescription = rs.getString("quiz_description");
+                Quizs quiz = new Quizs(quizId, quizTitle, quizDescription);
+                Questions question = new Questions(id, questionText, quiz);
+                questions.add(question);
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(ServiceQuizs.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeResources();
         }
-        return list;
+        return questions;
     }
-
 
     @Override
-    public Questions readById(int id) {
-        String req = "SELECT * from questions where id_question=?";
-        Questions q = null;
+    public List<Questions> readByQuizId(int quizId) {
+        List<Questions> questions = new ArrayList<>();
+        String query = "SELECT * FROM questions JOIN quizs ON questions.id_quiz = quizs.id_quiz WHERE quizs.id_quiz = ?";
         try {
-            PreparedStatement ps = con.prepareStatement(req);
-            ps.setInt(1, id);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                int id_question = rs.getInt("id_question");
-                String question_text = rs.getString("question_text");
-                int id_quiz = rs.getInt("id_quiz");
-                q = new Questions(id_question, question_text, new Quizs(id_quiz));
+            ps = con.prepareStatement(query);
+            ps.setInt(1, quizId);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id_question");
+                String questionText = rs.getString("question_text");
+                String quizTitle = rs.getString("quiz_title");
+String quizDescription = rs.getString("quiz_description");
+                Quizs quiz = new Quizs(quizId, quizTitle, quizDescription);
+                Questions question = new Questions(id, questionText,quiz);
+                questions.add(question);
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(ServiceQuizs.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeResources();
         }
-        return q;
+        return questions;
     }
-
+    private void closeResources() {
+        try {
+            if (rs != null) rs.close();
+            if (ps != null) ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceQuestions.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

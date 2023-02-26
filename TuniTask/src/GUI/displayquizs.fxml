@@ -36,9 +36,8 @@
                 <Button fx:id="insertbtn" onAction="#insert" styleClass="action-button" text="Add" />
                 <Button fx:id="updatebtn" onAction="#update" styleClass="action-button" text="Edit" />
                 <Button fx:id="deletebtn" onAction="#delete" styleClass="action-button" text="Delete" />
-                <Button fx:id="openbtn" onAction="#open" styleClass="action-button" text="Open Quiz" />
-                <Button fx:id="openquestbtn" onAction="#displayquestions" styleClass="action-button" text="view questions" />
-            </HBox>
+                <Button fx:id="openbtn" onAction="#displayquestions" styleClass="action-button" text="Open Quiz" />
+                    </HBox>
         </VBox>
     </children>
 </AnchorPane>
