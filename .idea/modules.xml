@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/TuniTaskProject.iml" filepath="$PROJECT_DIR$/TuniTaskProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TuniTask-Events.iml" filepath="$PROJECT_DIR$/TuniTask-Events.iml" />
     </modules>
   </component>
 </project>

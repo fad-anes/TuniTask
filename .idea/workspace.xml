@@ -4,34 +4,40 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8f09af72-7769-4073-9a4b-b316667d620d" name="Changes" comment="tunitask">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="b3ae267e-e2b8-4d6b-8ab1-1cf8ee033322" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CoverageOptionsProvider">
+    <option name="myAddOrReplace" value="2" />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
+        <option value="Tag Library Descriptor" />
+        <option value="JavaFXApplication" />
         <option value="Interface" />
+        <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="master" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2LvgzFW5zhmD40FoXm1zT68F6F2" />
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2M37UHK8pvsbMd9v5F4dcFOK52f" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -39,41 +45,85 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/ASUS/OneDrive/Bureau/mysql-connector-j-8.0.31/mysql-connector-j-8.0.31&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/genop/OneDrive/Desktop/JAVA/javax.activation-1.2.0.jar&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.49425286&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\genop\OneDrive\Desktop\JAVA\TuniTask-Events\TuniTask-Events\src\style" />
+      <recent name="C:\Users\genop\OneDrive\Desktop\JAVA\TuniTask-Events\TuniTask-Events\src" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\genop\OneDrive\Desktop\JAVA\TuniTask-Events\TuniTask-Events\src\resources" />
+    </key>
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="gui" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="API" />
+      <recent name="gui" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="ApplicationEvents" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="$USER_HOME$/Program Files/Java/jdk-17.0.4.1" />
+      <option name="MAIN_CLASS_NAME" value="gui.ApplicationEvents" />
+      <module name="TuniTask-Events" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\genop\OneDrive\Desktop\JAVA\javafx-sdk-19.0.2.1\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="8f09af72-7769-4073-9a4b-b316667d620d" name="Changes" comment="" />
-      <created>1676757238757</created>
+      <changelist id="b3ae267e-e2b8-4d6b-8ab1-1cf8ee033322" name="Changes" comment="" />
+      <created>1676984426153</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1676757238757</updated>
-      <workItem from="1676757240743" duration="27289000" />
-      <workItem from="1676844873312" duration="10772000" />
-      <workItem from="1676882282449" duration="119000" />
-      <workItem from="1676889995527" duration="11276000" />
-      <workItem from="1676922238933" duration="12977000" />
+      <updated>1676984426153</updated>
+      <workItem from="1676984427248" duration="9459000" />
+      <workItem from="1676996088253" duration="32854000" />
+      <workItem from="1677076369007" duration="16691000" />
+      <workItem from="1677101184710" duration="2598000" />
+      <workItem from="1677105962058" duration="569000" />
+      <workItem from="1677108849152" duration="31570000" />
+      <workItem from="1677159497596" duration="5704000" />
+      <workItem from="1677407693677" duration="1805000" />
+      <workItem from="1677413686828" duration="815000" />
+      <workItem from="1677415247909" duration="9062000" />
+      <workItem from="1677520431284" duration="1322000" />
+      <workItem from="1677523191735" duration="23959000" />
+      <workItem from="1677582733111" duration="19124000" />
+      <workItem from="1677614189861" duration="2881000" />
+      <workItem from="1677618831160" duration="12368000" />
+      <workItem from="1677668518083" duration="17215000" />
+      <workItem from="1677701513048" duration="1868000" />
     </task>
-    <task id="LOCAL-00001" summary="tunitask">
-      <created>1676933723155</created>
+    <task id="LOCAL-00001" summary="crud + API">
+      <created>1677709572516</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1676933723155</updated>
+      <updated>1677709572516</updated>
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
@@ -81,41 +131,18 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="tunitask" />
-    <option name="LAST_COMMIT_MESSAGE" value="tunitask" />
+    <MESSAGE value="crud + API" />
+    <option name="LAST_COMMIT_MESSAGE" value="crud + API" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/Service/IEvenement.java</url>
-          <line>5</line>
-          <properties class="Service.IEvenement" method="insert">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <breakpoint enabled="true" type="java-exception">
-          <properties class="java.sql.SQLFeatureNotSupportedException" package="java.sql" />
-          <option name="timeStamp" value="5" />
-        </breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/TuniTaskProject$Main.ic" NAME="Main Coverage Results" MODIFIED="1676933273058" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/TuniTask_Events$Unnamed.ic" NAME="Unnamed Coverage Results" MODIFIED="1676985716812" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/TuniTask_Events$Application.ic" NAME="Application Coverage Results" MODIFIED="1676988430703" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/TuniTask_Events$Main.ic" NAME="Main Coverage Results" MODIFIED="1677032048070" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/TuniTask_Events$ApplicationEvents.ic" NAME="ApplicationEvents Coverage Results" MODIFIED="1677701788655" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
