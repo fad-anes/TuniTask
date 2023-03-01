@@ -20,6 +20,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import org.controlsfx.control.Rating;
 import service.offreservice;
 
 import javax.imageio.ImageIO;
@@ -40,9 +41,14 @@ public class Cardoffremessage {
     private Label sal;
     @FXML
     private Button btnvoir;
+    @FXML
+    private Rating rate;
+    @FXML
+    private Label ratelab;
     private String[] colors={"#DDA0DD","#DA70D6","#BA55D3","#9370DB","#8A2BE2","#77119B","#DAC0FF","#EBCBF6"};
     int offreid;
     public void setdata(offre o)  {
+
         Image i =new Image(o.getImg());
         String s2=String.valueOf(o.getSalaireH());
         image.setImage(i);
@@ -52,6 +58,9 @@ public class Cardoffremessage {
         descrip.setText(o.getDescription());
         offreid=o.getIdoffre();
         sal.setText(s2+"Dt");
+
+        rate.setRating(o.getRate());
+        ratelab.setText("Rating: "+o.getRate());
         box.setStyle("-fx-background-color: "+colors[(int)(Math.random()*colors.length)]+";"+
                 "-fx-background-radius: 20;"+
                 "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0), 10, 0, 0, 10);");

@@ -2,6 +2,8 @@ package gui;
 import entite.offre;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,49 +17,31 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import service.offreservice;
 public class Menuoffre implements Initializable {
     @FXML
-    private Button ajm;
-    @FXML
-    private Button affichm;
+    private HBox box;
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb)  {
         // TODO
-
+        List<offre> list=new ArrayList<>();
+        offreservice ps=new offreservice();
+        list=ps.readall();
+        try {
+            for(int i=0;i<list.size();i++){
+                FXMLLoader fxl=new FXMLLoader();
+                fxl.setLocation(getClass().getResource("cardoffremessage.fxml"));
+                Parent root=fxl.load();
+                Cardoffremessage c=fxl.getController();
+                c.setdata(list.get(i));
+                box.getChildren().add(root);}
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-    @FXML
-    private void versinaj(ActionEvent event) throws IOException {
-        FXMLLoader loader=new FXMLLoader(getClass().getResource("ajouteroffre.fxml"));
-        Parent root=loader.load();
 
-        Ajouteroffre dc=loader.getController();
-        ajm.getScene().setRoot(root);
-    }
-    @FXML
-    private void versaff(ActionEvent event) throws IOException {
-        FXMLLoader loader=new FXMLLoader(getClass().getResource("afficheroffre.fxml"));
-        Parent root=loader.load();
-
-        Afficheroffre dc=loader.getController();
-        ajm.getScene().setRoot(root);
-    }
-    @FXML
-    private void vermodif(ActionEvent event) throws IOException {
-        FXMLLoader loader=new FXMLLoader(getClass().getResource("rechmodifoffre.fxml"));
-        Parent root=loader.load();
-
-        Rechmodifoffre dc=loader.getController();
-        ajm.getScene().setRoot(root);
-    }
-    @FXML
-    private void verssup(ActionEvent event) throws IOException {
-        FXMLLoader loader=new FXMLLoader(getClass().getResource("supprimeroffre.fxml"));
-        Parent root=loader.load();
-
-        Supprimeroffre dc=loader.getController();
-        ajm.getScene().setRoot(root);
-    }
 }

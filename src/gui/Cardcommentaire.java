@@ -21,6 +21,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import org.controlsfx.control.Rating;
 import service.offreservice;
 import service.commentaireservice;
 
@@ -34,6 +35,7 @@ public class Cardcommentaire {
     private Label nom;
     @FXML
     private Label prenom;
+
     @FXML
     private Label commentaire;
     public void setdata(commentaire c)  {
