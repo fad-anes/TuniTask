@@ -4,6 +4,8 @@ import entite.commentaire;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import entite.user;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,41 +20,41 @@ import javafx.stage.Stage;
 import service.offreservice;
 import service.commentaireservice;
 public class Ajoutcomm implements Initializable{
-    @FXML
-    private Label cccm;
-    @FXML
-    private Label idcc;
-    @FXML
-    private Label ajss;
-    @FXML
-    private TextField tfid;
-    @FXML
-    private TextArea tacm;
+    private int id;
+    user u=new user(30,"yji@gmail.com","lamia","bh","C:/Users/anes_//OneDrive/Bureau/tt/src/images/5231019.png");
     @FXML
     private Button aj;
     @FXML
     private Button rt;
+    @FXML
+    private Label cccm;
+    @FXML
+    private Label ajss;
+    @FXML
+    private TextArea tacm;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+
+
     @Override
     public void initialize(URL url, ResourceBundle rb)  {
         // TODO
     }
     @FXML
     private void aj(ActionEvent event) throws IOException {
-        int t=0;
+
+       int t=0;
         commentaireservice ps=new commentaireservice();
-        if(tfid.getText().isEmpty()){ t=1;
-            this.idcc.setText("champ manquant");}
-        else if(!ps.Findid(Integer.parseInt(tfid.getText()))){
-            t=1;
-            this.idcc.setText("offre introuvable");}
-        else this.idcc.setText("");
+        offre o=new offre(id);
         if(tacm.getText().isEmpty()){
             t=1;
             this.cccm.setText("champ manquant");}
         else this.cccm.setText("");
         if(t==0){
-            commentaire p0=new commentaire(Integer.parseInt(tfid.getText()),tacm.getText());
-            ps.insert(p0);
+            commentaire p0=new commentaire(o,tacm.getText(),u);
+            ps.insert(p0,o,u);
             this.ajss.setText("ajouté avec succes!");
         }
     }
@@ -62,6 +64,7 @@ public class Ajoutcomm implements Initializable{
         Parent root=loader.load();
 
         VoirCommentaire dc=loader.getController();
+        dc.setI(id);
         ajss.getScene().setRoot(root);
     }
 }

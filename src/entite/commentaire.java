@@ -2,40 +2,57 @@ package entite;
 
 public class commentaire {
     private int idcommentaire	;
-    private int offre_id	;
+    private offre offre_id	;
     private String commentaire;
-    private String titre;
+    private user userid;
+    private String name;
+    private String prename;
+    private String img;
 
 
     public commentaire() {
     }
-    public commentaire(int offre_id,String commentaire,String titre) {
+    public commentaire(String name,String prename,String img,String commentaire) {
+        this.name = name;
+        this.prename = prename;
+        this.img = img;
+        this.commentaire = commentaire;
+
+    }
+    public commentaire(int idcommentaire,String name,String prename,String img,String commentaire) {
+        this.idcommentaire = idcommentaire;
+        this.name = name;
+        this.prename = prename;
+        this.img = img;
+        this.commentaire = commentaire;
+
+    }
+    public commentaire(offre offre_id,String commentaire,user userid) {
         this.offre_id = offre_id;
         this.commentaire = commentaire;
-        this.titre = titre;
+        this.userid = userid;
     }
-    public commentaire(int idcommentaire,int offre_id,String commentaire) {
+    public commentaire(offre offre_id,user userid) {
+        this.offre_id = offre_id;
+        this.userid = userid;
+    }
+    public commentaire(int idcommentaire,offre offre_id,String commentaire) {
         this.idcommentaire = idcommentaire;
         this.offre_id = offre_id;
         this.commentaire = commentaire;
     }
-    public commentaire(int idcommentaire,int offre_id,String commentaire,String titre) {
+    public commentaire(int idcommentaire,offre offre_id,String commentaire,user userid) {
         this.idcommentaire = idcommentaire;
         this.offre_id = offre_id;
         this.commentaire = commentaire;
-        this.titre = titre;
+        this.userid = userid;
     }
-    public commentaire(int offre_id,String commentaire) {
 
-        this.offre_id = offre_id;
-        this.commentaire = commentaire;
-
-    }
 
     public int getIdcommentaire() {
         return idcommentaire;
     }
-    public int getOffre_id() {
+    public offre getOffre_id() {
         return offre_id;
     }
     public String getCommentaire() {
@@ -44,19 +61,43 @@ public class commentaire {
     public void setIdcommentaire(int idcommentaire) {
         this.idcommentaire = idcommentaire;
     }
-    public void setOffre_id(int offre_id) {
+    public void setOffre_id(offre offre_id) {
         this.offre_id = offre_id;
     }
     public void setCommentaire(String commentaire) {
         this.commentaire = commentaire;
     }
 
-    public String getTitre() {
-        return titre;
+    public user getUserid() {
+        return userid;
     }
 
-    public void setTitre(String titre) {
-        this.titre = titre;
+    public void setUserid(user userid) {
+        this.userid = userid;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    public void setPrename(String prename) {
+        this.prename = prename;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public String getPrename() {
+        return prename;
     }
 
     @Override
@@ -65,7 +106,10 @@ public class commentaire {
                 "idcommentaire=" + idcommentaire +
                 ", offre_id=" + offre_id +
                 ", commentaire='" + commentaire + '\'' +
-                ", titre='" + titre + '\'' +
+                ", userid=" + userid +
+                ", name='" + name + '\'' +
+                ", prename='" + prename + '\'' +
+                ", img='" + img + '\'' +
                 '}';
     }
 }

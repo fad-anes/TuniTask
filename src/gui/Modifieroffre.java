@@ -42,7 +42,7 @@ public class Modifieroffre implements Initializable{
     }
     @FXML
     private void mdoffre(ActionEvent event) throws IOException {
-        int t=0;
+        /*int t=0;
 
         offreservice ps=new offreservice();
         if(id.getText().isEmpty()){ t=1;
@@ -63,7 +63,7 @@ public class Modifieroffre implements Initializable{
                     titre.getText(),Float.parseFloat(p.getText()));
             ps.update(p0);
             this.mss.setText("modifié avec succès");
-        }
+        }*/
 
     }
     @FXML

@@ -1,6 +1,7 @@
 package gui;
 import entite.offre;
 import entite.commentaire;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -17,41 +18,38 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import service.offreservice;
 import service.commentaireservice;
 public class VoirCommentaire implements Initializable{
-    @FXML
-    private TableView table;
-    @FXML
-    private TableColumn idc;
-    @FXML
-    private TableColumn ido;
-    @FXML
-    private TableColumn cmm;
-    @FXML
-    private TableColumn tit;
+
     @FXML
     private Button rt;
     @FXML
-    private Button aj;
+    private Button ref;
     @FXML
-    private Button Modifier;
+    private HBox hb;
+    @FXML
+    private VBox vbox;
+    @FXML
+    private Button ajout;
     @FXML
     private Button supp;
+    @FXML
+    private Button mod;
+    private  int i;
+    Parent p=new HBox();
+    public void setI(int i) {
+        this.i = i;
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb)  {
         // TODO
-        List<commentaire> list=new ArrayList<>();
-        commentaireservice ps=new commentaireservice();
-        list=ps.readall();
-        ObservableList<commentaire> obs= FXCollections.observableArrayList(list);
-        idc.setCellValueFactory(new PropertyValueFactory<>("idcommentaire"));
-        ido.setCellValueFactory(new PropertyValueFactory<>("offre_id"));
-        cmm.setCellValueFactory(new PropertyValueFactory<>("commentaire"));
-        tit.setCellValueFactory(new PropertyValueFactory<>("titre"));
-        table.setItems(obs);
-        table.refresh();
+
+
     }
     @FXML
     private void rt(ActionEvent event) throws IOException {
@@ -59,30 +57,77 @@ public class VoirCommentaire implements Initializable{
         Parent root=loader.load();
 
         Afficheroffre dc=loader.getController();
-        rt.getScene().setRoot(root);
+
+        ajout.getScene().setRoot(root);
     }
     @FXML
-    private void versajcm(ActionEvent event) throws IOException {
+    private void ref(ActionEvent event) throws IOException {
+        hb.getChildren().clear();
+        vbox.getChildren().clear();
+        try {
+            offre o=new offre();
+            offreservice ps=new offreservice();
+
+            o=ps.ReadById(i);
+            FXMLLoader fxl=new FXMLLoader();
+            fxl.setLocation(getClass().getResource("cardoffremessage.fxml"));
+            Parent root=fxl.load();
+            p=root;
+            Cardoffremessage c=fxl.getController();
+            c.setdata(o);
+            hb.getChildren().add(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            List<commentaire> list=new ArrayList<>();
+            commentaireservice ps=new commentaireservice();
+            list=ps.ReadById(i);
+            for(int j=0;j<list.size();j++){
+                FXMLLoader fxl=new FXMLLoader();
+                fxl.setLocation(getClass().getResource("cardcommentaire.fxml"));
+                Parent root=fxl.load();
+                Cardcommentaire c=fxl.getController();
+                c.setdata(list.get(j));
+                vbox.getChildren().add(root);}
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    private void versajout(ActionEvent event) throws IOException {
         FXMLLoader loader=new FXMLLoader(getClass().getResource("ajoutcomm.fxml"));
         Parent root=loader.load();
 
         Ajoutcomm dc=loader.getController();
-        rt.getScene().setRoot(root);
+        dc.setId(i);
+        ajout.getScene().setRoot(root);
     }
     @FXML
-    private void versmdcm(ActionEvent event) throws IOException {
+    private void versupp(ActionEvent event) throws IOException {
+        vbox.getChildren().clear();
+        try {
+            List<commentaire> list=new ArrayList<>();
+            commentaireservice ps=new commentaireservice();
+            list=ps.ReadById(i);
+            for(int j=0;j<list.size();j++){
+                FXMLLoader fxl=new FXMLLoader();
+                fxl.setLocation(getClass().getResource("supprimercmm.fxml"));
+                Parent root=fxl.load();
+                Supprimercmm  c=fxl.getController();
+                c.setdata(list.get(j));
+
+                vbox.getChildren().add(root);}
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    private void vermod(ActionEvent event) throws IOException {
         FXMLLoader loader=new FXMLLoader(getClass().getResource("modcmm.fxml"));
         Parent root=loader.load();
-
         Modcmm dc=loader.getController();
-        rt.getScene().setRoot(root);
-    }
-    @FXML
-    private void supp(ActionEvent event) throws IOException {
-        FXMLLoader loader=new FXMLLoader(getClass().getResource("supprimercmm.fxml"));
-        Parent root=loader.load();
-
-        Supprimercmm dc=loader.getController();
-        rt.getScene().setRoot(root);
+        dc.setId(i);
+        ajout.getScene().setRoot(root);
     }
 }

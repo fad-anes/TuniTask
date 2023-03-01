@@ -43,7 +43,7 @@ public class Ajouteroffre implements Initializable {
     }
     @FXML
     private void ajoffre(ActionEvent event) throws IOException {
-        int t=0;
+     /*   int t=0;
 
         offreservice ps=new offreservice();
         if(id.getText().isEmpty()){ t=1;
@@ -66,7 +66,7 @@ public class Ajouteroffre implements Initializable {
                     titre.getText(),Float.parseFloat(p.getText()));
             ps.insert(p0);
             this.ajss.setText("ajouté avec succes!");
-        }
+        }*/
 
 
     }

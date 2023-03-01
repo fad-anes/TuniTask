@@ -18,7 +18,7 @@ public class testfxmain extends Application{
         Scene scene = new Scene(root);
 
         primaryStage.setTitle("TuniTask");
-        primaryStage.getIcons().add(new Image("C:/Users/anes_//OneDrive/Bureau/tt/src/images/324160378_739818170826020_2557360315520591398_n.png"));
+        primaryStage.getIcons().add(new Image("images/324160378_739818170826020_2557360315520591398_n.png"));
         primaryStage.setScene(scene);
 
         primaryStage.show();

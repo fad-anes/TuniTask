@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import entite.user;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -22,77 +23,59 @@ import service.offreservice;
 import service.commentaireservice;
 public class Modcmm implements Initializable{
     @FXML
-    private Label cmcc;
+    private Label cccm;
     @FXML
-    private Label idccc;
+    private Label ajss;
     @FXML
-    private Label mdss;
+    private Button rt;
     @FXML
-    private TextArea cmta;
+    private TextArea tacm;
     @FXML
-    private TextField idtf;
-    @FXML
-    private Button ch;
-    @FXML
-    private Button md;
-    @FXML
-    private Button retour;
-    @FXML
-    private Label ido;
-    @FXML
-    private Label idocc;
-    @FXML
-    private TextField idotf;
+    private Button mod;
+private int id;
 
-    public void setCmta(String cmta) {
-        this.cmta.setText(cmta);
+    public void setId(int id) {
+        this.id = id;
     }
+
+    private user u= new user(30);
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb)  {
         // TODO;
           }
     @FXML
-    private void retour(ActionEvent event) throws IOException {
+    private void rt(ActionEvent event) throws IOException {
         FXMLLoader loader=new FXMLLoader(getClass().getResource("voir commentaire.fxml"));
         Parent root=loader.load();
 
         VoirCommentaire dc=loader.getController();
-        retour.getScene().setRoot(root);
+        dc.setI(id);
+        mod.getScene().setRoot(root);
     }
     @FXML
-    private void ch(ActionEvent event) throws IOException {
-        commentaireservice ps=new commentaireservice();
-        commentaire c0=new commentaire();
+    private void mod(ActionEvent event) throws IOException {
         int t=0;
-        if(idtf.getText().isEmpty()){ t=1;
-            this.idccc.setText("champ manquant");}
-        else if(!ps.Findidcm(Integer.parseInt(idtf.getText()))){
+        int t0=0;
+        offre o=new offre(id);
+        commentaireservice ps=new commentaireservice();
+
+        t0=ps.Findcomenus(u.getId());
+        if(t0==0){
             t=1;
-            this.idccc.setText("commentaire introuvable");}
-        else this.idccc.setText("");
+            this.ajss.setText("vous navez pas du commentaire a modifier");}
+        else this.ajss.setText("");
+        if(tacm.getText().isEmpty()){
+            t=1;
+            this.cccm.setText("champ manquant");}
+        else this.cccm.setText("");
         if(t==0){
-            c0=ps.ReadById(Integer.parseInt(idtf.getText()));
-            String s=String.valueOf(c0.getOffre_id());
-            this.idotf.setText(s);
-            this.cmta.setText(c0.getCommentaire());
+            commentaire c0=new commentaire(o,tacm.getText(),u);
+            ps.update(t0,c0,o,u);
+            this.ajss.setText("commentaire modifier");
 
         }
     }
-    @FXML
-    private void md(ActionEvent event) throws IOException {
-        int t=0;
-        commentaireservice ps=new commentaireservice();
-        if(cmta.getText().isEmpty()){ t=1;
-            this.cmcc.setText("champ manquant");}
-        else this.cmcc.setText("");
-        if(idotf.getText().isEmpty()){ t=1;
-            this.idocc.setText("champ manquant");}
-        else this.idocc.setText("");
-        if(t==0){
-            commentaire c0=new commentaire(Integer.parseInt(idotf.getText()),cmta.getText());
-            ps.update((Integer.parseInt(idtf.getText())),c0);
-            this.mdss.setText("modifié avec succès");
-        }
-    }
+
 }

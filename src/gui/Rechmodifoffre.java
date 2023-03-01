@@ -28,7 +28,7 @@ public class Rechmodifoffre implements Initializable {
     }
     @FXML
     private void recher(ActionEvent event) throws IOException {
-        offreservice ps=new offreservice();
+      /*  offreservice ps=new offreservice();
         int t=0;
         if(ido.getText().isEmpty()){ t=1;
             this.csidom.setText("champ manquant");}
@@ -49,7 +49,7 @@ public class Rechmodifoffre implements Initializable {
             dc.setP(s2);
             dc.setD(o.getDescription());
             ido.getScene().setRoot(root);
-        }
+        }*/
     }
     @FXML
     private void retourrecm(ActionEvent event) throws IOException {

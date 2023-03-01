@@ -1,25 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="versModifier" prefHeight="705.0" prefWidth="1005.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.VoirCommentaire">
+<AnchorPane fx:id="versModifier" prefHeight="265.0" prefWidth="1005.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.VoirCommentaire">
    <children>
-      <Label layoutX="415.0" layoutY="70.0" text="Liste des commentaire" textFill="#bd0ec9" />
-      <TableView fx:id="table" layoutX="53.0" layoutY="153.0" prefHeight="250.0" prefWidth="883.0">
-        <columns>
-          <TableColumn fx:id="idc" prefWidth="151.0" text="idcommentaire" />
-          <TableColumn fx:id="ido" minWidth="0.0" prefWidth="146.0" text="offre_id" />
-            <TableColumn fx:id="cmm" prefWidth="314.0" text="commentaire" />
-            <TableColumn fx:id="tit" prefWidth="194.0" text="titre" />
-        </columns>
-      </TableView>
-      <Button fx:id="rt" layoutX="846.0" layoutY="590.0" mnemonicParsing="false" onAction="#rt" text="Retour" />
-      <Button fx:id="aj" layoutX="77.0" layoutY="590.0" mnemonicParsing="false" onAction="#versajcm" text="Ajouter" />
-      <Button fx:id="Modifier" layoutX="338.0" layoutY="590.0" mnemonicParsing="false" onAction="#versmdcm" text="Modifier" />
-      <Button fx:id="supp" layoutX="607.0" layoutY="590.0" mnemonicParsing="false" onAction="#supp" text="Supprimer" />
+      <Button fx:id="rt" layoutX="926.0" layoutY="567.0" mnemonicParsing="false" onAction="#rt" text="Retour" />
+      <ScrollPane layoutX="503.0" layoutY="41.0" prefHeight="473.0" prefWidth="442.0">
+         <content>
+            <VBox fx:id="vbox" prefHeight="455.0" prefWidth="442.0" />
+         </content>
+      </ScrollPane>
+      <Button fx:id="ref" layoutX="775.0" layoutY="571.0" mnemonicParsing="false" onAction="#ref" text="actualiser" />
+      <HBox fx:id="hb" layoutX="7.0" layoutY="14.0" prefHeight="206.0" prefWidth="458.0">
+         <children>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="458.0" />
+         </children>
+      </HBox>
+      <Button fx:id="ajout" layoutX="26.0" layoutY="567.0" mnemonicParsing="false" onAction="#versajout" text="Ajouter commentaire" />
+      <Button fx:id="supp" layoutX="220.0" layoutY="567.0" mnemonicParsing="false" onAction="#versupp" text="Supprimer votre commentaire" />
+      <Button fx:id="mod" layoutX="465.0" layoutY="569.0" mnemonicParsing="false" onAction="#vermod" text="Modifier votre commentaire" />
    </children>
 </AnchorPane>

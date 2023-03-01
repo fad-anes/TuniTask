@@ -1,5 +1,6 @@
 package gui;
 import entite.offre;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import service.offreservice;
 public class Afficheroffre implements Initializable{
@@ -49,11 +51,33 @@ public class Afficheroffre implements Initializable{
     private TableColumn prenom;
     @FXML
     private TableColumn year;
+    @FXML
+    private HBox hbox;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         List<offre> list=new ArrayList<>();
+        offreservice ps=new offreservice();
+        list=ps.readall();
+
+
+                try {
+                    for(int i=0;i<list.size();i++){
+                        FXMLLoader fxl=new FXMLLoader();
+                        fxl.setLocation(getClass().getResource("cardoffre.fxml"));
+                        Parent root=fxl.load();
+                    Cardoffre c=fxl.getController();
+                    c.setdata(list.get(i));
+                    hbox.getChildren().add(root);}
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+
+
+
+       /* List<offre> list=new ArrayList<>();
         offreservice ps=new offreservice();
         list=ps.readall();
         ObservableList<offre> obs= FXCollections.observableArrayList(list);
@@ -72,7 +96,7 @@ public class Afficheroffre implements Initializable{
         year.setCellValueFactory(new PropertyValueFactory<>("years"));
 
         table.setItems(obs);
-        table.refresh();
+        table.refresh();*/
     }
     @FXML
     private void retourm(ActionEvent event) throws IOException {

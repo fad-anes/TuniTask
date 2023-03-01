@@ -32,7 +32,7 @@ public class Supprimeroffre implements Initializable{
     }
     @FXML
     private void supppr(ActionEvent event) throws IOException {
-        offreservice ps=new offreservice();
+        /*offreservice ps=new offreservice();
         int t=0;
         if(ido.getText().isEmpty()){ t=1;
             this.csidom.setText("champ manquant");}
@@ -46,7 +46,7 @@ public class Supprimeroffre implements Initializable{
             offre o=new offre();
             o=ps.ReadById(Integer.parseInt(ido.getText()));
             ps.delete(o);
-            this.csidom.setText("suppression avec succès!");}
+            this.csidom.setText("suppression avec succès!");}*/
     }
     @FXML
     private void retourrecm(ActionEvent event) throws IOException {
