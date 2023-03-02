@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane prefHeight="705.0" prefWidth="1005.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Afficheroffre">
+<AnchorPane prefHeight="705.0" prefWidth="1005.0" style="-fx-background-color: #C0C0C0;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Afficheroffre">
    <children>
-      <Button fx:id="retourm" layoutX="881.0" layoutY="617.0" mnemonicParsing="false" onAction="#retourm" text="Retour" />
+      <Button fx:id="retourm" layoutX="881.0" layoutY="617.0" mnemonicParsing="false" onAction="#retourm" style="-fx-background-color: DAC0FF; -fx-background-radius: 20;" text="Retour" />
       <HBox layoutX="46.0" layoutY="548.0" prefHeight="100.0" prefWidth="258.0">
          <children>
             <GridPane prefHeight="100.0" prefWidth="260.0">

@@ -6,22 +6,22 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="versModifier" prefHeight="265.0" prefWidth="1005.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.VoirCommentaire">
+<AnchorPane fx:id="versModifier" prefHeight="265.0" prefWidth="1005.0" style="-fx-background-color: #C0C0C0;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.VoirCommentaire">
    <children>
-      <Button fx:id="rt" layoutX="926.0" layoutY="567.0" mnemonicParsing="false" onAction="#rt" text="Retour" />
+      <Button fx:id="rt" layoutX="838.0" layoutY="567.0" mnemonicParsing="false" onAction="#rt" style="-fx-background-color: #DAC0FF; -fx-background-radius: 20;" text="Retour" />
       <ScrollPane layoutX="503.0" layoutY="41.0" prefHeight="473.0" prefWidth="442.0">
          <content>
             <VBox fx:id="vbox" prefHeight="455.0" prefWidth="442.0" />
          </content>
       </ScrollPane>
-      <Button fx:id="ref" layoutX="775.0" layoutY="571.0" mnemonicParsing="false" onAction="#ref" text="actualiser" />
+      <Button fx:id="ref" layoutX="711.0" layoutY="569.0" mnemonicParsing="false" onAction="#ref" style="-fx-background-color: #DAC0FF; -fx-background-radius: 20;" text="actualiser" />
       <HBox fx:id="hb" layoutX="7.0" layoutY="14.0" prefHeight="206.0" prefWidth="458.0">
          <children>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="458.0" />
          </children>
       </HBox>
-      <Button fx:id="ajout" layoutX="26.0" layoutY="567.0" mnemonicParsing="false" onAction="#versajout" text="Ajouter commentaire" />
-      <Button fx:id="supp" layoutX="220.0" layoutY="567.0" mnemonicParsing="false" onAction="#versupp" text="Supprimer votre commentaire" />
-      <Button fx:id="mod" layoutX="465.0" layoutY="569.0" mnemonicParsing="false" onAction="#vermod" text="Modifier votre commentaire" />
+      <Button fx:id="ajout" layoutX="26.0" layoutY="567.0" mnemonicParsing="false" onAction="#versajout" style="-fx-background-color: DAC0FF; -fx-background-radius: 20;" text="Ajouter commentaire" />
+      <Button fx:id="supp" layoutX="220.0" layoutY="567.0" mnemonicParsing="false" onAction="#versupp" style="-fx-background-color: #DAC0FF; -fx-background-radius: 20;" text="Supprimer votre commentaire" />
+      <Button fx:id="mod" layoutX="465.0" layoutY="569.0" mnemonicParsing="false" onAction="#vermod" style="-fx-background-color: #DAC0FF; -fx-background-radius: 20;" text="Modifier votre commentaire" />
    </children>
 </AnchorPane>

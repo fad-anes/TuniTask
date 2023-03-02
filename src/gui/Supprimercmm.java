@@ -37,7 +37,7 @@ public class Supprimercmm implements Initializable{
     @FXML
     private Button supp;
       int id;
-
+    private String[] colors={"#DDA0DD","#DA70D6","#BA55D3","#9370DB","#8A2BE2","#77119B","#DAC0FF","#EBCBF6"};
 
 
     @Override
@@ -52,9 +52,9 @@ public class Supprimercmm implements Initializable{
         commentaire.setText(c.getCommentaire());
        id =c.getIdcommentaire();
         System.out.println(c.getIdcommentaire());
-        /*box.setStyle("-fx-background-color: "+colors[(int)(Math.random()*colors.length)]+";"+
+        box.setStyle("-fx-background-color: "+colors[(int)(Math.random()*colors.length)]+";"+
                 "-fx-background-radius: 20;"+
-                "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0), 10, 0, 0, 10);");*/
+                "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0), 10, 0, 0, 10);");
 
     }
     @FXML
