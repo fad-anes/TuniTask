@@ -72,7 +72,7 @@ public class offreservice implements offreinterface<offre> {
                 if (t == r) {
                     String requete2 =
                             " UPDATE offre SET " + "description=?," +
-                                    " titre =?,salaireH=?  WHERE user_id= " + u.getId();
+                                    " titre =?,salaireH=?  WHERE user_id= " +tt.getUser_id().getId();
                     try {
                         PreparedStatement pst = conn.prepareStatement(requete2);
                         pst.setString(1, tt.getDescription());

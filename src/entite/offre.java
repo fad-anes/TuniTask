@@ -61,6 +61,16 @@ public class offre {
         this.email = email;
         this.img = img;
     }
+    public offre(String description,String titre,float salaireH,user user_id) {
+        this.user_id = user_id;
+        this.description = description;
+        this.titre = titre;
+        this.salaireH = salaireH;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.img = img;
+    }
     public offre(int idoffre,String description,String titre,float salaireH) {
         this.idoffre = idoffre;
         this.description = description;

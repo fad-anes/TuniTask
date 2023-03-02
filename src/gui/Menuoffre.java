@@ -17,6 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
@@ -25,6 +26,10 @@ import service.offreservice;
 public class Menuoffre implements Initializable {
     @FXML
     private VBox box;
+
+
+    @FXML
+    private AnchorPane menu;
     @FXML
     private Button voffre;
     @FXML
@@ -47,6 +52,8 @@ public class Menuoffre implements Initializable {
     private Button Actualiser;
     user u=new user(25);
 
+
+
     @Override
     public void initialize(URL url, ResourceBundle rb)  {
         // TODO
@@ -64,6 +71,8 @@ public class Menuoffre implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+
     }
     @FXML
     private void voffre(ActionEvent event) throws IOException {
@@ -82,6 +91,7 @@ public class Menuoffre implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
     @FXML
     private void Actualiser(ActionEvent event) throws IOException {
@@ -126,4 +136,5 @@ public class Menuoffre implements Initializable {
             ps.insert(p0);
             this.ajjss.setText("ajouté avec succes!");
     }}
+
 }

@@ -3,6 +3,8 @@ import entite.offre;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import entite.user;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -36,19 +38,23 @@ public class Modifieroffre implements Initializable{
     private Label csp;
     @FXML
     private Label mss;
+    user u=new user(25);
+    private int idd;
+
+    public void setIdd(int idd) {
+        this.idd = idd;
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb)  {
         // TODO
     }
     @FXML
     private void mdoffre(ActionEvent event) throws IOException {
-        /*int t=0;
+        int t=0;
 
         offreservice ps=new offreservice();
-        if(id.getText().isEmpty()){ t=1;
-            this.csid.setText("champ manquant");}
 
-        else this.csid.setText("");
         if(titre.getText().isEmpty()){
             t=1;
             this.cstitre.setText("champ manquant");}
@@ -59,11 +65,11 @@ public class Modifieroffre implements Initializable{
         else this.csp.setText("");
 
         if(t==0){
-            offre p0=new offre(Integer.parseInt(id.getText()),d.getText(),
-                    titre.getText(),Float.parseFloat(p.getText()));
-            ps.update(p0);
+            offre p0=new offre(d.getText(),
+                    p.getText(),Float.parseFloat(titre.getText()),u);
+            ps.update(idd,p0);
             this.mss.setText("modifié avec succès");
-        }*/
+        }
 
     }
     @FXML

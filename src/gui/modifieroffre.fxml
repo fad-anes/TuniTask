@@ -5,23 +5,30 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="705.0" prefWidth="1005.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Modifieroffre">
+<AnchorPane prefHeight="705.0" prefWidth="1005.0" style="-fx-background-image: #C0C0C0;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Modifieroffre">
     <children>
         <Label layoutX="460.0" layoutY="65.0" text="Modifier offre" textFill="#bd0ec9" />
-        <Label layoutX="73.0" layoutY="186.0" text="ID" />
-        <Label layoutX="66.0" layoutY="244.0" text="Titre" />
-        <Label layoutX="44.0" layoutY="379.0" text="Description" />
-        <Label layoutX="60.0" layoutY="302.0" text="Prix/H" />
-        <TextField fx:id="id" layoutX="419.0" layoutY="181.0" />
-        <TextField fx:id="titre" layoutX="419.0" layoutY="239.0" />
-        <TextField fx:id="p" layoutX="419.0" layoutY="297.0" />
-        <TextArea fx:id="d" layoutX="419.0" layoutY="379.0" prefHeight="200.0" prefWidth="359.0" />
-        <Button fx:id="aj" layoutX="428.0" layoutY="627.0" mnemonicParsing="false" onAction="#mdoffre" text="Modifier" />
-        <Button fx:id="retour" layoutX="894.0" layoutY="627.0" mnemonicParsing="false" onAction="#retouraj" text="Retour" />
-        <Label fx:id="csid" layoutX="619.0" layoutY="186.0" prefHeight="21.0" prefWidth="252.0" textFill="RED" />
-        <Label fx:id="cstitre" layoutX="619.0" layoutY="244.0" prefHeight="21.0" prefWidth="252.0" textFill="RED" />
-        <Label fx:id="csp" layoutX="619.0" layoutY="302.0" prefHeight="21.0" prefWidth="252.0" textFill="RED" />
-      <Label fx:id="mss" layoutX="46.0" layoutY="632.0" prefHeight="21.0" prefWidth="224.0" textAlignment="CENTER" />
+        <Label layoutX="67.0" layoutY="178.0" text="Titre">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
+        <Label layoutX="45.0" layoutY="323.0" text="Description">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
+        <Label layoutX="62.0" layoutY="244.0" text="Prix/H">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
+        <TextField fx:id="titre" layoutX="419.0" layoutY="239.0" style="-fx-background-radius: 20;" />
+        <TextField fx:id="p" layoutX="419.0" layoutY="173.0" style="-fx-background-radius: 20;" />
+        <TextArea fx:id="d" layoutX="412.0" layoutY="334.0" prefHeight="200.0" prefWidth="359.0" />
+        <Button fx:id="aj" layoutX="428.0" layoutY="627.0" mnemonicParsing="false" onAction="#mdoffre" style="-fx-background-radius: 20; -fx-background-color: DAC0FF;" text="Modifier" />
+        <Button fx:id="retour" layoutX="894.0" layoutY="627.0" mnemonicParsing="false" onAction="#retouraj" style="-fx-background-radius: 20; -fx-background-color: DAC0FF;" text="Retour" />
+        <Label fx:id="cstitre" layoutX="645.0" layoutY="244.0" prefHeight="21.0" prefWidth="252.0" textFill="RED" />
+        <Label fx:id="csp" layoutX="660.0" layoutY="178.0" prefHeight="21.0" prefWidth="252.0" textFill="RED" />
+      <Label fx:id="mss" layoutX="46.0" layoutY="632.0" prefHeight="21.0" prefWidth="224.0" textAlignment="CENTER" textFill="RED" />
     </children>
 </AnchorPane>
