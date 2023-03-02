@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import org.controlsfx.control.Rating?>
+
+<AnchorPane fx:id="box" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="265.0" prefWidth="436.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Voiroffre">
+    <children>
+        <ImageView fx:id="image" fitHeight="91.0" fitWidth="131.0" layoutX="16.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+        <Label fx:id="titre" layoutX="161.0" layoutY="60.0" prefHeight="32.0" prefWidth="189.0" text="ghfhf" />
+        <Label fx:id="nom" layoutX="55.0" layoutY="124.0" prefHeight="21.0" prefWidth="52.0" text="fgh" />
+        <Label fx:id="prenom" layoutX="177.0" layoutY="124.0" prefHeight="21.0" prefWidth="56.0" text="fhggfh" />
+        <Label fx:id="descrip" layoutX="19.0" layoutY="202.0" prefHeight="63.0" prefWidth="392.0" text="fghfg" />
+        <Label layoutX="161.0" layoutY="23.0" text="Titre">
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font></Label>
+        <Label layoutX="14.0" layoutY="124.0" text="Nom">
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font></Label>
+        <Label layoutX="110.0" layoutY="124.0" text="Prenom">
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font></Label>
+        <Label layoutX="14.0" layoutY="181.0" text="Description">
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font></Label>
+        <Label fx:id="sal" layoutX="380.0" layoutY="17.0" prefHeight="32.0" prefWidth="52.0" text="Label">
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font></Label>
+        <Rating fx:id="rate" layoutX="238.0" layoutY="108.0" />
+        <Label fx:id="ratelab" layoutX="309.0" layoutY="152.0" />
+      <ImageView fx:id="del" fitHeight="32.0" fitWidth="26.0" layoutX="379.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true" />
+
+    </children>
+</AnchorPane>
