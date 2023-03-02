@@ -32,6 +32,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import service.ServiceRole;
 import service.ServiceUsers;
 
 /**
@@ -66,6 +67,9 @@ public class ConnecterController implements Initializable {
     private Pane erreur_donnée1;
     @FXML
     private Button signup;
+    ServiceRole ru = null;
+    @FXML
+    private Label oublie;
     @FXML
     private void signup(ActionEvent event) {
           ( (Node) event.getSource()).getScene().getWindow().hide();
@@ -126,6 +130,7 @@ public class ConnecterController implements Initializable {
          email.setText("");
           cpwd.setStyle("-fx-background-color: #FFFFFF");
           email.setBackground(Background.EMPTY);
+           oublie.setVisible(false);
     }
 
     @FXML
@@ -153,15 +158,24 @@ public class ConnecterController implements Initializable {
         warrning.setVisible(false);
         }
         else {  
-        if(su.getPwdByEmail(email.getText()).equals(""))
+            //System.out.println(su.getPwdByEmail(email.getText()).equals(cpwd.getText()));
+            // System.out.println(cpwd.getText());
+        if(su.getPwdByEmail(email.getText()).equals(cpwd.getText())==false)
         {
             System.out.println("okbb");
+             oublie.setVisible(true);
          erreur_donnée.setVisible(true);
               erreur_donnée1.setVisible(false);
         warrning.setVisible(false);
         }
         else {
-          System.out.println("Admin");
+          
+           
+            ru= new ServiceRole();
+            int id = su.getIdByEmail(email.getText());
+            System.out.println(id);
+            if(ru.Role_By_Id_user(id).getRoleName().equals("Admin")){
+            System.out.println("Admin");
        ( (Node) event.getSource()).getScene().getWindow().hide();
         Parent root;
         try {
@@ -174,17 +188,21 @@ public class ConnecterController implements Initializable {
                 stage.getIcons().add(new Image(getClass().getResourceAsStream("img/logo.png")));
         stage.setScene(scene);
         stage.show();
+        UserSession usersess= UserSession.getInstance();
+        usersess.setId(Long.valueOf(su.getIdByEmail(email.getText())));
         } catch (IOException ex) {
             Logger.getLogger(TuniTask.class.getName()).log(Level.SEVERE, null, ex);
         }
-           
-        }
+            }
+            else{System.out.println("simpleuser");}//System.out.println("Login"); 
+       }
         }
     }
 
     @FXML
     private void nonClicked(MouseEvent event) {
         warrning.setVisible(false);
+         oublie.setVisible(false);
     }
 
     @Override
@@ -194,7 +212,12 @@ public class ConnecterController implements Initializable {
         erreur_donnée.setVisible(false);
         warrning.setVisible(false);
          erreur_donnée1.setVisible(false);
+         oublie.setVisible(false);
         
+    }
+
+    @FXML
+    private void Motoublie(MouseEvent event) {
     }
 
    

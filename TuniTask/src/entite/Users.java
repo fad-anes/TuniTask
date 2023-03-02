@@ -8,6 +8,7 @@ package entite;
 import java.io.Serializable;
 import java.util.Collection;
 import java.sql.Date;
+import java.time.LocalDate;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -95,6 +96,18 @@ public class Users implements Serializable {
         this.dateOfBirth = dateOfBirth;
     }
 
+
+    public Users(Integer id, String password, String email, String firstName, String lastName, Date dateOfBirth, Date createdAt, String srcimage) {
+        this.id = id;
+        this.password = password;
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
+        this.createdAt = createdAt;
+        this.srcimage = srcimage;
+    }
+    
     public Users( String password, String email, String firstName, String lastName, Date dateOfBirth) {
      
         this.password = password;
@@ -103,6 +116,16 @@ public class Users implements Serializable {
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
         
+    }
+
+    public Users(Integer id, String password, String email, String firstName, String lastName, Date dateOfBirth, String srcimage) {
+        this.id = id;
+        this.password = password;
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
+        this.srcimage = srcimage;
     }
 
     public int getId() {

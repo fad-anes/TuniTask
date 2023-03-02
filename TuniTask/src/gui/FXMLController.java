@@ -30,11 +30,13 @@ public class FXMLController extends Application {
     @FXML
     void inBtn(ActionEvent event) {
    ( (Node) event.getSource()).getScene().getWindow().hide();
+   
         Parent root;
         try {
             root = FXMLLoader.load(getClass().getResource("Connecter.fxml"));
+            
             Scene scene = new Scene(root);
-            Stage stage = new Stage();
+           Stage stage = new Stage();
                 stage.setTitle("TuniTask");
                 stage.centerOnScreen();
                   stage.setResizable(false);

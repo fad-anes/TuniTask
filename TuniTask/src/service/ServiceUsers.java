@@ -12,10 +12,12 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
@@ -53,30 +55,59 @@ private Connection conn;
 
     @Override
     public void delete(Users t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         String requete="DELETE FROM role WHERE id_role=" + t.getId();
+       try {
+         Statement st = conn.createStatement();
+            st.executeUpdate(requete);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceRole.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
     public void update(Users t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+       // String requete="DELETE FROM role WHERE id_role=" + t.getId();
+    String requete=" UPDATE users SET password=?,email=?,first_name=?,last_name=?,date_of_birth=?, srcimage= ? WHERE id = ? ";
+    try {
 
+            PreparedStatement ps = conn.prepareStatement(requete);
+            ps.setString(1,t.getPassword());
+            ps.setString(2, t.getEmail());
+            ps.setString(3, t.getFirstName());
+            ps.setString(4, t.getLastName());
+            ps.setDate(5, t.getDateOfBirth());
+            ps.setString(6,t.getSrcimage() );
+            ps.setInt(7,t.getId() );
+
+
+                ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceRole.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+   
+    
     @Override
     public List readAll() {
         
  String query = "SELECT * FROM users";
     List<Users> userList = new ArrayList<>();
-      PreparedStatement pst;
+  
+       PreparedStatement pst;
     try {
         pst = conn.prepareStatement(query);
          ResultSet rs = pst.executeQuery(query); 
              while (rs.next()) {
-        int id = rs.getInt("id");
-        String name = rs.getString("first_name");
+                  int id = rs.getInt("id");
+       String name = rs.getString("first_name");
         String pname = rs.getString("last_name");
         String email = rs.getString("email");
+        String pwd = rs.getString("password");
         Date date= rs.getDate("date_of_birth");
-        Users user = new Users(id, email, name,pname,date);
+        Date datec= rs.getDate("created_At");
+        String img = rs.getString("srcimage");
+        Users user = new Users(id,pwd, email, name,pname,date,datec,img);
         userList.add(user);
       }
     } catch (SQLException ex) {
@@ -87,7 +118,28 @@ private Connection conn;
 
     @Override
     public Users readById(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Users user =new Users();
+        String query = "SELECT * FROM users where id ="+id;
+        PreparedStatement pst;
+         try {
+        pst = conn.prepareStatement(query);
+         ResultSet rs = pst.executeQuery(query); 
+             while (rs.next()) {
+                  
+       String name = rs.getString("first_name");
+        String pname = rs.getString("last_name");
+        String email = rs.getString("email");
+        String pwd = rs.getString("password");
+        Date date= rs.getDate("date_of_birth");
+        Date datec= rs.getDate("created_At");
+        String img = rs.getString("srcimage");
+        user = new Users(id,pwd, email, name,pname,date,datec,img);
+       return user ;
+      }
+    } catch (SQLException ex) {
+        Logger.getLogger(ServiceUsers.class.getName()).log(Level.SEVERE, null, ex);
+    }
+      return user ;  
     }
     public int getIdByEmail(String s) {
       
@@ -99,12 +151,11 @@ private Connection conn;
     public String getPwdByEmail(String s) {
       
         ArrayList <Users> list= (ArrayList)this.readAll() ;
-        System.out.println("(err");
+        //System.out.println(list);
        return list.stream().filter( (Users u) -> u.getEmail().equals(s)).map((Users u) -> u.getPassword()).findAny().orElse("") ; 
+      }
     
-    
-    }
-       public  Map readAllUsersWithTheirRoleByJointure() {
+       public  Map readAllUsersWithTheirRole() {
         
  String query = "SELECT * FROM role INNER JOIN users ON role.id_user = users.id";
     Map<Users,Role> user_Rolemap = new HashMap<>();
@@ -113,12 +164,16 @@ private Connection conn;
         pst = conn.prepareStatement(query);
          ResultSet rs = pst.executeQuery(query); 
              while (rs.next()) {
+                 
         int id = rs.getInt("id");
         String name = rs.getString("first_name");
         String pname = rs.getString("last_name");
         String email = rs.getString("email");
+        String pwd = rs.getString("password");
         Date date= rs.getDate("date_of_birth");
-        Users user = new Users(id, email, name,pname,date);
+        Date datec= rs.getDate("created_At");
+        String img = rs.getString("srcimage");
+        Users user = new Users(id,pwd, email, name,pname,date,datec,img);
         String role_name= rs.getString("role_name");
         Role role;
         switch (role_name) {
@@ -141,19 +196,17 @@ private Connection conn;
     }
       return user_Rolemap ;
         }
+    public List <Users> filtrer_users_By_Role (String role)
+    {
+        List <Users> user= new ArrayList<>();
+        Map<Users,Role> user_Rolemap=readAllUsersWithTheirRole();
+        for(Map.Entry<Users,Role> map : user_Rolemap.entrySet())
+        {
+             if(map.getValue().getRoleName().equals(role))
+             {  user.add(map.getKey()); }
+        }
+    
+    return user ;
+    }
   
-       /*public String getRoleByEmail(String s) {
-       HashMap <Users,Role> m=(HashMap)readAllUsersWithTheirRoleByJointure() ;
-       //Users u= m.keySet().stream().filter( (Users u) -> u.getEmail().equals(s)).findAny().getObject();
-       String role ="";
-       Users user ;
-       for(Users u : m.keySet())
-       {
-           if ( u.getEmail().equals(s) )
-               user=u ;
-               role=user.getRoleCollection()
-               
-       }
-       return role;
-       }*/
 }

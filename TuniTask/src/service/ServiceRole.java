@@ -7,6 +7,7 @@ package service;
 
 
 import entite.Role;
+import entite.Users;
 import java.util.logging.Logger;
 import java.util.logging.Level;
 import java.util.List;
@@ -43,13 +44,14 @@ private Connection conn;
         }
     break;
   case "Freelancer":
-    String requete1 = "INSERT INTO role(role_name,skills,experience,id_user) VALUES (?,?,?,?)" ;
+    String requete1 = "INSERT INTO role(role_name,skills,experience,id_user,langage_de_programmation) VALUES (?,?,?,?,?)" ;
             try {
             PreparedStatement pst = conn.prepareStatement(requete1);
             pst.setString(1, t.getRoleName());
             pst.setString(2, t.getSkills());
             pst.setString(3, t.getExperience());
             pst.setInt(4,su.getIdByEmail(t.getIdUser().getEmail()));
+            pst.setString(5, t.getLangage());
             pst.executeUpdate();
 
         } catch (SQLException ex) {
@@ -102,31 +104,66 @@ private Connection conn;
 
     @Override
     public void update(Role t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
       public List<Role> readAll() {
-            List<Role> list=new ArrayList<>();
-           /* String requete="select * from role";
-        try {
-            Statement st=conn.createStatement();
-            ResultSet rs=st.executeQuery(requete);
-            while(rs.next()){
-                Role p=new Role(rs.getInt("id_role"), rs.getString("role_name"),
-                        rs.getString("skills"), rs.getString("experience"),rs.getString("entreprise"));
-                list.add(p);
-            }
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(ServiceRole.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
-        return list;          
+               String query = "SELECT * FROM role";
+    List<Role> roleList = new ArrayList<>();
+  
+      PreparedStatement pst;
+    try {
+        pst = conn.prepareStatement(query);
+         ResultSet rs = pst.executeQuery(query); 
+             while (rs.next()) {
+        int id = rs.getInt("id_role");
+        String name = rs.getString("role_name");
+        String skills = rs.getString("skills");
+        String experience = rs.getString("experience");
+        String entreprise = rs.getString("entreprise");
+        int id_user = rs.getInt("id_user");
+        //Users user = new Users(id, email, name,pname,date);
+        Role role = new  Role(id,name,skills,experience,entreprise,new Users(id_user));
+         roleList.add(role);
+      }
+    } catch (SQLException ex) {
+        Logger.getLogger(ServiceUsers.class.getName()).log(Level.SEVERE, null, ex);
+    }
+      return roleList ;    
+               
     }
 
     @Override
     public Role readById(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+          public Role Role_By_Id_user(int id)
+    { 
+         
+         String query = "SELECT * FROM role  WHERE id_user="+id;
+         PreparedStatement  pst;
+         Role role=new Role();
+    try {
+         pst = conn.prepareStatement(query);
+         ResultSet rs = pst.executeQuery(query); 
+         while (rs.next()) {
+        int idr = rs.getInt("id_role");
+        String name = rs.getString("role_name");
+        String skills = rs.getString("skills");
+        String experience = rs.getString("experience");
+        String langage = rs.getString("langage_de_programmation");
+        String entreprise = rs.getString("entreprise");
+        
+        int id_user = rs.getInt("id_user");
+        //Users user = new Users(id, email, name,pname,date);
+        role = new  Role(id,name,skills,experience,entreprise,new Users(id_user),langage);
+    }} catch (SQLException ex) {
+        Logger.getLogger(ServiceUsers.class.getName()).log(Level.SEVERE, null, ex);
+    }
+         
+         return role ;    
+         //return list.stream().filter( (Users u) -> u.getEmail().equals(s)).map((Users u) -> u.getPassword()).findAny().orElse("") ; 
+    }
+          
+
 }

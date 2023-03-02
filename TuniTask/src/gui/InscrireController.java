@@ -3,8 +3,14 @@ package gui;
 import entite.Role;
 import entite.Users;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -40,6 +46,10 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 import service.ServiceRole;
 import service.ServiceUsers;
+import java.text.SimpleDateFormat;
+import java.time.temporal.ChronoUnit;
+import java.util.Random;
+
 
 public class InscrireController implements Initializable {
 
@@ -101,6 +111,14 @@ public class InscrireController implements Initializable {
     private ImageView IMAGE;
     File selectedFile =null ;
     @FXML
+    private TextArea Langage;
+    @FXML
+    private Pane PaneDate;
+    @FXML
+    private Label Llangae;
+                        String coder;
+
+    @FXML
     void initialize(ActionEvent event) {
         System.out.println(role.getValue());
         switch(role.getValue()) {
@@ -112,6 +130,8 @@ public class InscrireController implements Initializable {
      lentreprise.setVisible(false);
       code.setVisible(false);
      lcode.setVisible(false);
+     Llangae.setVisible(false);
+     Langage.setVisible(false);
     break;
   case "Freelancer":
     skills.setVisible(true);
@@ -121,6 +141,8 @@ public class InscrireController implements Initializable {
      lentreprise.setVisible(false);
       code.setVisible(false);
      lcode.setVisible(false);
+     Llangae.setVisible(true);
+     Langage.setVisible(true);
     break;
     case "Organizateur":
    skills.setVisible(false);
@@ -130,6 +152,8 @@ public class InscrireController implements Initializable {
      lentreprise.setVisible(true);
       code.setVisible(false);
      lcode.setVisible(false);
+     Llangae.setVisible(false);
+     Langage.setVisible(false);
       
     break;
   default:
@@ -140,6 +164,13 @@ public class InscrireController implements Initializable {
      lentreprise.setVisible(false);
      code.setVisible(true);
      lcode.setVisible(true);
+     Llangae.setVisible(false);
+     Langage.setVisible(false);
+                    coder = generateRandomCode();
+                    UserSession usersess= UserSession.getInstance();
+                   usersess.setCode(coder);
+                   EnvoyerEmail test = new EnvoyerEmail();
+                   test.envoyer("abdessalam.bahri@esprit.tn");
 }
             
        
@@ -160,7 +191,9 @@ public class InscrireController implements Initializable {
      reussi.setVisible(false);
      erreur.setVisible(false);
      erreur2.setVisible(false);
-     
+     PaneDate.setVisible(false);
+     Llangae.setVisible(false);
+     Langage.setVisible(false);
     }
      Boolean Bpwd =null;
     @FXML
@@ -282,19 +315,19 @@ Boolean Bmail =null;
     @FXML
     private void CorrgerBackground(MouseEvent event) {
          if(nom.getText().toString()==null || nom.getText().toString()=="")
-        nom.setStyle("-fx-background-color: #FFFFFF");
+        nom.setStyle("-fx-background-color:  #77119B");
     }
 
     @FXML
     private void CorrgerBackgroundP(MouseEvent event) {
         if(prenom.getText().toString()==null || prenom.getText().toString()=="")
-        prenom.setStyle("-fx-background-color: #FFFFFF");
+        prenom.setStyle("-fx-background-color:  #77119B");
     }
 
     @FXML
     private void CorrgerBackgroundE(MouseEvent event) {
          if(experience.getText().toString()==null || experience.getText().toString()=="")
-        experience.setStyle("-fx-background-color: #FFFFFF");
+        experience.setStyle("-fx-background-color:  #77119B");
     }
 
     @FXML
@@ -330,20 +363,25 @@ Boolean Bmail =null;
      reussi.setVisible(false);
      erreur.setVisible(false);
      erreur2.setVisible(false);
-      
+      date.setValue(null);
      cpwd.setText("");
-      cpwd.setStyle("-fx-background-color: #FFFFFF");
+      cpwd.setStyle("-fx-background-color:  #77119B");
 
     email.setText("");
-      email.setStyle("-fx-background-color: #FFFFFF");
-    
+      email.setStyle("-fx-background-color:  #77119B");
+    Langage.setText("");
+    Langage.setVisible(false);
+    Llangae.setVisible(false);
+      
+      
       nom.setText("");
-      nom.setStyle("-fx-background-color: #FFFFFF");
+      nom.setStyle("-fx-background-color:  #77119B");
      prenom.setText("");
-      prenom.setStyle("-fx-background-color: #FFFFFF");
+      prenom.setStyle("-fx-background-color:  #77119B");
     pwd.setText("");
-      pwd.setStyle("-fx-background-color: #FFFFFF");
-
+      pwd.setStyle("-fx-background-color:  #77119B");
+Image image = new Image("C:/Users/abdes/OneDrive/Documents/NetBeansProjects/TuniTask/src/gui/img/logo.png");
+        IMAGE.setImage(image);
       
  
     }
@@ -355,20 +393,33 @@ Boolean Bmail =null;
          erreur2.setVisible(false);
          reussi.setVisible(false);
     }
-
+private static final int CODE_LENGTH = 6;
+ public static String generateRandomCode() {
+        Random random = new Random();
+        StringBuilder codeBuilder = new StringBuilder();
+        for (int i = 0; i < CODE_LENGTH; i++) {
+            int digit = random.nextInt(10);
+            codeBuilder.append(digit);
+        }
+        return codeBuilder.toString();
+    }
     @FXML
     private void ouiClicked(MouseEvent event) {
+      
         ServiceUsers su = new ServiceUsers();
         ServiceRole sr = new ServiceRole();
+        System.out.println(date.getValue());
         Integer s =su.getIdByEmail(email.getText());
          String img ;
                            if( selectedFile  != null)
                                   img= selectedFile.toURI().toString();
+                               
                            else{
-                           img="img/logo.png";
+                           img="C:/Users/abdes/OneDrive/Documents/NetBeansProjects/TuniTask/src/gui/img/logo.png";
                            }
+                           
         if (Bnom !=null && Bprenom !=null && Bmail !=null && Bpwd!=null)
-          if (Bnom && Bprenom && Bmail && Bpwd )
+          if (Bnom && Bprenom && Bmail && Bpwd && Vdate )
             {
                if (role.getValue()=="Freelancer")
                    if( Bexperience != null && Bexperience )
@@ -379,11 +430,12 @@ Boolean Bmail =null;
                        if (s == -1)
                        {
                              System.out.println("erreur");
-                          
+                          //String hash=hashPassword(cpwd.getText());
                        Users u= new Users(cpwd.getText(),email.getText(), nom.getText(), prenom.getText(), Date.valueOf(LocalDate.parse(date.getValue().toString())),   img);
-                       Role r = new Role("Freelancer",skills.getValue(),experience.getText(),u);
+                       Role r = new Role("Freelancer",skills.getValue(),experience.getText(),u,Langage.getText());
                        su.insert(u);
                        sr.insert(r);
+                    
                            erreur2.setVisible(false);
                            warrning.setVisible(false);
                            reussi.setVisible(true);
@@ -430,9 +482,9 @@ Boolean Bmail =null;
                    }
                }
                
-               else if  (role.getValue()=="Admin"  )
+               else if  (role.getValue()=="Admin"  ){
                     if( code.getText()!=null)
-                    if( code.getText().equals("ADMIN" ))
+                    if( code.getText().equals(coder ))
                     if (s == -1)
                        {
                              System.out.println("erreur");
@@ -465,7 +517,7 @@ Boolean Bmail =null;
                    
                 
                    
-               else{if (s == -1)
+               } else{if (s == -1)
                        {
                              System.out.println("erreur");
                           
@@ -536,11 +588,121 @@ Boolean Bmail =null;
             // Création de l'image à partir du fichier sélectionné
             Image image = new Image(selectedFile.toURI().toString());
         IMAGE.setImage(image);
-        
-       
+        /*Path sourcePath = Paths.get(selectedFile.toURI().toString());
+        Path destinationPath = Paths.get("C/xampp/htdocs/img");
+          try {
+            // Utiliser la méthode Files.copy pour copier l'image
+            Files.copy(sourcePath, destinationPath);
+            
+            System.out.println("L'image a été copiée avec succès.");
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
+        /* File sourceFile = selectedFile;
+                       File targetDirectory = new File("C:/xampp/htdocs/img");
+                       String imgsrc = "Test" +".png"; 
+                       File destinationFile = new File(targetDirectory,imgsrc  );
+                       try {
+                        Files.copy(sourceFile.toPath(), destinationFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                         } catch (IOException e) {
+                   e.printStackTrace();
+                    } */
+        /*String sourcePath=selectedFile.toURI().toString();
+            System.out.println(sourcePath);
+        String destinationPath = "C:/xampp/htdocs/img/email.png";
+        try {
+            FileInputStream fileInputStream = new FileInputStream(new File(sourcePath));
+            
+            // Ouvrir un flux de sortie pour écrire l'image dans le nouveau dossier
+            FileOutputStream fileOutputStream = new FileOutputStream(new File(destinationPath));
+            
+            // Créer un tampon pour stocker les données lues à partir de l'entrée
+            byte[] buffer = new byte[1024];
+            int length;
+            
+            // Lire les données de l'entrée et les écrire dans le nouveau dossier
+            while ((length = fileInputStream.read(buffer)) > 0) {
+                fileOutputStream.write(buffer, 0, length);
+            }
+            
+            // Fermer les flux de lecture et d'écriture
+            fileInputStream.close();
+            fileOutputStream.close();
+            
+            System.out.println("L'image a été copiée avec succès.");
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+       */
         }
     }
 
+    Boolean Vdate=false;
+    @FXML
+    private void VerifierDate(MouseEvent event) {
+        if ( date.getValue() != null )
+        {
+        System.out.println(LocalDate.now());
+        System.out.println(date.getValue());
+        
+        LocalDate date1 = date.getValue();
+        LocalDate currentDate = LocalDate.now();
+        
+        if (ChronoUnit.YEARS.between(date1, currentDate)< 18)
+        {erreur.setVisible(true);
+           Vdate=false;}
+        else
+        {erreur.setVisible(false);
+          Vdate=true;
+        }
+                
+                
+        }
+        else {PaneDate.setVisible(true); 
+              erreur.setVisible(false);
+              Vdate=true;
+        }
+    }
+
+    @FXML
+    private void AnnuleDate(MouseEvent event) {
+         PaneDate.setVisible(false); 
+          if ( date.getValue() != null )
+        {
+        System.out.println(LocalDate.now());
+        System.out.println(date.getValue());
+        
+        LocalDate date1 = date.getValue();
+        LocalDate currentDate = LocalDate.now();
+        
+        if (ChronoUnit.YEARS.between(date1, currentDate)< 18)
+        {erreur.setVisible(true);
+           Vdate=false;}
+        else
+        {erreur.setVisible(false);}}
+          else {
+           erreur.setVisible(false);
+           
+          }
+         
+         
+    }
+
+    @FXML
+    private void getDateValue(MouseEvent event) {
+    }
+
+
+  
+   
+
+
+   
+    
+
+  
    
 
    

@@ -50,8 +50,52 @@ public class Role implements Serializable {
     @JoinColumn(name = "id_user", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Users idUser;
+    String langage ;
+public Role() {
+    }
 
-    public Role() {
+    public Role(String skills, String experience, String entreprise, String langage) {
+        this.skills = skills;
+        this.experience = experience;
+        this.entreprise = entreprise;
+        this.langage = langage;
+    }
+
+    public Role(String roleName, String skills, String experience, Users idUser, String langage) {
+        this.roleName = roleName;
+        this.skills = skills;
+        this.experience = experience;
+        this.idUser = idUser;
+        this.langage = langage;
+    }
+    
+
+    public Role(Integer idRole, String roleName, String skills, String experience, String entreprise, Users idUser) {
+        this.idRole = idRole;
+        this.roleName = roleName;
+        this.skills = skills;
+        this.experience = experience;
+        this.entreprise = entreprise;
+        this.idUser = idUser;
+    }
+
+    public Role(Integer idRole, String roleName, String skills, String experience, String entreprise, Users idUser, String langage) {
+        this.idRole = idRole;
+        this.roleName = roleName;
+        this.skills = skills;
+        this.experience = experience;
+        this.entreprise = entreprise;
+        this.idUser = idUser;
+        this.langage = langage;
+    }
+
+    public Role(String roleName, String skills, String experience, String entreprise, Users idUser, String langage) {
+        this.roleName = roleName;
+        this.skills = skills;
+        this.experience = experience;
+        this.entreprise = entreprise;
+        this.idUser = idUser;
+        this.langage = langage;
     }
 
     public Role(String roleName, Users idUser) {
@@ -84,6 +128,14 @@ public class Role implements Serializable {
 
     public void setIdRole(Integer idRole) {
         this.idRole = idRole;
+    }
+
+    public void setLangage(String langage) {
+        this.langage = langage;
+    }
+
+    public String getLangage() {
+        return langage;
     }
 
     public String getRoleName() {
@@ -146,9 +198,12 @@ public class Role implements Serializable {
         return true;
     }
 
+   
+
     @Override
     public String toString() {
-        return "entite.Role[ idRole=" + idRole + " ]";
+        return "Role{" + "idRole=" + idRole + ", roleName=" + roleName + ", skills=" + skills + ", experience=" + experience + ", entreprise=" + entreprise + ", idUser=" + idUser + '}';
     }
+  
     
 }
