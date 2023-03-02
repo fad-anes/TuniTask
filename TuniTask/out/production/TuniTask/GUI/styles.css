@@ -74,4 +74,11 @@
     -fx-text-fill: #ffffff;
 }
 
+.refresh-button {
+    -fx-background-color: #1ea6b4;
+    -fx-background-radius: 10;
+    -fx-border-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 14;
+}
 

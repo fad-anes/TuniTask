@@ -32,6 +32,9 @@
             <TableView fx:id="questionsTable" prefHeight="400.0" prefWidth="818.0" >
 
             <columns>
+                    <TableColumn fx:id="idquestion" prefWidth="500.0" text="id" />
+                </columns>
+                <columns>
                     <TableColumn fx:id="questionColumn" prefWidth="500.0" text="Question" />
                 </columns>
             </TableView>
@@ -41,7 +44,7 @@
                 <Button fx:id="editQuestionButton" onAction="#editQuestion" styleClass="action-button" text="Edit Question" />
                 <Button fx:id="deleteQuestionButton" onAction="#deleteQuestion" styleClass="action-button" text="Delete Question" />
                 <Button fx:id="cancelButton" onAction="#cancel" styleClass="action-button" text="Cancel" />
-                <Button fx:id="viewQuestionButton" onAction="#viewQuestion" styleClass="action-button" text="Answer the Question" />
+                <Button fx:id="viewQuestionButton" onAction="#viewQuestion" styleClass="action-button" text="view answers" />
 
 
             </HBox>

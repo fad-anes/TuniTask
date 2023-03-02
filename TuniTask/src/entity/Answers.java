@@ -16,6 +16,25 @@ public class Answers {
         this.is_correct = is_correct;
     }
 
+    public Answers(Questions question_id, Quizs quiz_id, String answer, Boolean is_correct) {
+        if (question_id == null) {
+            throw new IllegalArgumentException("question_id cannot be null");
+        }
+        this.question_id = question_id;
+        this.quiz_id = quiz_id;
+        this.answer = answer;
+        this.is_correct = is_correct;
+    }
+
+    public Answers() {
+
+    }
+
+    public Answers(String answer, Boolean iscorrect) {
+        this.answer = answer;
+        this.is_correct = iscorrect;
+    }
+
     public int getId_answer() {
         return id_answer;
     }
@@ -28,7 +47,11 @@ public class Answers {
         return question_id;
     }
 
-    public void setQuestion_id(Questions question_id) {
+    public void setQuestion_id(Questions question_id)
+    {
+        if (question_id.getQuestion() == null) {
+            throw new IllegalArgumentException("question_id cannot be null");
+        }
         this.question_id = question_id;
     }
 
@@ -63,7 +86,7 @@ public class Answers {
 
     @Override
     public String toString() {
-        return "Answers [id_answer=" + id_answer + ", question_id=" + question_id + ", quiz_id=" + quiz_id + ", answer="
+        return "Answers [id_answer=" + id_answer + ", question_id=" + question_id.getId() + ", quiz_id=" + quiz_id.getId_quiz() + ", answer="
                 + answer + ", is_correct=" + is_correct + "]";
     }
 }

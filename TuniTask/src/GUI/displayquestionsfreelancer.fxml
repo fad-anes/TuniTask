@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Displayquestions">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Displayquestionsfreelancer">
     <stylesheets>
         <URL value="@styles.css" />
     </stylesheets>
@@ -21,9 +21,9 @@
             <VBox alignment="CENTER" prefHeight="70.0" prefWidth="800.0" spacing="5.0">
                 <Text styleClass="header-text" text="Questions for Quiz:" />
                 <Label fx:id="quizNameLabel" style="-fx-font-size: 11;" styleClass="header-label">
-               <font>
-                  <Font name="System Bold Italic" size="11.0" />
-               </font></Label>
+                    <font>
+                        <Font name="System Bold Italic" size="11.0" />
+                    </font></Label>
                 <Pane prefHeight="1.0" prefWidth="800.0" styleClass="header-divider" />
             </VBox>
         </Pane>
@@ -31,20 +31,15 @@
         <VBox alignment="CENTER" layoutY="70.0" spacing="20.0">
             <TableView fx:id="questionsTable" prefHeight="400.0" prefWidth="818.0" >
 
-            <columns>
-                    <TableColumn fx:id="idquestion" prefWidth="500.0" text="id" />
-                </columns>
                 <columns>
                     <TableColumn fx:id="questionColumn" prefWidth="500.0" text="Question" />
                 </columns>
             </TableView>
 
             <HBox alignment="CENTER" spacing="20.0">
-                <Button fx:id="addQuestionButton" onAction="#addQuestion" styleClass="action-button" text="Add Question" />
-                <Button fx:id="editQuestionButton" onAction="#editQuestion" styleClass="action-button" text="Edit Question" />
-                <Button fx:id="deleteQuestionButton" onAction="#deleteQuestion" styleClass="action-button" text="Delete Question" />
+
                 <Button fx:id="cancelButton" onAction="#cancel" styleClass="action-button" text="Cancel" />
-                <Button fx:id="viewQuestionButton" onAction="#viewQuestion" styleClass="action-button" text="view answers" />
+                <Button fx:id="viewQuestionButton" onAction="#viewQuestion" styleClass="action-button" text="Answer the Question" />
 
 
             </HBox>

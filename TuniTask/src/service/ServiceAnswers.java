@@ -20,21 +20,23 @@ public class ServiceAnswers implements IServiceAnswers {
         con = DataSource.getInstance().getCnx();
     }
 
-    @Override
+@Override
     public void insert(Answers answer) {
-        String req = "INSERT INTO answers (id_answer, id_question,id_quiz, answer, is_correct) VALUES (?, ?, ?,?, ?)";
+        String req = "INSERT INTO answers (id_question, id_quiz, answer, is_correct) VALUES (?, ?, ?, ?)  ";
+        //String req="INSERT INTO answers (id_question, id_quiz, answer, is_correct) VALUES (10, 1, 'isi', true)";
         try {
             ps = con.prepareStatement(req);
-            ps.setInt(1, answer.getId_answer());
-            ps.setInt(2, answer.getQuestion_id().getId());
-            ps.setInt(3,answer.getQuiz_id().getId_quiz());
-            ps.setString(4,answer.getAnswer());
-            ps.setBoolean(5,answer.getIs_correct());
+            ps.setInt(1, answer.getQuestion_id().getId());
+            ps.setInt(2, answer.getQuiz_id().getId_quiz());
+            ps.setString(3, answer.getAnswer());
+            ps.setBoolean(4, answer.getIs_correct());
             ps.executeUpdate();
+            System.out.println("Answer added successfully!");
         } catch (SQLException ex) {
             Logger.getLogger(ServiceAnswers.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
 
     @Override
     public void delete(Answers answer) {
@@ -60,10 +62,11 @@ public class ServiceAnswers implements IServiceAnswers {
             ps = con.prepareStatement(req);
             ps.setInt(1, answer.getId_answer());
             ps.setInt(2, answer.getQuestion_id().getId());
-            ps.setInt(2, answer.getQuiz_id().getId_quiz());
-            ps.setString(3, answer.getAnswer());
-            ps.setBoolean(4, answer.getIs_correct());
-            ps.setInt(5, id);
+            ps.setInt(3, answer.getQuiz_id().getId_quiz());
+            ps.setString(4, answer.getAnswer());
+            ps.setBoolean(5, answer.getIs_correct());
+            ps.setInt(6, id);
+
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(ServiceAnswers.class.getName()).log(Level.SEVERE, null, ex);
@@ -99,7 +102,7 @@ public class ServiceAnswers implements IServiceAnswers {
     @Override
     public List<Answers> getAnswersByQuestion(Questions question) {
         List<Answers> answers = new ArrayList<>();
-        String query = "SELECT * FROM answers JOIN questions ON answers.id_question = questions.id_question WHERE answers.id_question = ?";
+        String query = "SELECT * FROM answers JOIN questions ON answers.id_question = questions.id_question WHERE questions.id_question = ?";
         try {
             ps = con.prepareStatement(query);
             ps.setInt(1, question.getId());
@@ -146,6 +149,28 @@ public class ServiceAnswers implements IServiceAnswers {
             Logger.getLogger(ServiceAnswers.class.getName()).log(Level.SEVERE, null, ex);
         }
         return answer;
+    }
+    public List<Answers> readByQuestionId(int questionId) {
+        List<Answers> answers = new ArrayList<>();
+        String query = "SELECT * FROM answers JOIN questions ON answers.id_question = questions.id_question JOIN quizs ON answers.id_quiz = quizs.id_quiz WHERE questions.id_question = ?";
+        try {
+            ps = con.prepareStatement(query);
+            ps.setInt(1, questionId);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id_answer");
+                int quizId = rs.getInt("id_quiz");
+                String answerText = rs.getString("answer");
+                boolean isCorrect = rs.getBoolean("is_correct");
+                Quizs quiz = new Quizs(quizId);
+                Questions question = new Questions(questionId);
+                Answers answer = new Answers(id, question, quiz, answerText, isCorrect);
+                answers.add(answer);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceAnswers.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return answers;
     }
 
 

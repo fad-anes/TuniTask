@@ -71,7 +71,17 @@ public class ServiceQuizs implements IServiceQuizs<Quizs> {
             Logger.getLogger(ServiceQuizs.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    public void updateQuizScore(int id, int newScore) {
+        String req = "UPDATE quizs SET score=? WHERE id_quiz = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(req);
+            ps.setInt(1, newScore);
+            ps.setInt(2, id);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceQuizs.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     @Override
     public List<Quizs> readAll() {
         String req = "SELECT DISTINCT * FROM quizs";

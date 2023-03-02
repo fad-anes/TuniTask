@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<?import javafx.scene.layout.VBox?>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Displayanswers">
+   <VBox>
+    <TableView fx:id="answersTable">
+        <columns>
+            <TableColumn fx:id="idanswerColumn" prefWidth="88.00003206729889" text="ID answer">
+                <cellValueFactory><PropertyValueFactory property="id_answer"/></cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="idQuestionColumn" prefWidth="69.59990692138672" text="id question">
+                <cellValueFactory><PropertyValueFactory property="id_question"/></cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="idQuizColumn" minWidth="0.0" prefWidth="66.4000244140625" text="id quiz">
+                <cellValueFactory><PropertyValueFactory property="id_quiz"/></cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="answerColumn" prefWidth="377.6000671386719" text="answer">
+                <cellValueFactory><PropertyValueFactory property="answer"/></cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="iscorrectColumn" prefWidth="75" text="is it Correct">
+                <cellValueFactory><PropertyValueFactory property="is_correct"/></cellValueFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
+    </VBox>
+</AnchorPane>
