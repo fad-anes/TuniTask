@@ -93,13 +93,13 @@ public class offreservice implements offreinterface<offre> {
     @Override
     public List<offre> readall() {
         List<offre> list=new ArrayList<>();
-        String requete="select o.idoffre,o.rate,o.description,o.titre,o.salaireH,u.first_name,u.last_name,u.email,u.srcimage from offre AS o" +
+        String requete="select o.idoffre,o.description,o.titre,o.salaireH,u.first_name,u.last_name,u.email,u.srcimage from offre AS o" +
               " JOIN users AS u ON o.user_id =u.id ";
         try {
             Statement st=conn.createStatement();
             ResultSet rs=st.executeQuery(requete);
             while(rs.next()){
-                offre p=new offre(rs.getInt("idoffre"),rs.getFloat("rate"),
+                offre p=new offre(rs.getInt("idoffre"),
                         rs.getString("description"),rs.getString("titre"),
                         rs.getFloat("salaireH"),rs.getString("first_name"),
                         rs.getString("last_name"),rs.getString("email"),rs.getString("srcimage"));
@@ -115,13 +115,13 @@ public class offreservice implements offreinterface<offre> {
     @Override
     public List<offre> ReadByIdd(int id) {
         List<offre> list=new ArrayList<>();
-        String requete="select o.idoffre,o.rate,o.description,o.titre,o.salaireH,u.first_name,u.last_name,u.email,u.srcimage from offre AS o" +
+        String requete="select o.idoffre,o.description,o.titre,o.salaireH,u.first_name,u.last_name,u.email,u.srcimage from offre AS o" +
                 " JOIN users AS u ON o.user_id =u.id WHERE o.user_id="+id;
         try {
             Statement st=conn.createStatement();
             ResultSet rs=st.executeQuery(requete);
             while(rs.next()){
-                offre p=new offre(rs.getInt("idoffre"),rs.getFloat("rate"),
+                offre p=new offre(rs.getInt("idoffre"),
                         rs.getString("description"),rs.getString("titre"),
                         rs.getFloat("salaireH"),rs.getString("first_name"),
                         rs.getString("last_name"),rs.getString("email"),rs.getString("srcimage"));
@@ -138,14 +138,14 @@ public class offreservice implements offreinterface<offre> {
     public offre ReadById(int id) {
         offre p0=new offre();
         String requete0=
-        "select o.idoffre, o.description,o.rate,o.titre,o.salaireH,u.first_name,u.last_name,u.email,u.srcimage from offre AS o" +
+        "select o.idoffre, o.description,o.titre,o.salaireH,u.first_name,u.last_name,u.email,u.srcimage from offre AS o" +
                 " JOIN users AS u ON o.user_id =u.id WHERE o.idoffre="+id;
         try {
 
             Statement st=conn.createStatement();
             ResultSet rs=st.executeQuery(requete0);
             while(rs.next()){
-                offre p=new offre(rs.getInt("idoffre"),rs.getFloat("rate"),rs.getString("description"),rs.getString("titre"),
+                offre p=new offre(rs.getInt("idoffre"),rs.getString("description"),rs.getString("titre"),
                         rs.getFloat("salaireH"),rs.getString("first_name"),
                         rs.getString("last_name"),rs.getString("email"),rs.getString("srcimage"));
             p0=p;}

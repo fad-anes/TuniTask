@@ -14,7 +14,7 @@ import java.io.IOException;
 public class testfxmain extends Application{
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root=FXMLLoader.load(getClass().getResource("menuoffre.fxml"));
+        Parent root=FXMLLoader.load(getClass().getResource("afficheroffre.fxml"));
         Scene scene = new Scene(root);
 
         primaryStage.setTitle("TuniTask");

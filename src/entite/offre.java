@@ -10,11 +10,9 @@ public class offre {
     private String img;
     private String nom;
     private String prenom;
-    private float rate;
 
-    public float getRate() {
-        return rate;
-    }
+
+
 
     public void setUser_id(user user_id) {
         this.user_id = user_id;
@@ -40,8 +38,8 @@ public class offre {
         this.titre = titre;
         this.salaireH = salaireH;
     }
-    public offre(int idoffre,float rate,String description,String titre,float salaireH,String nom,String prenom,String email,String img) {
-        this.rate = rate;
+    public offre(int idoffre,String description,String titre,float salaireH,String nom,String prenom,String email,String img) {
+
         this.idoffre = idoffre;
         this.description = description;
         this.titre = titre;
@@ -166,7 +164,6 @@ public class offre {
                 ", img='" + img + '\'' +
                 ", nom='" + nom + '\'' +
                 ", prenom='" + prenom + '\'' +
-                ", rate=" + rate +
                 '}';
     }
 }

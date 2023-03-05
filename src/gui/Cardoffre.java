@@ -2,8 +2,11 @@ package gui;
 import entite.offre;
 import java.io.IOException;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
+import entite.rate;
+import entite.user;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -26,6 +29,7 @@ import javafx.stage.Stage;
 
 import org.controlsfx.control.Rating;
 import service.offreservice;
+import service.rateservice;
 
 import javax.imageio.ImageIO;
 
@@ -52,10 +56,14 @@ public class Cardoffre implements Initializable{
 
     @FXML
     private Button btnvoir;
+
+    user u=new user(30);
+
     private String[] colors={"#DDA0DD","#DA70D6","#BA55D3","#9370DB","#8A2BE2","#77119B","#DAC0FF","#EBCBF6"};
     int offreid;
-    float r;
+
     public void setdata(offre o)  {
+
         Image i =new Image(o.getImg());
         String s2=String.valueOf(o.getSalaireH());
         image.setImage(i);
@@ -64,21 +72,38 @@ public class Cardoffre implements Initializable{
         prenom.setText(o.getPrenom());
         descrip.setText(o.getDescription());
         offreid=o.getIdoffre();
-        r=o.getRate();
-        rating.ratingProperty().addListener(new ChangeListener<Number>() {
+        DecimalFormat df = new DecimalFormat("0.0");
+        rateservice rs=new rateservice();
+
+        rating.setRating(rs.calcul(o.getIdoffre()));
+        ratlab.setText("Rating: "+df.format(rs.calcul(o.getIdoffre())));
+       rating.ratingProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
+                float t;
+                int t0 =t1.intValue();
 
-                ratlab.setText("Rating: "+t1);
+                rateservice rs=new rateservice();
+                DecimalFormat df = new DecimalFormat("0.0");
+                rate r= new rate(o,u,t0);
+
+                rs.insert(r);
+               // t=rs.calcul(o.getIdoffre());
+                //rating.setRating(t);
+               // ratlab.setText("Rating: "+df.format(t));
+
             }
         });
-        rating.setRating(r);
+
+
         sal.setText(s2+"Dt");
         box.setStyle("-fx-background-color: "+colors[(int)(Math.random()*colors.length)]+";"+
         "-fx-background-radius: 20;"+
                 "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0), 10, 0, 0, 10);");
 
     }
+
+
     @FXML
     private void versmessage(ActionEvent event) throws IOException {
         FXMLLoader loader=new FXMLLoader(getClass().getResource("voir commentaire.fxml"));

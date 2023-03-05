@@ -35,7 +35,7 @@
             <Font name="System Bold" size="15.0" />
          </font></Label>
       <Button fx:id="btnvoir" layoutX="301.0" layoutY="166.0" mnemonicParsing="false" onAction="#versmessage" style="-fx-background-radius: 20;" styleClass="-" text="Voir plus" textFill="#aba2a2" />
-      <Rating fx:id="rating" layoutX="253.0" layoutY="95.0" />
+      <Rating fx:id="rating" layoutX="205.0" layoutY="95.0" />
       <Label fx:id="ratlab" layoutX="309.0" layoutY="135.0" />
 
 

@@ -2,7 +2,10 @@ package gui;
 import entite.offre;
 import java.io.IOException;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ResourceBundle;
+
+import entite.rate;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -24,6 +27,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import org.controlsfx.control.Rating;
 import service.offreservice;
+import service.rateservice;
 
 import javax.imageio.ImageIO;
 public class Voiroffre {
@@ -59,6 +63,7 @@ public class Voiroffre {
     String s1=new String();
     String s3=new String();
     public void setdata(offre o)  {
+        float t;
         offreservice y=new offreservice();
         Image i =new Image(o.getImg());
         Image i2 =new Image("images/téléchargement-removebg-preview.png");
@@ -75,30 +80,22 @@ public class Voiroffre {
         s0=s2;
         s1=o.getTitre();
         s3=o.getDescription();
-        del.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-
+       entite.rate r= new rate();
+        rateservice rs=new rateservice();
+        t=rs.calcul(o.getIdoffre());
+        DecimalFormat df = new DecimalFormat("0.0");
+        /*rating.ratingProperty().addListener(new ChangeListener<Number>() {
             @Override
-            public void handle(MouseEvent event) {
-                y.delete(o.getIdoffre());
-            }
-        });
-        /*mod.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
 
-            @Override
-            public void handle(MouseEvent event) {
-
-
-                try {
-
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-
-
+                //ratlab.setText("Rating: "+t1);
             }
         });*/
-        rate.setRating(o.getRate());
-        ratelab.setText("Rating: "+o.getRate());
+        rate.setRating(t);
+        ratelab.setText("Rating: "+df.format(t));
+
+
+
         box.setStyle("-fx-background-color: "+colors[(int)(Math.random()*colors.length)]+";"+
                 "-fx-background-radius: 20;"+
                 "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0), 10, 0, 0, 10);");
