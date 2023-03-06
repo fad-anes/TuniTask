@@ -6,7 +6,7 @@ import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
 import entite.rate;
-import entite.user;
+import entite.Users;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -14,24 +14,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 
 import org.controlsfx.control.Rating;
-import service.offreservice;
 import service.rateservice;
-
-import javax.imageio.ImageIO;
 
 public class Cardoffre implements Initializable{
     @FXML
@@ -57,7 +47,11 @@ public class Cardoffre implements Initializable{
     @FXML
     private Button btnvoir;
 
-    user u=new user(30);
+    private Users u=new Users();
+
+    public void setU(Users u) {
+        this.u = u;
+    }
 
     private String[] colors={"#DDA0DD","#DA70D6","#BA55D3","#9370DB","#8A2BE2","#77119B","#DAC0FF","#EBCBF6"};
     int offreid;
@@ -110,6 +104,7 @@ public class Cardoffre implements Initializable{
         Parent root=loader.load();
         VoirCommentaire dc=loader.getController();
         dc.setI(offreid);
+        dc.setU(u);
         btnvoir.getScene().setRoot(root);
     }
 

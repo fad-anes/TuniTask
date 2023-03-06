@@ -8,19 +8,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import entite.Users;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import service.offreservice;
 import service.commentaireservice;
 public class VoirCommentaire implements Initializable{
@@ -40,6 +36,12 @@ public class VoirCommentaire implements Initializable{
     @FXML
     private Button mod;
     private  int i;
+    private Users u=new Users();
+
+    public void setU(Users u) {
+        this.u = u;
+    }
+
     Parent p=new HBox();
     public void setI(int i) {
         this.i = i;
@@ -101,6 +103,7 @@ public class VoirCommentaire implements Initializable{
 
         Ajoutcomm dc=loader.getController();
         dc.setId(i);
+        dc.setU(u);
         ajout.getScene().setRoot(root);
     }
     @FXML
@@ -109,7 +112,7 @@ public class VoirCommentaire implements Initializable{
         try {
             List<commentaire> list=new ArrayList<>();
             commentaireservice ps=new commentaireservice();
-            list=ps.ReadById(i);
+            list=ps.ReadByIdu(i,u.getId());
             for(int j=0;j<list.size();j++){
                 FXMLLoader fxl=new FXMLLoader();
                 fxl.setLocation(getClass().getResource("supprimercmm.fxml"));
@@ -128,6 +131,7 @@ public class VoirCommentaire implements Initializable{
         Parent root=loader.load();
         Modcmm dc=loader.getController();
         dc.setId(i);
+        dc.setU(u);
         ajout.getScene().setRoot(root);
     }
 }

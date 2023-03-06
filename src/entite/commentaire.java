@@ -4,7 +4,7 @@ public class commentaire {
     private int idcommentaire	;
     private offre offre_id	;
     private String commentaire;
-    private user userid;
+    private Users userid;
     private String name;
     private String prename;
     private String img;
@@ -27,12 +27,22 @@ public class commentaire {
         this.commentaire = commentaire;
 
     }
-    public commentaire(offre offre_id,String commentaire,user userid) {
+    public commentaire(int idcommentaire, offre offre_id, Users userid, String name, String prename, String img, String commentaire) {
+        this.idcommentaire = idcommentaire;
+        this.offre_id = offre_id;
+        this.userid = userid;
+        this.name = name;
+        this.prename = prename;
+        this.img = img;
+        this.commentaire = commentaire;
+
+    }
+    public commentaire(offre offre_id, String commentaire, Users userid) {
         this.offre_id = offre_id;
         this.commentaire = commentaire;
         this.userid = userid;
     }
-    public commentaire(offre offre_id,user userid) {
+    public commentaire(offre offre_id, Users userid) {
         this.offre_id = offre_id;
         this.userid = userid;
     }
@@ -41,7 +51,7 @@ public class commentaire {
         this.offre_id = offre_id;
         this.commentaire = commentaire;
     }
-    public commentaire(int idcommentaire,offre offre_id,String commentaire,user userid) {
+    public commentaire(int idcommentaire, offre offre_id, String commentaire, Users userid) {
         this.idcommentaire = idcommentaire;
         this.offre_id = offre_id;
         this.commentaire = commentaire;
@@ -68,11 +78,11 @@ public class commentaire {
         this.commentaire = commentaire;
     }
 
-    public user getUserid() {
+    public Users getUserid() {
         return userid;
     }
 
-    public void setUserid(user userid) {
+    public void setUserid(Users userid) {
         this.userid = userid;
     }
 

@@ -6,22 +6,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import entite.user;
+import entite.Users;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import service.offreservice;
 public class Menuoffre implements Initializable {
     @FXML
@@ -50,7 +46,7 @@ public class Menuoffre implements Initializable {
     private Button aj;
     @FXML
     private Button Actualiser;
-    user u=new user(25);
+    Users u=new Users(30);
 
 
 
@@ -121,10 +117,13 @@ public class Menuoffre implements Initializable {
             t=1;
             this.titrelab.setText("champ manquant");}
         else this.titrelab.setText("");
+        boolean isNumeric =  salaire.getText().matches("[+-]?\\d*(\\.\\d+)?");
         if(salaire.getText().isEmpty()){
             t=1;
             this.salairela.setText("champ manquant");}
-
+        else if(!isNumeric){
+            t=1;
+            this.salairela.setText("salaire ne contient pas des caracteres");}
         else this.salairela.setText("");
         if(description.getText().isEmpty()){
             t=1;
@@ -132,7 +131,7 @@ public class Menuoffre implements Initializable {
         else this.descriptionla.setText("");
 
         if(t==0){
-            offre p0=new offre(description.getText(),titre.getText(),Float.parseFloat(salaire.getText()));
+            offre p0=new offre(description.getText(),titre.getText(),Float.parseFloat(salaire.getText()),u);
             ps.insert(p0);
             this.ajjss.setText("ajouté avec succes!");
     }}

@@ -60,7 +60,6 @@ public class Supprimercmm implements Initializable{
     @FXML
     private void supp(ActionEvent event) throws IOException {
         commentaireservice ps=new commentaireservice();
-
         ps.delete(this.id);
     }
 }

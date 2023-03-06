@@ -3,23 +3,15 @@ import entite.offre;
 import entite.commentaire;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
-import entite.user;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import entite.Users;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
-import service.offreservice;
 import service.commentaireservice;
 public class Modcmm implements Initializable{
     @FXML
@@ -38,8 +30,11 @@ private int id;
         this.id = id;
     }
 
-    private user u= new user(30);
+    private Users u= new Users();
 
+    public void setU(Users u) {
+        this.u = u;
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb)  {
@@ -52,6 +47,7 @@ private int id;
 
         VoirCommentaire dc=loader.getController();
         dc.setI(id);
+        dc.setU(u);
         mod.getScene().setRoot(root);
     }
     @FXML

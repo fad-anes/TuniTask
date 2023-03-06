@@ -5,23 +5,24 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import entite.user;
+import entite.Users;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-import service.offreservice;
 import service.commentaireservice;
 public class Ajoutcomm implements Initializable{
     private int id;
-    user u=new user(30,"yji@gmail.com","lamia","bh","C:/Users/anes_//OneDrive/Bureau/tt/src/images/5231019.png");
+    private Users u=new Users();
+
+    public void setU(Users u) {
+        this.u = u;
+    }
+
     @FXML
     private Button aj;
     @FXML
@@ -65,6 +66,7 @@ public class Ajoutcomm implements Initializable{
 
         VoirCommentaire dc=loader.getController();
         dc.setI(id);
+        dc.setU(u);
         ajss.getScene().setRoot(root);
     }
 }

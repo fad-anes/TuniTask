@@ -37,7 +37,7 @@
             <Font name="System Bold" size="15.0" />
          </font></Label>
       <Label fx:id="descriptionla" layoutX="73.0" layoutY="577.0" textFill="RED" />
-      <Label fx:id="salairela" layoutX="73.0" layoutY="353.0" textFill="RED" />
+      <Label fx:id="salairela" layoutX="4.0" layoutY="353.0" prefHeight="21.0" prefWidth="215.0" textFill="RED" />
       <TextField fx:id="titre" layoutX="14.0" layoutY="194.0" style="-fx-background-radius: 20;" />
       <TextField fx:id="salaire" layoutX="15.0" layoutY="304.0" style="-fx-background-radius: 20;" />
       <TextArea fx:id="description" layoutX="14.0" layoutY="420.0" prefHeight="144.0" prefWidth="187.0" />

@@ -3,14 +3,14 @@ package entite;
 public class rate {
     private int idrate	;
     private offre offre_id	;
-    private user user_id	;
+    private Users users_id;
     private int rate;
 
     public rate() {
     }
-    public rate(offre offre_id,user user_id,int rate) {
+    public rate(offre offre_id, Users users_id, int rate) {
         this.offre_id = offre_id;
-        this.user_id = user_id;
+        this.users_id = users_id;
         this.rate = rate;
     }
     public rate(int idrate,offre offre_id,int rate) {
@@ -43,12 +43,12 @@ public class rate {
         this.rate = rate;
     }
 
-    public user getUser_id() {
-        return user_id;
+    public Users getUser_id() {
+        return users_id;
     }
 
-    public void setUser_id(user user_id) {
-        this.user_id = user_id;
+    public void setUser_id(Users users_id) {
+        this.users_id = users_id;
     }
 
     @Override
@@ -56,7 +56,7 @@ public class rate {
         return "rate{" +
                 "idrate=" + idrate +
                 ", offre_id=" + offre_id +
-                ", user_id=" + user_id +
+                ", user_id=" + users_id +
                 ", rate=" + rate +
                 '}';
     }

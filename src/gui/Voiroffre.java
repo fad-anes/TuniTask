@@ -1,42 +1,30 @@
 package gui;
 import entite.offre;
 import java.io.IOException;
-import java.net.URL;
 import java.text.DecimalFormat;
-import java.util.ResourceBundle;
 
 import entite.rate;
+import entite.Users;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 import org.controlsfx.control.Rating;
 import service.offreservice;
 import service.rateservice;
 
-import javax.imageio.ImageIO;
 public class Voiroffre {
     @FXML
     private AnchorPane box;
     @FXML
     private ImageView image;
     @FXML
-    private ImageView del;
+    private Button del;
     @FXML
     private ImageView mod;
     @FXML
@@ -59,14 +47,18 @@ public class Voiroffre {
     private Label ratelab;
     private String[] colors={"#DDA0DD","#DA70D6","#BA55D3","#9370DB","#8A2BE2","#77119B","#DAC0FF","#EBCBF6"};
     int offreid;
+    Users uu=new Users();
     String s0=new String();
     String s1=new String();
     String s3=new String();
     public void setdata(offre o)  {
         float t;
+        Users u=new Users(o.getUser_id().getId());
+        uu=u;
         offreservice y=new offreservice();
         Image i =new Image(o.getImg());
-        Image i2 =new Image("images/téléchargement-removebg-preview.png");
+        Image i2 =new Image("images/icons8-remove-24.png");
+        ImageView imageView = new ImageView(i2);
         String s2=String.valueOf(o.getSalaireH());
         image.setImage(i);
         titre.setText(o.getTitre());
@@ -75,7 +67,7 @@ public class Voiroffre {
         descrip.setText(o.getDescription());
         offreid=o.getIdoffre();
         sal.setText(s2+"Dt");
-        del.setImage(i2);
+        del.setGraphic(imageView);
 
         s0=s2;
         s1=o.getTitre();
@@ -93,13 +85,18 @@ public class Voiroffre {
         });*/
         rate.setRating(t);
         ratelab.setText("Rating: "+df.format(t));
-
+        rate.setDisable(true);
 
 
         box.setStyle("-fx-background-color: "+colors[(int)(Math.random()*colors.length)]+";"+
                 "-fx-background-radius: 20;"+
                 "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0), 10, 0, 0, 10);");
 
+    }
+    @FXML
+    private void del(ActionEvent event) throws IOException {
+        offreservice y=new offreservice();
+        y.delete(offreid);
     }
     @FXML
     private void modd(ActionEvent event) throws IOException {
@@ -111,6 +108,7 @@ public class Voiroffre {
         dc.setP(s1);
         dc.setTitre(s0);
         dc.setIdd(offreid);
+        dc.setU(uu);
         modd.getScene().setRoot(root);
     }
 }

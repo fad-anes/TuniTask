@@ -4,14 +4,13 @@ import entite.commentaire;
 import java.util.List;
 
 import entite.offre;
-import entite.user;
+import entite.Users;
 import utils.Datasource;
 import java.sql.Connection;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.List;
 
 public class commentaireservice implements commentaireinterface<commentaire>{
     private Connection conn;
@@ -19,7 +18,7 @@ public class commentaireservice implements commentaireinterface<commentaire>{
         conn=Datasource.getInstance().getCnx();
     }
     @Override
-    public void insert(commentaire t, offre o, user u) {
+    public void insert(commentaire t, offre o, Users u) {
         String requete = "insert into commentaire(offre_id,commentaire,user_id) values(?,?,?)";
         try {
             PreparedStatement pst = conn.prepareStatement(requete);
@@ -65,7 +64,7 @@ public class commentaireservice implements commentaireinterface<commentaire>{
 
 
     @Override
-    public void update(int t,commentaire c,offre o, user u) {
+    public void update(int t,commentaire c,offre o, Users u) {
         int r;
         String requete="select idcommentaire from commentaire";
         try {
@@ -117,13 +116,15 @@ public class commentaireservice implements commentaireinterface<commentaire>{
     @Override
     public List<commentaire> ReadById(int id) {
         List<commentaire> list=new ArrayList<>();
-        String requete="select c.idcommentaire,u.first_name,u.last_name,c.commentaire,u.srcimage,o.idoffre,c.user_id  from commentaire AS c"+
+        String requete="select c.offre_id, c.idcommentaire,u.first_name,u.last_name,c.commentaire,u.srcimage,o.idoffre,c.user_id  from commentaire AS c"+
                 " JOIN offre AS o ON c.offre_id =o.idoffre "+"JOIN users AS u ON c.user_id =u.id WHERE c.offre_id ="+id;
         try {
             Statement st=conn.createStatement();
             ResultSet rs=st.executeQuery(requete);
             while(rs.next()){
-                commentaire p=new commentaire(rs.getInt("idcommentaire"),rs.getString("first_name"), rs.getString("last_name"),
+                offre o=new offre(rs.getInt("offre_id"));
+                Users u =new Users(rs.getInt("user_id"));
+                commentaire p=new commentaire(rs.getInt("idcommentaire"),o,u,rs.getString("first_name"), rs.getString("last_name"),
                         rs.getString("srcimage"),rs.getString("commentaire"));
                 list.add(p);
             }
@@ -132,6 +133,21 @@ public class commentaireservice implements commentaireinterface<commentaire>{
             Logger.getLogger(commentaireservice.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
+    }
+
+    @Override
+    public List<commentaire> ReadByIdu(int ido, int idu) {
+        List<commentaire> list0=new ArrayList<>();
+        List<commentaire> list1=new ArrayList<>();
+        commentaireservice cs=new commentaireservice();
+
+        list0=cs.ReadById(ido);
+        for(int i=0;i<list0.size();i++){
+            if(list0.get(i).getUserid().getId()==idu)
+                list1.add(list0.get(i));
+        }
+
+        return list1;
     }
 
     @Override

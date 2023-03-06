@@ -2,7 +2,7 @@ package entite;
 
 public class offre {
     private int idoffre	;
-    private user user_id	;
+    private Users users_id;
     private String description;
     private String titre;
     private float salaireH;
@@ -14,8 +14,8 @@ public class offre {
 
 
 
-    public void setUser_id(user user_id) {
-        this.user_id = user_id;
+    public void setUser_id(Users users_id) {
+        this.users_id = users_id;
     }
 
     public offre() {
@@ -24,22 +24,22 @@ public class offre {
     public offre(int idoffre) {
         this.idoffre = idoffre;
     }
-    public offre(user user_id,String description,String titre,float salaireH) {
-        this.user_id = user_id;
+    public offre(Users users_id, String description, String titre, float salaireH) {
+        this.users_id = users_id;
         this.description = description;
         this.titre = titre;
         this.salaireH = salaireH;
     }
 
-    public offre(int idoffre,user user_id,String description,String titre,float salaireH) {
+    public offre(int idoffre, Users users_id, String description, String titre, float salaireH) {
         this.idoffre = idoffre;
-        this.user_id = user_id;
+        this.users_id = users_id;
         this.description = description;
         this.titre = titre;
         this.salaireH = salaireH;
     }
-    public offre(int idoffre,String description,String titre,float salaireH,String nom,String prenom,String email,String img) {
-
+    public offre(int idoffre, Users Users, String description, String titre, float salaireH, String nom, String prenom, String email, String img) {
+        this.users_id = Users;
         this.idoffre = idoffre;
         this.description = description;
         this.titre = titre;
@@ -59,8 +59,8 @@ public class offre {
         this.email = email;
         this.img = img;
     }
-    public offre(String description,String titre,float salaireH,user user_id) {
-        this.user_id = user_id;
+    public offre(String description, String titre, float salaireH, Users users_id) {
+        this.users_id = users_id;
         this.description = description;
         this.titre = titre;
         this.salaireH = salaireH;
@@ -83,8 +83,8 @@ public class offre {
         return idoffre;
     }
 
-    public user getUser_id() {
-        return user_id;
+    public Users getUser_id() {
+        return users_id;
     }
 
     public String getDescription() {
@@ -103,8 +103,8 @@ public class offre {
         this.idoffre = idoffre;
     }
 
-    public void setFreelancer_id(user user_id) {
-        this.user_id = user_id;
+    public void setFreelancer_id(Users users_id) {
+        this.users_id = users_id;
     }
 
     public void setDescription(String description) {
@@ -156,7 +156,7 @@ public class offre {
     public String toString() {
         return "offre{" +
                 "idoffre=" + idoffre +
-                ", user_id=" + user_id +
+                ", user_id=" + users_id +
                 ", description='" + description + '\'' +
                 ", titre='" + titre + '\'' +
                 ", salaireH=" + salaireH +

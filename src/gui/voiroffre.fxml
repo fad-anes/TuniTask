@@ -36,8 +36,8 @@
             </font></Label>
         <Rating fx:id="rate" layoutX="238.0" layoutY="108.0" />
         <Label fx:id="ratelab" layoutX="309.0" layoutY="152.0" />
-      <ImageView fx:id="del" fitHeight="32.0" fitWidth="26.0" layoutX="379.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true" />
       <Button fx:id="modd" layoutX="223.0" layoutY="171.0" mnemonicParsing="false" onAction="#modd" prefHeight="31.0" prefWidth="81.0" style="-fx-background-color: #C0C0C0; -fx-background-radius: 20;" text="Modifier" />
+      <Button fx:id="del" layoutX="380.0" layoutY="171.0" mnemonicParsing="false" onAction="#del" prefHeight="31.0" prefWidth="33.0" style="-fx-background-color: #C0C0C0; -fx-background-radius: 20; -fx-opacity: 0.5;" />
 
     </children>
 </AnchorPane>

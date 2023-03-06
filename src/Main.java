@@ -1,25 +1,19 @@
-import entite.commentaire;
-import entite.offre;
-import entite.rate;
-import entite.user;
 import service.commentaireservice;
-import service.offreservice;
-import service.rateservice;
-import utils.Datasource;
 
 public class Main {
     public static void main(String[] args) {
        // offre o= new offre(2,"yyy++","dfgdfg",800);
-        offre o= new offre(21);
-        user u=new user(25);
+       // offre o= new offre(21);
+       // user u=new user(25);
        // rate r=new rate(o,u,0.5f);
-        commentaire c=new commentaire(o,"lkm!",u);
+       // commentaire c=new commentaire(o,"lkm!",u);
         commentaireservice cs=new commentaireservice();
-        offreservice s=new offreservice();
-        rateservice rs=new rateservice();
+       // offreservice s=new offreservice();
+       // rateservice rs=new rateservice();
        // rs.insert(r);
+        //System.out.println(cs.ReadByIdu(21,25));
 
-        System.out.println(rs.calcul(21));
+       // System.out.println(rs.calcul(21));
         //s.insert(o);
        //s.delete(14);
         //s.update(14,o);

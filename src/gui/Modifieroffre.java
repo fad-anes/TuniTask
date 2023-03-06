@@ -4,18 +4,16 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import entite.user;
+import entite.Users;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import service.offreservice;
 public class Modifieroffre implements Initializable{
     @FXML
@@ -38,7 +36,12 @@ public class Modifieroffre implements Initializable{
     private Label csp;
     @FXML
     private Label mss;
-    user u=new user(25);
+    Users u=new Users();
+
+    public void setU(Users u) {
+        this.u = u;
+    }
+
     private int idd;
 
     public void setIdd(int idd) {
@@ -54,10 +57,13 @@ public class Modifieroffre implements Initializable{
         int t=0;
 
         offreservice ps=new offreservice();
-
+        boolean isNumeric =  titre.getText().matches("[+-]?\\d*(\\.\\d+)?");
         if(titre.getText().isEmpty()){
             t=1;
             this.cstitre.setText("champ manquant");}
+        else if(!isNumeric){
+            t=1;
+            this.cstitre.setText("salaire ne contient pas des caracteres");}
         else this.cstitre.setText("");
         if(p.getText().isEmpty()){
             t=1;

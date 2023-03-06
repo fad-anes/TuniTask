@@ -1,8 +1,11 @@
 package entite;
 
 import java.util.Date;
+import java.io.Serializable;
+import java.util.Collection;
+import java.time.LocalDate;
 
-public class user {
+public class Users {
     private Integer id;
     private String password;
     private String email;
@@ -11,10 +14,10 @@ public class user {
     private Date dateOfBirth;
     private Date createdAt;
     private String srcimage;
-    public user() {
+    public Users() {
     }
 
-    public user(String password, String email, String firstName, String lastName, Date dateOfBirth, String srcimage) {
+    public Users(String password, String email, String firstName, String lastName, Date dateOfBirth, String srcimage) {
         this.password = password;
         this.email = email;
         this.firstName = firstName;
@@ -23,18 +26,18 @@ public class user {
         this.srcimage = srcimage;
     }
 
-    public user(Integer id) {
+    public Users(Integer id) {
         this.id = id;
     }
 
-    public user(Integer id, String email, String firstName, String lastName, Date dateOfBirth) {
+    public Users(Integer id, String email, String firstName, String lastName, Date dateOfBirth) {
         this.id = id;
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
     }
-    public user(Integer id, String email, String firstName, String lastName, String srcimage) {
+    public Users(Integer id, String email, String firstName, String lastName, String srcimage) {
         this.id = id;
         this.email = email;
         this.firstName = firstName;
@@ -42,7 +45,7 @@ public class user {
         this.srcimage = srcimage;
     }
 
-    public user( String password, String email, String firstName, String lastName, Date dateOfBirth) {
+    public Users(String password, String email, String firstName, String lastName, Date dateOfBirth) {
 
         this.password = password;
         this.email = email;

@@ -7,20 +7,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import entite.Users;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
 import service.offreservice;
 public class Afficheroffre implements Initializable{
 
@@ -30,7 +26,7 @@ public class Afficheroffre implements Initializable{
     private Button ref;
     @FXML
     private HBox hbox;
-
+private Users u=new Users(27);
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -50,6 +46,7 @@ public class Afficheroffre implements Initializable{
                         Parent root=fxl.load();
                     Cardoffre c=fxl.getController();
                     c.setdata(list.get(i));
+                    c.setU(u);
                     hbox.getChildren().add(root);}
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -71,6 +68,7 @@ public class Afficheroffre implements Initializable{
                 Parent root=fxl.load();
                 Cardoffre c=fxl.getController();
                 c.setdata(list.get(i));
+                c.setU(u);
                 hbox.getChildren().add(root);}
         } catch (IOException e) {
             e.printStackTrace();

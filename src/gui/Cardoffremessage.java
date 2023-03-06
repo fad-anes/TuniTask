@@ -75,7 +75,7 @@ public class Cardoffremessage {
         });*/
         rate.setRating(t);
         ratelab.setText("Rating: "+df.format(t));
-
+        rate.setDisable(true);
         box.setStyle("-fx-background-color: "+colors[(int)(Math.random()*colors.length)]+";"+
                 "-fx-background-radius: 20;"+
                 "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0), 10, 0, 0, 10);");

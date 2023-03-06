@@ -1,13 +1,8 @@
 package service;
-import entite.offre;
 import entite.rate;
-import java.util.Date;
-import java.util.List;
-import entite.user;
 import utils.Datasource;
 import java.sql.Connection;
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 public class rateservice implements rateinterface<rate>{
