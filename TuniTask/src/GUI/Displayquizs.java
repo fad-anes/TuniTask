@@ -51,12 +51,12 @@ public class Displayquizs {
         idtitle.setCellValueFactory(new PropertyValueFactory<>("quiz_title"));
         iddesc.setCellValueFactory(new PropertyValueFactory<>("quiz_description"));
         idscore.setCellValueFactory(new PropertyValueFactory<>("score"));
-
+refresh();
         // Get all the quizzes from the database and add them to the observable list
-        quizList.addAll(service.readAll());
+
 
         // Set the observable list to the table view
-        quiztable.setItems(quizList);
+
         filterField.setOnKeyReleased(event -> {
             String text = filterField.getText().trim();
             if (text.isEmpty()) {
@@ -161,6 +161,11 @@ public class Displayquizs {
                 alert.showAndWait();
             }
         });
+    }
+    public void refresh() {
+        quizList.clear();
+        quizList.addAll(service.readAll());
+        quiztable.setItems(quizList);
     }
     public void openUpdateQuiz(String quizId) {
         try {

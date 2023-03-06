@@ -21,7 +21,7 @@
     </stylesheets>
     <children>
         <Pane prefHeight="70.0" prefWidth="800.0" styleClass="header">
-            <VBox alignment="CENTER" prefHeight="70.0" prefWidth="818.0" spacing="5.0" style="-fx-background-color: #314a4d;">
+            <VBox alignment="CENTER" prefHeight="70.0" prefWidth="818.0" spacing="5.0">
                 <Text fill="#1ea6b4" style="-fx-font-weight: bold;" styleClass="header-text" text="Liste des quizs">
                <font>
                   <Font size="31.0" />
@@ -31,7 +31,7 @@
         </Pane>
 
         <VBox alignment="CENTER" layoutY="70.0" spacing="20.0">
-            <TableView fx:id="quiztable" prefHeight="400.0" prefWidth="818.0" style="-fx-background-color: #314a4d;">
+            <TableView fx:id="quiztable" prefHeight="400.0" prefWidth="818.0">
                 <columns>
                     <TableColumn fx:id="idquiz" maxWidth="100.0" prefWidth="100.0" text="ID" />
                     <TableColumn fx:id="idtitle" prefWidth="104.79999542236328" text="Title" />
@@ -40,14 +40,17 @@
                 </columns>
             </TableView>
 
-            <HBox alignment="CENTER" prefHeight="105.0" prefWidth="818.0" spacing="20.0" style="-fx-background-color: #314a4d;">
-                <TextField fx:id="filterField" promptText="Filter by quiz title" />
+            <HBox alignment="CENTER" prefHeight="105.0" prefWidth="818.0" spacing="20.0">
+                <TextField fx:id="filterField" promptText="Filter by quiz title">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor></TextField>
 
                 <Button fx:id="openbtn" onAction="#displayquestions" style="-fx-background-color: #1ea6b4;" styleClass="action-button" text="Select Quiz">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-                <Button onAction="#refresh" prefHeight="56.0" prefWidth="142.0" style="-fx-background-color: #1ea6b4;" styleClass="refresh-button" text="Refresh">
+                <Button onAction="#refresh" prefHeight="56.0" prefWidth="142.0" style="-fx-font-size: 18px; -fx-font-weight: bold;" styleClass="refresh-button" text="Refresh">
                     <graphic>
                         <ImageView fitHeight="24" fitWidth="24" pickOnBounds="true" preserveRatio="true">
                             <Image url="@refresh.jpg" />
@@ -56,6 +59,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
                 </Button>
                     </HBox>
         </VBox>

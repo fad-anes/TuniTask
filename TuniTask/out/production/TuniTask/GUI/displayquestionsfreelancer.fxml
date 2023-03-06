@@ -40,6 +40,7 @@
 
                 <Button fx:id="cancelButton" onAction="#cancel" styleClass="action-button" text="Cancel" />
                 <Button fx:id="viewQuestionButton" onAction="#viewQuestion" styleClass="action-button" text="Answer the Question" />
+                <Button fx:id="certificateButton" text="Show Certificate" onAction="#showCertificate" visible="false" styleClass="action-button" />
 
 
             </HBox>

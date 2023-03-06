@@ -7,17 +7,21 @@ import entity.Quizs;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import org.controlsfx.control.Notifications;
 import service.ServiceQuestions;
 import service.ServiceQuizs;
 
+import javax.management.Notification;
 import java.io.IOException;
 import java.util.List;
 
@@ -94,21 +98,32 @@ public class Viewquestion {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Quiz Score");
         alert.setHeaderText(null);
-        alert.setContentText("Your score is " + score + " out of " + 1);
-        alert.showAndWait();
-        // Redirect to displayquizs.fxml
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("displayquizs.fxml"));
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        alert.setContentText("Your score is " + score + " out of " + 1 + "in the quiz ");
 
+        Notifications notificationBuilder = Notifications.create()
+                .title("Quiz Score")
+                .text("Your score is " + score + " out of " + 1)
+                .graphic(null)
+                .hideAfter(javafx.util.Duration.seconds(5))
+                .position(Pos.TOP_RIGHT)
+                .onAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        System.out.println("Clicked on Notification");
+                    }
+                });
+
+        notificationBuilder.darkStyle();
+        notificationBuilder.show();
+
+        alert.showAndWait();
+
+        // Close the window
+        Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        currentStage.close();
     }
+
+
 
 
 

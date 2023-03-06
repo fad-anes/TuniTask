@@ -24,16 +24,16 @@ public class FXMain extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 
-      //FXMLLoader fxmlLoader = new FXMLLoader(Displayquizs.class.getResource("displayquizs.fxml"));
-      FXMLLoader fxmlLoader = new FXMLLoader(Displayquizs.class.getResource("displayquizsfreelancer.fxml"));
+   //FXMLLoader fxmlLoader = new FXMLLoader(Displayquizs.class.getResource("displayquizs.fxml"));
+     FXMLLoader fxmlLoader = new FXMLLoader(Displayquizs.class.getResource("displayquizsfreelancer.fxml"));
 
         Parent root = fxmlLoader.load();
         Image icon = new Image(getClass().getResourceAsStream("tunitaskimg.png"));
         Scene scene = new Scene(root);
         stage.setTitle("Quizs");
         stage.setScene(scene);
-stage.getIcons().add(icon);
         stage.show();
+stage.getIcons().add(icon);
     }
 }
 

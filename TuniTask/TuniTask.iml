@@ -10,5 +10,13 @@
     <orderEntry type="library" exported="" name="lib" level="project" />
     <orderEntry type="library" name="lib1" level="project" />
     <orderEntry type="library" name="mysql-connector-java-8.0.30" level="project" />
+    <orderEntry type="library" name="json" level="project" />
+    <orderEntry type="library" name="NotificationAPI" level="project" />
+    <orderEntry type="library" name="controlsfx" level="project" />
+    <orderEntry type="library" name="pdfbox-3.0.0-alpha3" level="project" />
+    <orderEntry type="library" name="apache.logging.commons" level="project" />
+    <orderEntry type="library" name="apache.pdfbox.fontbox" level="project" />
+    <orderEntry type="library" name="itextpdf.tool.xmlworker" level="project" />
+    <orderEntry type="library" name="itextpdf.maven.itextdoc" level="project" />
   </component>
 </module>

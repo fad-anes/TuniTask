@@ -113,6 +113,7 @@ public class Displayquizsfreelancers {
                     alert.showAndWait();
                 } else {
                     // Load the FXML file for displaying questions
+
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("displayquestionsfreelancer.fxml"));
                     Parent root = loader.load();
                     Image icon = new Image(getClass().getResourceAsStream("tunitaskimg.png"));
