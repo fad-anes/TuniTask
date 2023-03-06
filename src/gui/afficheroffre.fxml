@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="705.0" prefWidth="1005.0" style="-fx-background-color: #C0C0C0;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Afficheroffre">
+<AnchorPane prefHeight="705.0" prefWidth="1005.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Afficheroffre">
    <children>
-      <Button fx:id="retourm" layoutX="881.0" layoutY="617.0" mnemonicParsing="false" onAction="#retourm" style="-fx-background-color: DAC0FF; -fx-background-radius: 20;" text="Retour" />
-      <HBox layoutX="46.0" layoutY="548.0" prefHeight="100.0" prefWidth="258.0">
+      <Button fx:id="retourm" layoutX="470.0" layoutY="633.0" mnemonicParsing="false" onAction="#retourm" style="-fx-background-color: bd0ec9; -fx-background-radius: 20;" text="Retour" />
+      <HBox layoutX="46.0" layoutY="548.0" prefHeight="100.0" prefWidth="258.0" style="-fx-background-color: black;">
          <children>
             <GridPane prefHeight="100.0" prefWidth="260.0">
               <columnConstraints>
@@ -26,11 +28,16 @@
             </GridPane>
          </children>
       </HBox>
-      <ScrollPane layoutX="4.0" layoutY="72.0" prefHeight="450.0" prefWidth="995.0">
+      <ScrollPane layoutX="46.0" layoutY="199.0" prefHeight="320.0" prefWidth="748.0" style="-fx-background-color: black; -fx-border-color: black;" styleClass=".scroll-pane" stylesheets="@styles.css">
          <content>
-            <HBox fx:id="hbox" prefHeight="449.0" prefWidth="992.0" />
+            <HBox fx:id="hbox" prefHeight="1000.0" prefWidth="5000.0" style="-fx-background-color: black;" stylesheets="@styles.css" />
          </content>
       </ScrollPane>
-      <Button fx:id="ref" layoutX="480.0" layoutY="617.0" mnemonicParsing="false" onAction="#ref" prefHeight="31.0" prefWidth="46.0" style="-fx-opacity: 0.5; -fx-background-color: DAC0FF; -fx-background-radius: 20;" />
+      <Button fx:id="ref" layoutX="885.0" layoutY="337.0" mnemonicParsing="false" onAction="#ref" prefHeight="31.0" prefWidth="46.0" style="-fx-opacity: 1; -fx-background-color: bd0ec9; -fx-background-radius: 20;" />
+      <Label layoutX="385.0" layoutY="67.0" text="Explorer des offres pour vos projets" textFill="#bd0ec9">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

@@ -17,6 +17,6 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Button fx:id="supp" layoutX="315.0" layoutY="94.0" mnemonicParsing="false" onAction="#supp" style="-fx-background-color: #DCDCDC; -fx-background-radius: 20;" text="supp" />
+      <Button fx:id="supp" layoutX="315.0" layoutY="94.0" mnemonicParsing="false" onAction="#supp" style="-fx-background-color: bd0ec9; -fx-background-radius: 20;" />
    </children>
 </AnchorPane>

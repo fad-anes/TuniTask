@@ -46,6 +46,10 @@ public class Supprimercmm implements Initializable{
     }
     public void setdata(commentaire c)  {
         Image i =new Image(c.getImg());
+        Image i2 =new Image("images/icons8-remove-24.png");
+
+        ImageView imageView = new ImageView(i2);
+        supp.setGraphic(imageView);
         img.setImage(i);
         nom.setText(c.getName());
         prenom.setText(c.getPrename());

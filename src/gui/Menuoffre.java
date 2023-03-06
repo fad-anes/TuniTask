@@ -45,8 +45,10 @@ public class Menuoffre implements Initializable {
     @FXML
     private Button aj;
     @FXML
+    private Button Retour;
+    @FXML
     private Button Actualiser;
-    Users u=new Users(30);
+    Users u=new Users(42);
 
 
 
@@ -70,6 +72,8 @@ public class Menuoffre implements Initializable {
 
 
     }
+    @FXML
+    private void Retour(ActionEvent event) throws IOException {}
     @FXML
     private void voffre(ActionEvent event) throws IOException {
         box.getChildren().clear();
