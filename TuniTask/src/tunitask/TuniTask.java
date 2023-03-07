@@ -5,6 +5,7 @@
  */
 package tunitask;
 
+import entite.PasswordHasher;
 import entite.Role;
 import entite.Users;
 import java.io.File;
@@ -26,6 +27,8 @@ import utile.DataSource;
  *
  * @author abdes
  */
+import org.mindrot.jbcrypt.BCrypt;
+
 public class TuniTask {
 
     /**
@@ -34,12 +37,25 @@ public class TuniTask {
     public static void main(String[] args) {
         // TODO code application logic here
          //DataSource ds1 =DataSource.getInstance();
-         ServiceRole s = new ServiceRole();
-         ServiceUsers r = new ServiceUsers();
-         System.out.println(r.readById(8));
+         //ServiceRole s = new ServiceRole();
+        // ServiceUsers r = new ServiceUsers();
+         //System.out.println(r.readById(8));
+         //PasswordHasher ph=new PasswordHasher();
+        // String sh= ph.hashPassword("ok");
+         //String sh1= ph.hashPassword("ok");
+         String password = "mypassword";
+         String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
+         if (BCrypt.checkpw(password, hashedPassword)) {
+    System.out.println("Mot de passe valide !");
+} else {
+    System.out.println("Mot de passe invalide !");
+}
+         System.out.println(hashedPassword);
          
-       Users us= new  Users( 12,"update", "email", "update", "lastName", java.sql.Date.valueOf(LocalDate.parse("2019-03-29")),"src");
-       r.update(us);
+      // Users us= new  Users( 12,"update", "email", "update", "lastName", java.sql.Date.valueOf(LocalDate.parse("2019-03-29")),"src");
+     // Users us= new Users(8);
+     // r.Desactiver(r.readById(8));
+      //r.update(us);
             
    
        //r.insert(us);

@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class FXMLController extends Application {
@@ -71,5 +72,17 @@ public class FXMLController extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @FXML
+    private void Travaille(MouseEvent event) {
+    }
+
+    @FXML
+    private void Talent(MouseEvent event) {
+    }
+
+    @FXML
+    private void evenement(MouseEvent event) {
     }
 }

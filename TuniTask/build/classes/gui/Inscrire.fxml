@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -13,7 +14,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.InscrireController">
     <children>
-      <Pane onMouseClicked="#getDateValue" onMouseMoved="#AnnuleDate" prefHeight="563.0" prefWidth="747.0" style="-fx-background-color: #EBCBF6; -fx-border-radius: 5px;">
+      <Pane onMouseMoved="#AnnuleDate" prefHeight="563.0" prefWidth="747.0" style="-fx-background-color: #EBCBF6; -fx-border-radius: 5px;">
          <children>
             <Pane layoutX="-3.0" prefHeight="59.0" prefWidth="753.0" style="-fx-background-color: #77119B; -fx-border-color: #000000;">
                <children>
@@ -57,19 +58,19 @@
             <Button cancelButton="true" defaultButton="true" layoutX="540.0" layoutY="502.0" mnemonicParsing="false" onMouseClicked="#ValiderBTN" prefHeight="40.0" prefWidth="75.0" style="-fx-background-color: #77119B;" text="Valider" textFill="WHITE" />
             <Pane fx:id="warrning" layoutX="265.0" layoutY="84.0" prefHeight="53.0" prefWidth="200.0" style="-fx-background-color: #FFFA9C;">
                <children>
-                  <Label layoutX="26.0" layoutY="18.0" text="Êtes-vous sûr ?" />
+                  <Label layoutX="26.0" layoutY="18.0" text="vous êtes sur ?" />
                   <Button fx:id="ouiBTN" layoutX="113.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#ouiClicked" style="-fx-background-color: #29FF84;" text="oui" />
                   <Button fx:id="non" layoutX="157.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#nonClicked" style="-fx-background-color: #FFC275;" text="non" />
                </children>
             </Pane>
-            <Pane fx:id="reussi" layoutX="265.0" layoutY="326.0" prefHeight="53.0" prefWidth="226.0" style="-fx-background-color: #29FF84;">
+            <Pane fx:id="reussi" layoutX="265.0" layoutY="496.0" prefHeight="53.0" prefWidth="226.0" style="-fx-background-color: #29FF84;">
                <children>
                   <Label layoutX="16.0" layoutY="20.0" text="Félicitations, Vous êtes un membre." />
                </children>
             </Pane>
-            <Pane fx:id="erreur" layoutX="278.0" layoutY="393.0" prefHeight="53.0" prefWidth="200.0" style="-fx-background-color: #FFC275;">
+            <Pane fx:id="erreur" layoutX="278.0" layoutY="377.0" prefHeight="53.0" prefWidth="200.0" style="-fx-background-color: #FFC275;">
                <children>
-                  <Label layoutX="16.0" layoutY="20.0" text="vérifiez vos données!" />
+                  <Label layoutX="45.0" layoutY="18.0" text="vérifiez vos données!" />
                </children>
             </Pane>
             <Pane fx:id="erreur2" layoutX="265.0" layoutY="145.0" prefHeight="53.0" prefWidth="200.0" style="-fx-background-color: #FFC275;">
@@ -88,6 +89,17 @@
             <Pane fx:id="PaneDate" layoutX="20.0" layoutY="514.0" prefHeight="17.0" prefWidth="175.0" style="-fx-background-color: #FFFDB0;">
                <children>
                   <Label text="Vous devez avoir plus de 18 ans" />
+               </children>
+            </Pane>
+            <Pane fx:id="erreurDate" layoutX="278.0" layoutY="438.0" prefHeight="53.0" prefWidth="200.0" style="-fx-background-color: #FFC275;">
+               <children>
+                  <Label layoutX="45.0" layoutY="18.0" text="vérifiez vos données!" />
+               </children>
+            </Pane>
+            <Pane fx:id="Paneverification" layoutX="248.0" layoutY="318.0" prefHeight="40.0" prefWidth="234.0">
+               <children>
+                  <Label layoutX="10.0" layoutY="12.0" text="Code de verification" />
+                  <TextField fx:id="codeV" layoutX="121.0" layoutY="3.0" onKeyReleased="#CodedeVerification" prefHeight="36.0" prefWidth="108.0" />
                </children>
             </Pane>
          </children>

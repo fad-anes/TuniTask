@@ -48,15 +48,12 @@ message.setRecipients(Message.RecipientType.TO,
 InternetAddress.parse(recepient));
 message.setSubject("Verification email");
 message.setText("Bonjour, Monsieur veuiller confirmer votre compte! "
-        + "Utiliser ce code pour inscrire" + code);
+        + code);
 // Etape 3 : Envoyer le message
 Transport.send(message);
 System.out.println("Message_envoye");
 } catch (MessagingException e) {
       System.out.println("error" + e.toString());
 } }
-/*public static void main(String[] args) {
-EnvoyerEmail test = new EnvoyerEmail();
-test.envoyer("abdessalam.bahri@esprit.tn");
-}*/ 
+
 }

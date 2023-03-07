@@ -1,5 +1,6 @@
 package gui;
 
+import entite.PasswordHasher;
 import entite.Role;
 import entite.Users;
 import java.io.File;
@@ -49,7 +50,8 @@ import service.ServiceUsers;
 import java.text.SimpleDateFormat;
 import java.time.temporal.ChronoUnit;
 import java.util.Random;
-
+import javafx.scene.control.TextField;
+import org.mindrot.jbcrypt.BCrypt;
 
 public class InscrireController implements Initializable {
 
@@ -117,6 +119,12 @@ public class InscrireController implements Initializable {
     @FXML
     private Label Llangae;
                         String coder;
+    @FXML
+    private Pane erreurDate;
+    @FXML
+    private Pane Paneverification;
+    @FXML
+    private TextField codeV;
 
     @FXML
     void initialize(ActionEvent event) {
@@ -166,11 +174,7 @@ public class InscrireController implements Initializable {
      lcode.setVisible(true);
      Llangae.setVisible(false);
      Langage.setVisible(false);
-                    coder = generateRandomCode();
-                    UserSession usersess= UserSession.getInstance();
-                   usersess.setCode(coder);
-                   EnvoyerEmail test = new EnvoyerEmail();
-                   test.envoyer("abdessalam.bahri@esprit.tn");
+                   
 }
             
        
@@ -178,6 +182,7 @@ public class InscrireController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+       
      role.setItems(FXCollections.observableArrayList("Client","Freelancer","Organizateur","Admin"));
      skills.setItems(FXCollections.observableArrayList("FullStack","FrontEnd","BackEnd"));
      skills.setVisible(false);
@@ -194,6 +199,8 @@ public class InscrireController implements Initializable {
      PaneDate.setVisible(false);
      Llangae.setVisible(false);
      Langage.setVisible(false);
+      erreurDate.setVisible(false);
+      Paneverification.setVisible(false);
     }
      Boolean Bpwd =null;
     @FXML
@@ -380,9 +387,9 @@ Boolean Bmail =null;
       prenom.setStyle("-fx-background-color:  #77119B");
     pwd.setText("");
       pwd.setStyle("-fx-background-color:  #77119B");
-Image image = new Image("C:/Users/abdes/OneDrive/Documents/NetBeansProjects/TuniTask/src/gui/img/logo.png");
+     Image image = new Image("C:/Users/abdes/OneDrive/Documents/NetBeansProjects/TuniTask/src/gui/img/logo.png");
         IMAGE.setImage(image);
-      
+      Paneverification.setVisible(false);
  
     }
 
@@ -403,6 +410,7 @@ private static final int CODE_LENGTH = 6;
         }
         return codeBuilder.toString();
     }
+  String img ;
     @FXML
     private void ouiClicked(MouseEvent event) {
       
@@ -410,36 +418,31 @@ private static final int CODE_LENGTH = 6;
         ServiceRole sr = new ServiceRole();
         System.out.println(date.getValue());
         Integer s =su.getIdByEmail(email.getText());
-         String img ;
-                           if( selectedFile  != null)
-                                  img= selectedFile.toURI().toString();
-                               
-                           else{
-                           img="C:/Users/abdes/OneDrive/Documents/NetBeansProjects/TuniTask/src/gui/img/logo.png";
-                           }
+        
+                          
                            
-        if (Bnom !=null && Bprenom !=null && Bmail !=null && Bpwd!=null)
+        if (Bnom !=null && Bprenom !=null && Bmail !=null && Bpwd!=null &&Vdate!=null)
           if (Bnom && Bprenom && Bmail && Bpwd && Vdate )
             {
                if (role.getValue()=="Freelancer")
                    if( Bexperience != null && Bexperience )
                    {  
-                       
-                       
                        System.out.println(s);
                        if (s == -1)
                        {
                              System.out.println("erreur");
-                          //String hash=hashPassword(cpwd.getText());
-                       Users u= new Users(cpwd.getText(),email.getText(), nom.getText(), prenom.getText(), Date.valueOf(LocalDate.parse(date.getValue().toString())),   img);
-                       Role r = new Role("Freelancer",skills.getValue(),experience.getText(),u,Langage.getText());
-                       su.insert(u);
-                       sr.insert(r);
-                    
+                      
                            erreur2.setVisible(false);
                            warrning.setVisible(false);
-                           reussi.setVisible(true);
+                           reussi.setVisible(false);
                            erreur.setVisible(false);
+                           Paneverification.setVisible(true);
+                            coder = generateRandomCode();
+                            UserSession usersess= UserSession.getInstance();
+                             usersess.setCode(coder);
+                             EnvoyerEmail test = new EnvoyerEmail();
+                             //test.envoyer("abdessalam.bahri@esprit.tn");
+                             test.envoyer(email.getText());
                        }    
                        else {  
                             erreur2.setVisible(true);
@@ -455,19 +458,20 @@ private static final int CODE_LENGTH = 6;
                    }
                else if  (role.getValue()=="Organizateur")
                {
-                      if( entreprise.getText().toString() != null && entreprise.getText().toString()  !="" )
+                      if( entreprise.getText() != null && entreprise.getText()!="" )
                     if (s == -1)
                        {
-                             System.out.println("erreur");
-                          
-                       Users u= new Users(cpwd.getText(),email.getText(), nom.getText(), prenom.getText(), Date.valueOf(LocalDate.parse(date.getValue().toString())),   img);
-                       Role r = new Role("Organizateur",entreprise.getText(),u);
-                       su.insert(u);
-                       sr.insert(r);
-                           erreur2.setVisible(false);
+                     erreur2.setVisible(false);
                            warrning.setVisible(false);
-                           reussi.setVisible(true);
+                           reussi.setVisible(false);
                            erreur.setVisible(false);
+                           Paneverification.setVisible(true);
+                            coder = generateRandomCode();
+                    UserSession usersess= UserSession.getInstance();
+                   usersess.setCode(coder);
+                   EnvoyerEmail test = new EnvoyerEmail();
+                  // test.envoyer("abdessalam.bahri@esprit.tn");
+                  test.envoyer(email.getText());
                        }    
                        else {  
                             erreur2.setVisible(true);
@@ -484,19 +488,24 @@ private static final int CODE_LENGTH = 6;
                
                else if  (role.getValue()=="Admin"  ){
                     if( code.getText()!=null)
-                    if( code.getText().equals(coder ))
+                    if( code.getText().equals("Admin" ))
                     if (s == -1)
                        {
                              System.out.println("erreur");
                           
-                       Users u= new Users(cpwd.getText(),email.getText(), nom.getText(), prenom.getText(), Date.valueOf(LocalDate.parse(date.getValue().toString())),   img);
-                       Role r = new Role("Admin",u);
-                       su.insert(u);
-                       sr.insert(r);
-                           erreur2.setVisible(false);
+                      
+                        erreur2.setVisible(false);
                            warrning.setVisible(false);
-                           reussi.setVisible(true);
+                           reussi.setVisible(false);
                            erreur.setVisible(false);
+                           Paneverification.setVisible(true);
+                            coder = generateRandomCode();
+                            //coder="1234";
+                    UserSession usersess= UserSession.getInstance();
+                   usersess.setCode(coder);
+                   EnvoyerEmail test = new EnvoyerEmail();
+                   //test.envoyer("abdessalam.bahri@esprit.tn");
+                   test.envoyer(email.getText());
                        }    
                        else {  
                             erreur2.setVisible(true);
@@ -520,15 +529,17 @@ private static final int CODE_LENGTH = 6;
                } else{if (s == -1)
                        {
                              System.out.println("erreur");
-                          
-                       Users u= new Users(cpwd.getText(),email.getText(), nom.getText(), prenom.getText(), Date.valueOf(LocalDate.parse(date.getValue().toString())),   img);
-                       Role r = new Role("Client",u);
-                       su.insert(u);
-                       sr.insert(r);
                            erreur2.setVisible(false);
                            warrning.setVisible(false);
-                           reussi.setVisible(true);
+                           reussi.setVisible(false);
                            erreur.setVisible(false);
+                           Paneverification.setVisible(true);
+                            coder = generateRandomCode();
+                    UserSession usersess= UserSession.getInstance();
+                   usersess.setCode(coder);
+                   EnvoyerEmail test = new EnvoyerEmail();
+                   //test.envoyer("abdessalam.bahri@esprit.tn");
+                   test.envoyer(email.getText());
                        }    
                        else {  
                             erreur2.setVisible(true);
@@ -539,11 +550,14 @@ private static final int CODE_LENGTH = 6;
      
             }
            else { 
+              System.out.println("erreur1");
           warrning.setVisible(false);
     
           erreur.setVisible(true);
             }
-        else { erreur.setVisible(true); }
+       else {
+            System.out.println("erreur2");
+            erreur.setVisible(true); }
     }
 
     @FXML
@@ -588,80 +602,35 @@ private static final int CODE_LENGTH = 6;
             // Création de l'image à partir du fichier sélectionné
             Image image = new Image(selectedFile.toURI().toString());
         IMAGE.setImage(image);
-        /*Path sourcePath = Paths.get(selectedFile.toURI().toString());
-        Path destinationPath = Paths.get("C/xampp/htdocs/img");
-          try {
-            // Utiliser la méthode Files.copy pour copier l'image
-            Files.copy(sourcePath, destinationPath);
-            
-            System.out.println("L'image a été copiée avec succès.");
-            
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
-        /* File sourceFile = selectedFile;
-                       File targetDirectory = new File("C:/xampp/htdocs/img");
-                       String imgsrc = "Test" +".png"; 
-                       File destinationFile = new File(targetDirectory,imgsrc  );
-                       try {
-                        Files.copy(sourceFile.toPath(), destinationFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
-                         } catch (IOException e) {
-                   e.printStackTrace();
-                    } */
-        /*String sourcePath=selectedFile.toURI().toString();
-            System.out.println(sourcePath);
-        String destinationPath = "C:/xampp/htdocs/img/email.png";
-        try {
-            FileInputStream fileInputStream = new FileInputStream(new File(sourcePath));
-            
-            // Ouvrir un flux de sortie pour écrire l'image dans le nouveau dossier
-            FileOutputStream fileOutputStream = new FileOutputStream(new File(destinationPath));
-            
-            // Créer un tampon pour stocker les données lues à partir de l'entrée
-            byte[] buffer = new byte[1024];
-            int length;
-            
-            // Lire les données de l'entrée et les écrire dans le nouveau dossier
-            while ((length = fileInputStream.read(buffer)) > 0) {
-                fileOutputStream.write(buffer, 0, length);
-            }
-            
-            // Fermer les flux de lecture et d'écriture
-            fileInputStream.close();
-            fileOutputStream.close();
-            
-            System.out.println("L'image a été copiée avec succès.");
-            
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-       */
+           
+        
+       
         }
     }
 
-    Boolean Vdate=false;
+    Boolean Vdate;
     @FXML
     private void VerifierDate(MouseEvent event) {
         if ( date.getValue() != null )
         {
-        System.out.println(LocalDate.now());
-        System.out.println(date.getValue());
+         System.out.println(LocalDate.now());
+         System.out.println(date.getValue());
         
-        LocalDate date1 = date.getValue();
-        LocalDate currentDate = LocalDate.now();
+         LocalDate date1 = date.getValue();
+         LocalDate currentDate = LocalDate.now();
         
-        if (ChronoUnit.YEARS.between(date1, currentDate)< 18)
-        {erreur.setVisible(true);
-           Vdate=false;}
-        else
-        {erreur.setVisible(false);
-          Vdate=true;
-        }
+            if (ChronoUnit.YEARS.between(date1, currentDate)< 18)
+              {erreurDate.setVisible(true);
+              Vdate=false;}
+            else
+              {erreurDate.setVisible(false);
+               Vdate=true;
+              }
                 
                 
         }
         else {PaneDate.setVisible(true); 
-              erreur.setVisible(false);
+              erreurDate.setVisible(false);
               Vdate=true;
         }
     }
@@ -678,20 +647,88 @@ private static final int CODE_LENGTH = 6;
         LocalDate currentDate = LocalDate.now();
         
         if (ChronoUnit.YEARS.between(date1, currentDate)< 18)
-        {erreur.setVisible(true);
+        {  erreurDate.setVisible(true);
            Vdate=false;}
         else
-        {erreur.setVisible(false);}}
+        {erreurDate.setVisible(false);
+        Vdate=true;
+        }}
           else {
-           erreur.setVisible(false);
+           erreurDate.setVisible(false);
            
           }
          
          
     }
 
+
     @FXML
-    private void getDateValue(MouseEvent event) {
+    private void CodedeVerification(KeyEvent event) {
+         ServiceUsers su = new ServiceUsers();
+        ServiceRole sr = new ServiceRole();
+        Users u= new Users() ;
+        Role r = new Role() ;
+        
+            
+           if(codeV.getText().equals(coder ))
+                          {
+                              codeV.setStyle("-fx-background-color: #00FF51");
+                                Paneverification.setVisible(false);
+                           erreur2.setVisible(false);
+                           warrning.setVisible(false);
+                           reussi.setVisible(true);
+                           erreur.setVisible(false);
+                           PasswordHasher ph=new PasswordHasher();
+                          
+                        if(role.getValue()=="Organizateur")   
+                        {  u= new Users(ph.hashPassword(cpwd.getText()),email.getText(), nom.getText(), prenom.getText(), Date.valueOf(LocalDate.parse(date.getValue().toString())),true);
+                           r = new Role("Organizateur",entreprise.getText(),u);
+                       }
+                        else if (role.getValue()=="Freelancer")
+                        {
+                              u= new Users(ph.hashPassword(cpwd.getText()),email.getText(), nom.getText(), prenom.getText(), Date.valueOf(LocalDate.parse(date.getValue().toString())),true);
+                              r = new Role("Freelancer",skills.getValue(),experience.getText(),u,Langage.getText());
+                        }
+                        else if (role.getValue()=="Client")
+                        {
+                            u= new Users(ph.hashPassword(cpwd.getText()),email.getText(), nom.getText(), prenom.getText(), Date.valueOf(LocalDate.parse(date.getValue().toString())),true);
+                            r = new Role("Client",u);
+                        }
+                        else {
+                              u= new Users(ph.hashPassword(cpwd.getText()),email.getText(), nom.getText(), prenom.getText(), Date.valueOf(LocalDate.parse(date.getValue().toString())),true);
+                              r = new Role("Admin",u);
+                        }
+                       
+                         if(selectedFile != null){
+       String destinationFolderPath = "C:\\xampp\\htdocs\\img";
+       Path sourcePath = Paths.get(selectedFile.toURI());
+       img= "C:/xampp/htdocs/img/"+String.valueOf(u.getEmail())+sourcePath.getFileName();
+                 System.out.println(sourcePath);
+       File destinationFolder = new File(destinationFolderPath);
+       try {
+       if (!destinationFolder.exists()) {
+            destinationFolder.mkdirs();
+        }
+            Files.copy(sourcePath, destinationFolder.toPath().resolve(String.valueOf(u.getEmail())+sourcePath.getFileName()));
+
+            System.out.println("L'image a été copiée avec succès dans le dossier de destination.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } }
+                                  
+                               
+                           else{
+                           img="C:/xampp/htdocs/img/logo.png";
+                           }
+                        u.setSrcimage(img);
+                          su.insert(u);
+                       sr.insert(r);
+                           
+                          }
+           else {
+           codeV.setStyle("-fx-background-color: #CB0000");
+           
+           }
     }
 
 

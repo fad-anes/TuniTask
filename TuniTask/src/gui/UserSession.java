@@ -6,26 +6,22 @@
 package gui;
 
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 /**
  *
  * @author abdes
  */
-@Entity
+
 public class UserSession implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+   
     private Long id;
     
     private String code;
     private static UserSession instance;
-  
+    private String role ;
+    private String email ;
 
    private UserSession() {}
 
@@ -49,6 +45,24 @@ public class UserSession implements Serializable {
     public String getCode() {
         return code;
     }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
+    
     @Override
     public int hashCode() {
         int hash = 0;

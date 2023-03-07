@@ -26,6 +26,40 @@ private Connection conn;
     public ServiceRole() {
         conn = (Connection) DataSource.getInstance().getCnx();
     }
+      @Override
+    public void update(Role t) {
+        if (t.getRoleName().equals("Freelancer"))
+        {
+           String requete = "UPDATE role SET skills=?,experience=?,langage_de_programmation=? WHERE id_role=? " ;
+              try {
+            PreparedStatement pst = conn.prepareStatement(requete);
+            pst.setString(1, t.getSkills());
+            pst.setString(2, t.getExperience());
+            pst.setString(3, t.getLangage());
+            pst.setInt(4,t.getIdRole());
+           
+            pst.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceRole.class.getName()).log(Level.SEVERE, null, ex);
+        }
+               
+                if (t.getRoleName().equals("Organizateur"))
+                {
+    String requete2 = "UPDATE role SET entreprise= ? WHERE id_role=? " ;
+            try {
+            PreparedStatement pst = conn.prepareStatement(requete2);
+            pst.setString(1,t.getEntreprise());
+            pst.setInt(2, t.getIdRole());
+            pst.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceRole.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                }      
+           
+        }
+    }
     @Override
     public void insert(Role t) {
         ServiceUsers su = new ServiceUsers();
@@ -102,9 +136,7 @@ private Connection conn;
         }
     }
 
-    @Override
-    public void update(Role t) {
-    }
+  
 
     @Override
       public List<Role> readAll() {
@@ -156,7 +188,7 @@ private Connection conn;
         
         int id_user = rs.getInt("id_user");
         //Users user = new Users(id, email, name,pname,date);
-        role = new  Role(id,name,skills,experience,entreprise,new Users(id_user),langage);
+        role = new  Role(idr,name,skills,experience,entreprise,new Users(id_user),langage);
     }} catch (SQLException ex) {
         Logger.getLogger(ServiceUsers.class.getName()).log(Level.SEVERE, null, ex);
     }

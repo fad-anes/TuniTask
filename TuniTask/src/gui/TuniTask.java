@@ -29,7 +29,7 @@ public class TuniTask extends Application {
     public void start(Stage primaryStage) {
        
         try {
-         Parent   root = FXMLLoader.load(getClass().getResource("Admin.fxml"));
+         Parent   root = FXMLLoader.load(getClass().getResource("FXML.fxml"));
             Scene scene = new Scene(root);
                 
                 primaryStage.setTitle("TuniTask");

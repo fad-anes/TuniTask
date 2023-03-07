@@ -36,7 +36,7 @@ private Connection conn;
     }
     @Override
     public void insert(Users t) {
- String requete3 = "INSERT INTO users (password, email, first_name, last_name, date_of_birth,srcimage) VALUES (?,?,?,?,?,?)" ;
+ String requete3 = "INSERT INTO users (password, email, first_name, last_name, date_of_birth,statut,srcimage) VALUES (?,?,?,?,?,?,?)" ;
             try {
             PreparedStatement pst = conn.prepareStatement(requete3);
             pst.setString(1, t.getPassword());
@@ -44,7 +44,8 @@ private Connection conn;
             pst.setString(3, t.getFirstName());
             pst.setString(4, t.getLastName());
             pst.setDate(5, t.getDateOfBirth());
-            pst.setString(6,t.getSrcimage() );
+            pst.setBoolean(6,t.getStatut() );
+             pst.setString(7,t.getSrcimage() );
             pst.executeUpdate();
 
         } catch (SQLException ex) {
@@ -68,7 +69,7 @@ private Connection conn;
     @Override
     public void update(Users t) {
        // String requete="DELETE FROM role WHERE id_role=" + t.getId();
-    String requete=" UPDATE users SET password=?,email=?,first_name=?,last_name=?,date_of_birth=?, srcimage= ? WHERE id = ? ";
+    String requete=" UPDATE users SET password=?,email=?,first_name=?,last_name=?,date_of_birth=?,statut=?, srcimage= ? WHERE id = ? ";
     try {
 
             PreparedStatement ps = conn.prepareStatement(requete);
@@ -77,8 +78,9 @@ private Connection conn;
             ps.setString(3, t.getFirstName());
             ps.setString(4, t.getLastName());
             ps.setDate(5, t.getDateOfBirth());
-            ps.setString(6,t.getSrcimage() );
-            ps.setInt(7,t.getId() );
+            ps.setBoolean(6,t.getStatut() );
+              ps.setString(7,t.getSrcimage() );
+            ps.setInt(8,t.getId() );
 
 
                 ps.executeUpdate();
@@ -107,7 +109,8 @@ private Connection conn;
         Date date= rs.getDate("date_of_birth");
         Date datec= rs.getDate("created_At");
         String img = rs.getString("srcimage");
-        Users user = new Users(id,pwd, email, name,pname,date,datec,img);
+        Boolean statut =rs.getBoolean("statut");
+        Users user = new Users(id,pwd, email, name,pname,date,datec,statut,img);
         userList.add(user);
       }
     } catch (SQLException ex) {
@@ -133,7 +136,8 @@ private Connection conn;
         Date date= rs.getDate("date_of_birth");
         Date datec= rs.getDate("created_At");
         String img = rs.getString("srcimage");
-        user = new Users(id,pwd, email, name,pname,date,datec,img);
+        Boolean statut =rs.getBoolean("statut");
+        user = new Users(id,pwd, email, name,pname,date,datec,statut,img);
        return user ;
       }
     } catch (SQLException ex) {
@@ -154,6 +158,13 @@ private Connection conn;
         //System.out.println(list);
        return list.stream().filter( (Users u) -> u.getEmail().equals(s)).map((Users u) -> u.getPassword()).findAny().orElse("") ; 
       }
+    public Boolean getStatutByEmail(String s) {
+      
+        ArrayList <Users> list= (ArrayList)this.readAll() ;
+        //System.out.println(list);
+       return list.stream().filter( (Users u) -> u.getEmail().equals(s)).map((Users u) -> u.getStatut()).findAny().get() ; 
+      } 
+    
     
        public  Map readAllUsersWithTheirRole() {
         
@@ -172,8 +183,10 @@ private Connection conn;
         String pwd = rs.getString("password");
         Date date= rs.getDate("date_of_birth");
         Date datec= rs.getDate("created_At");
+        Boolean statut =rs.getBoolean("statut");
         String img = rs.getString("srcimage");
-        Users user = new Users(id,pwd, email, name,pname,date,datec,img);
+        
+        Users user = new Users(id,pwd, email, name,pname,date,datec,statut,img);
         String role_name= rs.getString("role_name");
         Role role;
         switch (role_name) {
@@ -209,4 +222,19 @@ private Connection conn;
     return user ;
     }
   
+    
+    public void Desactiver(Users u )
+    {
+       String requete=" UPDATE users SET statut=? WHERE id = ? ";
+         try {
+
+            PreparedStatement ps = conn.prepareStatement(requete);
+            ps.setBoolean(1,!u.getStatut());
+            ps.setInt(2, u.getId());
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceRole.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
 }

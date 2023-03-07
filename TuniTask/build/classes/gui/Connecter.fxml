@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -31,7 +32,7 @@
                   <Image url="@img/logo.png" />
                </image>
             </ImageView>
-            <TextArea fx:id="email" layoutX="505.0" layoutY="160.0" onKeyReleased="#VEmail" prefHeight="37.0" prefWidth="226.0" promptText="nom@mail.com" />
+            <TextArea fx:id="email" layoutX="505.0" layoutY="160.0" onKeyPressed="#cacherWarrnning" onKeyReleased="#VEmail" prefHeight="37.0" prefWidth="226.0" promptText="nom@mail.com" />
             <Label layoutX="505.0" layoutY="197.0" text="Password" />
             <PasswordField fx:id="cpwd" layoutX="505.0" layoutY="229.0" prefHeight="29.0" prefWidth="226.0" />
             <Label layoutX="503.0" layoutY="127.0" text="Email" />
@@ -55,6 +56,30 @@
                </children>
             </Pane>
             <Label fx:id="oublie" layoutX="545.0" layoutY="263.0" onMouseClicked="#Motoublie" prefHeight="17.0" prefWidth="121.0" text="Mot de passe oublié !" />
+            <Pane fx:id="Compte_des" layoutX="518.0" layoutY="268.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: #FFC275;">
+               <children>
+                  <Label layoutX="43.0" layoutY="4.0" text="Compte désactivé" />
+               </children>
+            </Pane>
+            <Pane fx:id="Paneverification" layoutX="470.0" layoutY="410.0" prefHeight="40.0" prefWidth="234.0">
+               <children>
+                  <Label layoutX="10.0" layoutY="12.0" text="Code de verification" />
+                  <TextField fx:id="codeV" layoutX="121.0" layoutY="3.0" onKeyReleased="#CodedeVerificationEntred" prefHeight="36.0" prefWidth="108.0" />
+                  <Pane fx:id="PanePWD" layoutY="-6.0" prefHeight="93.0" prefWidth="259.0" style="-fx-background-color: #EBCBF6; -fx-background-radius: 25px; -fx-border-color: #77119B; -fx-border-radius: 25px;">
+                     <children>
+                        <TextField fx:id="NpasswordA" layoutX="120.0" layoutY="14.0" prefHeight="27.0" prefWidth="128.0" style="-fx-background-color: #EBCBF6; -fx-border-color: #77119B;" />
+                        <TextField fx:id="NpasswordAv" layoutX="120.0" layoutY="56.0" onKeyReleased="#Passwordchanged" prefHeight="27.0" prefWidth="128.0" style="-fx-background-color: #EBCBF6; -fx-border-color: #77119B;" />
+                        <Label fx:id="lpassword" layoutX="7.0" layoutY="19.0" text="Nouveau Password" />
+                        <Label fx:id="lcpwd" layoutX="7.0" layoutY="61.0" text="Confirmer Password" />
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Pane fx:id="reussi" layoutX="137.0" layoutY="444.0" prefHeight="53.0" prefWidth="247.0" style="-fx-background-color: #29FF84; -fx-background-radius: 25px;">
+               <children>
+                  <Label layoutX="11.0" layoutY="18.0" text="Félicitations, Vos données a été modifier." />
+               </children>
+            </Pane>
          </children>
       </Pane>
    </children>

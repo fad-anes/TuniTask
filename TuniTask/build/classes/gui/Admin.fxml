@@ -15,15 +15,10 @@
 
 <AnchorPane id="AnchorPane" prefHeight="667.0" prefWidth="963.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AdminController">
      <children>
-      <Pane prefHeight="667.0" prefWidth="963.0" style="-fx-background-color: #EBCBF6;">
+      <Pane layoutX="-6.0" prefHeight="698.0" prefWidth="1045.0" style="-fx-background-color: #EBCBF6;">
          <children>
-            <Pane prefHeight="59.0" prefWidth="963.0" style="-fx-background-color: #77119B; -fx-border-color: #000000;">
+            <Pane layoutX="6.0" layoutY="59.0" prefHeight="640.0" prefWidth="89.0" style="-fx-background-color: #DAC0FF;">
                <children>
-                  <ImageView fx:id="image" fitHeight="47.0" fitWidth="82.0" layoutX="14.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@img/logo.png" />
-                     </image>
-                  </ImageView>
                   <Button fx:id="Myprofile" layoutX="818.0" layoutY="18.0" mnemonicParsing="false" onAction="#Profile" style="-fx-background-color: #EBCBF6;" text="Profile">
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -32,26 +27,26 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
-                  <Label fx:id="Clients" layoutX="99.0" layoutY="21.0" onMousePressed="#Clients" style="-fx-border-color: #9EFF00;" text="Clients" textFill="#ffa2ff">
+                  <Label fx:id="Clients" layoutX="19.0" layoutY="163.0" onMousePressed="#Clients" style="-fx-border-color: #FF0000;" text="Clients" textFill="#3c013c">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Label>
-                  <Label fx:id="Freelancers" layoutX="167.0" layoutY="21.0" onMousePressed="#Freelancers" text="Freelancers" textFill="#ffa2ff">
+                  <Label fx:id="Freelancers" layoutX="14.0" layoutY="273.0" onMousePressed="#Freelancers" text="Freelancers" textFill="#720072">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Label>
-                  <Label fx:id="Organizateurs" layoutX="253.0" layoutY="21.0" onMousePressed="#Organizateurs" text="Organizateurs" textFill="#ffa2ff">
+                  <Label fx:id="Organizateurs" layoutX="7.0" layoutY="373.0" onMousePressed="#Organizateurs" text="Organizateurs" textFill="#8d008d">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Label>
-                  <Label fx:id="Admins" layoutX="357.0" layoutY="21.0" onMousePressed="#Admins" text="Admins" textFill="#ffa2ff">
+                  <Label fx:id="Admins" layoutX="18.0" layoutY="482.0" onMousePressed="#Admins" text="Admins" textFill="#650165">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Label>
                   
                </children>
             </Pane>
-            <TableView fx:id="Table" layoutX="87.0" layoutY="228.0" onMouseClicked="#Prendre_ligne" prefHeight="323.0" prefWidth="794.0" style="-fx-border-color: #DAC0FF; -fx-background-color: #EBCBF6;">
+            <TableView fx:id="Table" layoutX="126.0" layoutY="233.0" onMouseClicked="#Prendre_ligne" prefHeight="323.0" prefWidth="882.0" style="-fx-border-color: #DAC0FF; -fx-background-color: #EBCBF6;">
               <columns>
                 <TableColumn fx:id="idcolum" prefWidth="75.0" text="ID" />
                   <TableColumn fx:id="email" prefWidth="206.0" text="email" />
@@ -59,45 +54,97 @@
                   <TableColumn fx:id="prenom" prefWidth="100.0" text="prenom" />
                   <TableColumn fx:id="Dn" prefWidth="155.0" text="date de naissance" />
                   <TableColumn fx:id="Dc" prefWidth="155.0" text="date de création" />
+                  <TableColumn fx:id="statut" prefWidth="100.0" text="statut" />
               </columns>
             </TableView>
-            <Pane layoutY="59.0" prefHeight="79.0" prefWidth="963.0" style="-fx-background-color: #DAC0FF; -fx-border-color: #77119B;">
+            <Pane layoutX="89.0" layoutY="59.0" prefHeight="78.0" prefWidth="956.0" style="-fx-background-color: #DAC0FF;">
                <children>
                   <ComboBox fx:id="Filter" layoutX="516.0" layoutY="27.0" onAction="#initialize" prefWidth="150.0" promptText="Filtrer par" style="-fx-background-color: #EBCBF6;">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></ComboBox>
-                  <TextField fx:id="donnee" layoutX="689.0" layoutY="27.0" onKeyReleased="#FiltrerKeyReleased" style="-fx-background-color: #EBCBF6;">
+                  <TextField fx:id="donnee" layoutX="722.0" layoutY="27.0" onKeyReleased="#FiltrerKeyReleased" style="-fx-background-color: #EBCBF6;">
                      <cursor>
                         <Cursor fx:constant="W_RESIZE" />
                      </cursor></TextField>
-                  <ImageView fx:id="imageuser" fitHeight="70.0" fitWidth="330.0" layoutX="38.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imageuser" fitHeight="70.0" fitWidth="330.0" layoutX="25.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@img/logo.png" />
                      </image>
                   </ImageView>
                </children>
             </Pane>
-            <Pane fx:id="PaneValide" layoutY="607.0" prefHeight="59.0" prefWidth="963.0" style="-fx-background-color: #DAC0FF;">
+            <Pane fx:id="PaneValide" layoutX="-4.0" layoutY="637.0" prefHeight="59.0" prefWidth="1045.0" style="-fx-background-color: #DAC0FF;">
                <children>
-                  <Button fx:id="valid" defaultButton="true" layoutX="415.0" layoutY="10.0" mnemonicParsing="false" onAction="#ValideClicked" prefHeight="40.0" prefWidth="75.0" style="-fx-background-color: #77119B;" text="Valider" textFill="WHITE">
+                  <Button fx:id="valid" defaultButton="true" layoutX="502.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#ValiderClicked" prefHeight="40.0" prefWidth="75.0" style="-fx-background-color: #77119B;" text="Valider" textFill="WHITE">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
-                  <Button fx:id="annule" cancelButton="true" layoutX="575.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#AnnuleClicked" prefHeight="40.0" prefWidth="75.0" style="-fx-background-color: #77119B;" text="Annuler" textFill="WHITE">
+                  <Button fx:id="annule" cancelButton="true" layoutX="676.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#AnnuleClicked" prefHeight="40.0" prefWidth="75.0" style="-fx-background-color: #77119B;" text="Annuler" textFill="WHITE">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
                </children>
             </Pane>
-            <Button fx:id="Desactive" defaultButton="true" layoutX="494.0" layoutY="558.0" mnemonicParsing="false" onAction="#desacitiver" prefHeight="40.0" prefWidth="75.0" style="-fx-background-color: #77119B;" text="Désactiver" textFill="WHITE">
+            <Button fx:id="Desactive" defaultButton="true" layoutX="593.0" layoutY="571.0" mnemonicParsing="false" onAction="#desacitiver" prefHeight="40.0" prefWidth="75.0" style="-fx-background-color: #77119B;" text="Désactiver" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="DISAPPEAR" />
                </cursor></Button>
-            <TextField fx:id="commentaire" alignment="CENTER" editable="false" layoutX="212.0" layoutY="158.0" prefHeight="55.0" prefWidth="527.0" style="-fx-background-color: #DAC0FF;">
+            <TextField fx:id="commentaire" alignment="CENTER" editable="false" layoutX="291.0" layoutY="157.0" prefHeight="55.0" prefWidth="527.0" style="-fx-background-color: #DAC0FF;">
                <font>
                   <Font name="Britannic Bold" size="17.0" />
                </font></TextField>
+            <Button fx:id="activer" defaultButton="true" layoutX="593.0" layoutY="572.0" mnemonicParsing="false" onAction="#activer" prefHeight="40.0" prefWidth="75.0" style="-fx-background-color: #77119B;" text="activer" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="DISAPPEAR" />
+               </cursor>
+            </Button>
+            <Pane fx:id="reussi" layoutX="518.0" layoutY="566.0" prefHeight="53.0" prefWidth="226.0" style="-fx-background-color: #29FF84;">
+               <children>
+                  <Label layoutX="45.0" layoutY="18.0" text="Mise à jour avec succés" />
+               </children>
+            </Pane>
+            <Pane prefHeight="59.0" prefWidth="1045.0" style="-fx-background-color: #77119B; -fx-border-color: #000000;">
+               <children>
+                  <ImageView fx:id="image1" fitHeight="47.0" fitWidth="82.0" layoutX="14.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/logo.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="User" layoutX="99.0" layoutY="21.0" onMousePressed="#User" text="User" textFill="RED">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Label>
+                  <Label fx:id="demande" layoutX="167.0" layoutY="21.0" onMousePressed="#Demande" text="Demande" textFill="#ffa2ff">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Label>
+                  <Label fx:id="evenement" layoutX="253.0" layoutY="21.0" onMousePressed="#evénement" text="Evènement" textFill="#ffa2ff">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Label>
+                  <Label fx:id="quiz" layoutX="357.0" layoutY="21.0" onMousePressed="#quiz" text="Quiz" textFill="#ffa2ff">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Label>
+                  <Label fx:id="reclamation" layoutX="434.0" layoutY="21.0" onMousePressed="#reclamation" text="Réclamation" textFill="#ffa2ff">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Label>
+                  <Label fx:id="offre" layoutX="529.0" layoutY="22.0" onMousePressed="#offre" text="Offre" textFill="#ffa2ff">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Label>
+                  <Button layoutX="888.0" layoutY="17.0" mnemonicParsing="false" onAction="#Profile" style="-fx-background-color: #EBCBF6;" text="Profile" />
+                  <Button layoutX="966.0" layoutY="18.0" mnemonicParsing="false" onAction="#log_out" style="-fx-background-color: #EBCBF6;" text="sign out" />
+               </children>
+            </Pane>
          </children>
       </Pane>
    </children>

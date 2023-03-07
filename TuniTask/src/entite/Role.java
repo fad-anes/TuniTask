@@ -6,49 +6,24 @@
 package entite;
 
 import java.io.Serializable;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
 
 /**
  *
  * @author abdes
  */
-@Entity
-@Table(name = "role")
-@NamedQueries({
-    @NamedQuery(name = "Role.findAll", query = "SELECT r FROM Role r"),
-    @NamedQuery(name = "Role.findByIdRole", query = "SELECT r FROM Role r WHERE r.idRole = :idRole"),
-    @NamedQuery(name = "Role.findByRoleName", query = "SELECT r FROM Role r WHERE r.roleName = :roleName"),
-    @NamedQuery(name = "Role.findBySkills", query = "SELECT r FROM Role r WHERE r.skills = :skills"),
-    @NamedQuery(name = "Role.findByExperience", query = "SELECT r FROM Role r WHERE r.experience = :experience"),
-    @NamedQuery(name = "Role.findByEntreprise", query = "SELECT r FROM Role r WHERE r.entreprise = :entreprise")})
+
 public class Role implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id_role")
     private Integer idRole;
-    @Column(name = "role_name")
+   
     private String roleName;
-    @Column(name = "skills")
+   
     private String skills;
-    @Column(name = "experience")
+    
     private String experience;
-    @Column(name = "entreprise")
+    
     private String entreprise;
-    @JoinColumn(name = "id_user", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+  
     private Users idUser;
     String langage ;
 public Role() {
