@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="347.0" prefWidth="600.0" style="-fx-background-color: #DAC0FF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.RechercheDemandeIdController">
+   <children>
+      <Label layoutX="113.0" layoutY="50.0" text="Recherche d'une demande par ID" textAlignment="CENTER" textFill="#77119b">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="202.0" layoutY="128.0" text="Entrez l'ID de la demande :" textFill="#5300ff">
+         <font>
+            <Font name="System Regular" size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="id_demande" layoutX="187.0" layoutY="169.0" prefHeight="25.0" prefWidth="180.0" promptText="ID demande" />
+      <Button fx:id="btn_rechercher" layoutX="391.0" layoutY="170.0" mnemonicParsing="false" onAction="#rechercherDemande" prefHeight="25.0" prefWidth="120.0" style="-fx-background-color: white;" text="Rechercher" />
+      <ImageView fitHeight="78.0" fitWidth="93.0" layoutX="508.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@tunitaskimg.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="16.0" fitWidth="20.0" layoutX="400.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@recherche.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
