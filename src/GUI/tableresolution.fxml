@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="656.0" prefWidth="911.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.TableresolutionController">
+   <children>
+      <TableView fx:id="resolutionTable" layoutX="380.0" layoutY="121.0" onMouseClicked="#getSelected">
+        <columns>
+          <TableColumn fx:id="idcl" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="nomAgcl" prefWidth="88.800048828125" text="Nom _Agent" />
+            <TableColumn fx:id="prenomAgcl" prefWidth="99.99996948242188" text="Prenom_Agent" />
+            <TableColumn fx:id="resolutioncl" minWidth="0.0" prefWidth="256.80010986328125" text="Resolution" />
+        </columns>
+      </TableView>
+      <Pane layoutX="50.0" layoutY="81.0" prefHeight="4.0" prefWidth="810.0" style="-fx-background-color: black;" />
+      <Text fill="#792981" layoutX="252.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Résolutions ">
+         <font>
+            <Font name="Bauhaus 93" size="73.0" />
+         </font>
+      </Text>
+      <Pane layoutX="22.0" layoutY="147.0" prefHeight="314.0" prefWidth="338.0" style="-fx-background-color: #e7b5e6;">
+         <children>
+            <Label layoutX="14.0" layoutY="27.0" text=" ID : ">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="13.0" layoutY="76.0" text=" Nom Agent : ">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="127.0" text=" Prenom Agent : ">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="182.0" text=" Resolution : ">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textid" layoutX="73.0" layoutY="23.0" prefHeight="31.0" prefWidth="155.0" />
+            <TextField fx:id="txtnomAg" layoutX="132.0" layoutY="72.0" prefHeight="31.0" prefWidth="155.0" />
+            <TextField fx:id="txtprenomAg" layoutX="148.0" layoutY="123.0" prefHeight="31.0" prefWidth="163.0" />
+            <TextField fx:id="txtresolution" layoutX="132.0" layoutY="178.0" prefHeight="114.0" prefWidth="193.0" />
+         </children>
+      </Pane>
+      <Button fx:id="btnadd" layoutX="34.0" layoutY="512.0" mnemonicParsing="false" onAction="#addResolution" prefHeight="31.0" prefWidth="74.0" style="-fx-background-color: #772684;" text="ADD" textFill="#ecdede">
+         <font>
+            <Font name="Berlin Sans FB" size="19.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnupdate" layoutX="147.0" layoutY="512.0" mnemonicParsing="false" onAction="#updateResolution" prefHeight="34.0" prefWidth="81.0" style="-fx-background-color: #772684;" text="Update" textFill="#f7efef">
+         <font>
+            <Font name="Berlin Sans FB" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="btndelete" layoutX="270.0" layoutY="512.0" mnemonicParsing="false" onAction="#deleteResolution" prefHeight="31.0" prefWidth="74.0" style="-fx-background-color: #772684;" text="Delete" textFill="#eae1e1">
+         <font>
+            <Font name="Berlin Sans FB" size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
