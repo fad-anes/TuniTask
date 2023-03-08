@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="commons-logging-1.2">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Documents/GitHub/TuniTaskk/TuniTask/lib/commons-logging-1.2.jar!/" />
+      <root url="jar://$USER_HOME$/Documents/GitHub/TuniTaskk/TuniTask/lib/commons-logging-1.0.4-jboss.jar!/" />
+      <root url="file://$USER_HOME$/Documents/GitHub/TuniTaskk/TuniTask" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$USER_HOME$/Documents/GitHub/TuniTaskk/TuniTask/src" />
+    </SOURCES>
+  </library>
+</component>

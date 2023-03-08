@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="520.0" prefWidth="600.0" style="-fx-background-color: #DAC0FF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.PropositionListController">
+    <children>
+      <Button fx:id="afficherButton" layoutX="141.0" layoutY="482.0" mnemonicParsing="false" onAction="#afficherPropositions" style="-fx-background-color: #241c2c;" text="refresh" textFill="WHITE" />
+      <Label layoutX="214.0" layoutY="23.0" prefHeight="35.0" prefWidth="194.0" text="Mes propositions" textFill="#7f22b5">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font>
+      </Label>
+      <Button fx:id="consulterButton" layoutX="240.0" layoutY="482.0" mnemonicParsing="false" onAction="#consulterDemandes" style="-fx-background-color: #241c2c;" text="consulter demandes" textFill="WHITE" />
+      <Button fx:id="supprimerButton" layoutX="406.0" layoutY="482.0" mnemonicParsing="false" onAction="#supprimerProposition" style="-fx-background-color: #241c2c;" text="supprimer" textFill="WHITE" />
+      <TextField fx:id="inputRech" layoutX="143.0" layoutY="78.0" prefHeight="26.0" prefWidth="194.0" />
+      <Button fx:id="pdf2" layoutX="386.0" layoutY="76.0" mnemonicParsing="false" onAction="#pdf2" prefHeight="26.0" prefWidth="74.0" style="-fx-background-color: #582f77;" styleClass="button_Submit" text="PDF" textFill="WHITE">
+         <font>
+            <Font name="Lato Black" size="14.0" />
+         </font>
+      </Button>
+      <AnchorPane layoutX="62.0" layoutY="123.0" prefHeight="346.0" prefWidth="478.0" style="-fx-background-color: #473858; -fx-background-radius: 7;">
+         <children>
+              <TableView fx:id="propositionTable" layoutX="31.0" layoutY="18.0" prefHeight="306.0" prefWidth="415.0">
+                  <columns>
+                      <TableColumn fx:id="idColumn" prefWidth="50.0" text="Id">
+                          <cellValueFactory>
+                              <PropertyValueFactory property="id" />
+                          </cellValueFactory>
+                      </TableColumn>
+                      <TableColumn fx:id="idDemandeColumn" prefWidth="81.0" text="Id_demande">
+                          <cellValueFactory>
+                              <PropertyValueFactory property="id_demande" />
+                          </cellValueFactory>
+                      </TableColumn>
+                  <TableColumn fx:id="firstnameColumn" prefWidth="98.0" text="first_name">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="first_name" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="lastnameColumn" prefWidth="81.0" text="last_name">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="last_name" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="emailColumn" prefWidth="104.0" text="email">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="last_name" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  </columns>
+              </TableView>
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="69.0" fitWidth="74.0" layoutX="14.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@tunitaskimg.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="retourBtn" layoutX="548.0" layoutY="482.0" mnemonicParsing="false" onAction="#retourBtn" prefHeight="26.0" prefWidth="38.0" style="-fx-background-color: #241c2c;" text="&gt;&gt;" textFill="WHITE" />
+    </children>
+</AnchorPane>
