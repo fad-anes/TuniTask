@@ -39,7 +39,7 @@ public class Cardcommentaire {
     @FXML
     private Label commentaire;
     public void setdata(commentaire c)  {
-        Image i =new Image(c.getImg());
+        Image i =new Image("file:///"+c.getImg());
         img.setImage(i);
         nom.setText(c.getName());
         prenom.setText(c.getPrename());

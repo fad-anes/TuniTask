@@ -58,7 +58,7 @@ public class Cardoffre implements Initializable{
 
     public void setdata(offre o)  {
 
-        Image i =new Image(o.getImg());
+        Image i =new Image("file:///"+o.getImg());
         String s2=String.valueOf(o.getSalaireH());
         image.setImage(i);
         titre.setText(o.getTitre());

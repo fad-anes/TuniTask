@@ -26,7 +26,7 @@ public class Afficheroffre implements Initializable{
     private Button ref;
     @FXML
     private HBox hbox;
-private Users u=new Users(42);
+private Users u=new Users(51);
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -18,7 +19,9 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 import service.offreservice;
+import org.controlsfx.control.Notifications;
 public class Menuoffre implements Initializable {
     @FXML
     private VBox box;
@@ -48,7 +51,7 @@ public class Menuoffre implements Initializable {
     private Button Retour;
     @FXML
     private Button Actualiser;
-    Users u=new Users(42);
+    Users u=new Users(53);
 
 
 
@@ -138,6 +141,12 @@ public class Menuoffre implements Initializable {
             offre p0=new offre(description.getText(),titre.getText(),Float.parseFloat(salaire.getText()),u);
             ps.insert(p0);
             this.ajjss.setText("ajouté avec succes!");
+            Notifications n=Notifications.create();
+            n.title("ajouté avec succes");
+            n.text("ajouté avec succes");
+            n.hideAfter(Duration.seconds(5));
+            n.position(Pos.CENTER_RIGHT);
+            n.show();
     }}
 
 }

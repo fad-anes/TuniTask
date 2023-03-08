@@ -10,11 +10,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.util.Duration;
 import service.commentaireservice;
+import org.controlsfx.control.Notifications;
 public class Ajoutcomm implements Initializable{
     private int id;
     private Users u=new Users();
@@ -57,6 +60,12 @@ public class Ajoutcomm implements Initializable{
             commentaire p0=new commentaire(o,tacm.getText(),u);
             ps.insert(p0,o,u);
             this.ajss.setText("ajouté avec succes!");
+            Notifications n=Notifications.create();
+            n.title("ajouté avec succes");
+            n.text("ajouté avec succes");
+            n.hideAfter(Duration.seconds(5));
+            n.position(Pos.CENTER_RIGHT);
+            n.show();
         }
     }
     @FXML

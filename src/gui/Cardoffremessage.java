@@ -53,7 +53,7 @@ public class Cardoffremessage {
     int offreid;
     public void setdata(offre o)  {
             float t;
-        Image i =new Image(o.getImg());
+        Image i =new Image("file:///"+o.getImg());
         String s2=String.valueOf(o.getSalaireH());
         image.setImage(i);
         titre.setText(o.getTitre());

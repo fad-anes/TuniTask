@@ -6,7 +6,7 @@ import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 public class Datasource {
-    private String url = "jdbc:mysql://localhost:3306/tunitask";
+    private String url = "jdbc:mysql://localhost:3306/tt";
     private String user = "root";
     private String pwd = "";
     private Connection cnx;
