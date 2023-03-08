@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="itextpdf-5.1.0">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../TuniTask-demande/TuniTask-demande/src/tools/itextpdf-5.1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../TuniTask-demande/TuniTask-demande/src/tools/javax.mail.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../TuniTask-demande/TuniTask-demande/src/tools/TrayTester.jar!/" />
+      <root url="file://$PROJECT_DIR$" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/src" />
+    </SOURCES>
+  </library>
+</component>

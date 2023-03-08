@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="514.0" prefWidth="988.0" style="-fx-background-color: #DAC0FF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DemandeClientController">
+    <children>
+        <Label layoutX="332.0" layoutY="14.0" prefHeight="58.0" prefWidth="338.0" text="Rechercher mes demandes" textAlignment="CENTER" textFill="#77119b">
+            <font>
+                <Font name="Mongolian Baiti" size="31.0" />
+            </font>
+        </Label>
+        <HBox layoutX="323.0" layoutY="460.0" spacing="10.0">
+         <Button fx:id="ajouterButton" mnemonicParsing="false" onAction="#ajouterDemande" style="-fx-background-color: #241c2c;" text="Ajouter" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="12.0" />
+            </font></Button>
+         <Button fx:id="modifierButton" mnemonicParsing="false" onAction="#modifierDemande" style="-fx-background-color: #241c2c;" text="Modifier" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="12.0" />
+            </font></Button>
+         <Button fx:id="supprimerButton" mnemonicParsing="false" onAction="#supprimerDemande" style="-fx-background-color: #241c2c;" text="Supprimer" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="12.0" />
+            </font></Button>
+
+         <TextField fx:id="filterField" promptText="Filter by title" />
+      </HBox>
+      <AnchorPane layoutX="11.0" layoutY="177.0" prefHeight="258.0" prefWidth="969.0" style="-fx-background-color: #473858;">
+         <children>
+              <TableView fx:id="demandesTableView" layoutX="14.0" layoutY="14.0" prefHeight="228.0" prefWidth="939.0">
+                  <columns>
+                      <TableColumn fx:id="idDemandeColumn" prefWidth="50.0" text="ID">
+                          <cellValueFactory>
+                              <PropertyValueFactory property="id" />
+                          </cellValueFactory>
+                      </TableColumn>
+                      <TableColumn fx:id="nomDemandeColumn" prefWidth="58.0" text="Nom">
+                          <cellValueFactory>
+                              <PropertyValueFactory property="nom" />
+                          </cellValueFactory>
+                      </TableColumn>
+                      <TableColumn fx:id="prenomDemandeColumn" prefWidth="70.0" text="Prenom">
+                          <cellValueFactory>
+                              <PropertyValueFactory property="prenom" />
+                          </cellValueFactory>
+                      </TableColumn>
+                      <TableColumn fx:id="emailDemandeColumn" prefWidth="86.0" text="Email">
+                          <cellValueFactory>
+                              <PropertyValueFactory property="email" />
+                          </cellValueFactory>
+                      </TableColumn>
+                      <TableColumn fx:id="titreDemandeColumn" prefWidth="84.0" text="Titre">
+                          <cellValueFactory>
+                              <PropertyValueFactory property="titre" />
+                          </cellValueFactory>
+                      </TableColumn>
+                      <TableColumn fx:id="descriptionDemandeColumn" prefWidth="182.0" text="Description">
+                          <cellValueFactory>
+                              <PropertyValueFactory property="description" />
+                          </cellValueFactory>
+                      </TableColumn>
+                      <TableColumn fx:id="salaireDemandeColumn" prefWidth="93.0" text="Salaire">
+                          <cellValueFactory>
+                              <PropertyValueFactory property="salaire" />
+                          </cellValueFactory>
+                      </TableColumn>
+                      <TableColumn fx:id="delaiDemandeColumn" prefWidth="98.0" text="Délai">
+                          <cellValueFactory>
+                              <PropertyValueFactory property="delai" />
+                          </cellValueFactory>
+                      </TableColumn>
+                      <TableColumn fx:id="langageDemandeColumn" prefWidth="100.0" text="Langage">
+                          <cellValueFactory>
+                              <PropertyValueFactory property="langage" />
+                          </cellValueFactory>
+                      </TableColumn>
+                      <TableColumn fx:id="created_atDemandeColumn" prefWidth="117.0" text="Date de Création">
+                          <cellValueFactory>
+                              <PropertyValueFactory property="created_at" />
+                          </cellValueFactory>
+                      </TableColumn>
+                  </columns>
+              </TableView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="212.0" layoutY="97.0" prefHeight="58.0" prefWidth="506.0" style="-fx-background-color: #9b82ad;" visible="false">
+         <children>
+              <Label layoutX="34.0" layoutY="19.0" text="ID Client :" textFill="#5f1475">
+                  <font>
+                      <Font name="System Bold" size="14.0" />
+                  </font>
+              </Label>
+              <TextField fx:id="idClientTextField" layoutX="109.0" layoutY="16.0" prefHeight="26.0" prefWidth="244.0" promptText="Entrez votre ID client" />
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="72.0" fitWidth="98.0" layoutX="758.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@tunitaskimg.png" />
+         </image>
+      </ImageView>
+        <Button fx:id="retourBtn" layoutX="911.0" layoutY="472.0" mnemonicParsing="false" onAction="#retourBtn" prefHeight="26.0" prefWidth="38.0" style="-fx-background-color: #241c2c;" text="&gt;&gt;" textFill="WHITE" />
+        <Button fx:id="rechercherButton" layoutX="718.0" layoutY="459.0" mnemonicParsing="false" onAction="#rechercherDemandes" style="-fx-background-color: #241c2c;" text="Refresh" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+
+    </children>
+</AnchorPane>

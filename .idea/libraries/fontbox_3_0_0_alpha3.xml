@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="fontbox-3.0.0-alpha3">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Documents/GitHub/TuniTaskk/TuniTask/lib/fontbox-3.0.0-alpha3.jar!/" />
+      <root url="jar://$USER_HOME$/Documents/GitHub/TuniTaskk/TuniTask/lib/itextdoc-2.0.0.jar!/" />
+      <root url="jar://$USER_HOME$/Documents/GitHub/TuniTaskk/TuniTask/lib/itextpdf-5.1.2.jar!/" />
+      <root url="file://$USER_HOME$/Documents/GitHub/TuniTaskk/TuniTask" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$USER_HOME$/Documents/GitHub/TuniTaskk/TuniTask/src" />
+    </SOURCES>
+  </library>
+</component>

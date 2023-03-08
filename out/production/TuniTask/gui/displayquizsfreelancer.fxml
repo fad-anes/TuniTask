@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Displayquizsfreelancers">
+    <stylesheets>
+        <URL value="@styles.css" />
+    </stylesheets>
+    <children>
+        <Pane prefHeight="70.0" prefWidth="800.0" styleClass="header">
+            <VBox alignment="CENTER" prefHeight="70.0" prefWidth="818.0" spacing="5.0">
+                <Text fill="#77119b" style="-fx-font-weight: bold;" styleClass="header-text" text="Liste des quizs">
+               <font>
+                  <Font size="31.0" />
+               </font></Text>
+                <Pane prefHeight="1.0" prefWidth="800.0" styleClass="header-divider" />
+            </VBox>
+        </Pane>
+
+        <VBox alignment="CENTER" layoutY="70.0" spacing="20.0">
+            <TableView fx:id="quiztable" prefHeight="400.0" prefWidth="818.0">
+                <columns>
+                    <TableColumn fx:id="idquiz" maxWidth="100.0" prefWidth="100.0" text="ID" />
+                    <TableColumn fx:id="idtitle" prefWidth="104.79999542236328" text="Title" />
+                    <TableColumn fx:id="iddesc" prefWidth="508.8000183105469" text="Description" />
+                    <TableColumn fx:id="idscore" minWidth="0.0" prefWidth="104.7999267578125" text="Score" />
+                </columns>
+            </TableView>
+
+            <HBox alignment="CENTER" prefHeight="105.0" prefWidth="818.0" spacing="20.0">
+                <TextField fx:id="filterField" promptText="Filter by quiz title">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor></TextField>
+
+                <Button fx:id="openbtn" onAction="#displayquestions" style="-fx-background-color: #77119B;" styleClass="action-button" text="Select Quiz">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+                <Button onAction="#refresh" prefHeight="56.0" prefWidth="142.0" style="-fx-font-size: 18px; -fx-font-weight: bold;" styleClass="refresh-button" text="Refresh" textFill="#77119b">
+                    <graphic>
+                        <ImageView fitHeight="24" fitWidth="24" pickOnBounds="true" preserveRatio="true">
+                            <Image url="@refresh.jpg" />
+                        </ImageView>
+                    </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+                </Button>
+                <Button fx:id="retourBtn" layoutX="548.0" layoutY="482.0" mnemonicParsing="false" onAction="#retourBtn" prefHeight="26.0" prefWidth="38.0" style="-fx-background-color: #241c2c;" text="&gt;&gt;" textFill="WHITE" />
+
+            </HBox>
+        </VBox>
+    </children>
+</AnchorPane>
